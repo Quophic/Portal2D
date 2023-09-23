@@ -9,7 +9,12 @@ public class CameraController : MonoBehaviour
     public Camera mainCam;
     void Update()
     {
-        Vector2 mousePos =  mainCam.ScreenToWorldPoint(Input.mousePosition);
+        SetCameraTransform();
+    }
+
+    public void SetCameraTransform()
+    {
+        Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 newPos = Vector2.Lerp(playerEye.position, mousePos, offsetFactor);
         newPos.z = transform.position.z;
         transform.position = newPos;

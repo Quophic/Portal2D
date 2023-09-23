@@ -48,10 +48,17 @@ public class Portal : MonoBehaviour
     private void Update()
     {
         CreateViewTexture();
+        SetCameraTransform();
+        CheckAndTeleportTravellers();
+    }
+
+    public void SetCameraTransform()
+    {
         Matrix4x4 cameraMatrix = TeleportMatrix * playerCamera.transform.localToWorldMatrix;
         portalCamera.transform.SetPositionAndRotation(cameraMatrix.GetPosition(), cameraMatrix.rotation);
-        CheckAndTeleportTravellers();
-
+        portalCamera.enabled = false;
+        portalCamera.Render();
+        portalCamera.enabled = true;
     }
 
     private void CheckAndTeleportTravellers()
@@ -70,7 +77,7 @@ public class Portal : MonoBehaviour
             travellers.Remove(traveller);
             traveller.Teleport(TeleportMatrix);
             OnTravellerExit(traveller);
-            linkedPortal.OnTravellerExit(traveller);
+            linkedPortal.OnTravellerEnter(traveller);
         }
     }
     private void OnTravellerEnter(PortalTraveller traveller)

@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerEye: {fileID: 6012966144747587014}
-  offsetFactor: 0.3
+  offsetFactor: 0
   mainCam: {fileID: 519420031}
 --- !u!1 &643281494
 GameObject:
@@ -735,6 +735,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 90702445, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: CameraController
+      value: 
+      objectReference: {fileID: 519420034}
+    - target: {fileID: 90702445, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: portalController
+      value: 
+      objectReference: {fileID: 1572176071}
     - target: {fileID: 6012966144842030278, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: portalController
       value: 
@@ -749,11 +757,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.72
+      value: -2.38
       objectReference: {fileID: 0}
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.12
+      value: -2.85
       objectReference: {fileID: 0}
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_LocalPosition.z

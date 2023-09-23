@@ -86,4 +86,13 @@ public class PortalController : MonoBehaviour
             portalBlue.attachedObj.layer = LayerMask.NameToLayer("PortalAttached");
         }
     }
+
+    public void SetPortalCamera()
+    {
+        portalRed.SetCameraTransform();
+        portalBlue.SetCameraTransform();
+        playerCamera.enabled = false;
+        playerCamera.Render();
+        playerCamera.enabled = true;
+    }
 }
