@@ -10,9 +10,7 @@ public class PlayerController : MonoBehaviour
     public PortalGun gun;
     void Update()
     {
-        Move();
-        Jump();
-        Face();
+        
         if (Input.GetMouseButtonDown(0))
         {
             gun.SetPortalRed();
@@ -21,6 +19,12 @@ public class PlayerController : MonoBehaviour
         {
             gun.SetPortalBlue();
         }
+    }
+    private void FixedUpdate()
+    {
+        Move();
+        Jump();
+        Face();
     }
 
     private void Face()
