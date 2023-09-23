@@ -4,7 +4,16 @@ using UnityEngine;
 
 public abstract class PortalTraveller : MonoBehaviour
 {
-    public abstract void Teleport(Matrix4x4 teleportMatrix);
-    public abstract void EnterPortalThreshold();
-    public abstract void ExitPortalThreshold();
+    public virtual void Teleport(Matrix4x4 teleportMatrix)
+    {
+
+    }
+    public virtual void EnterPortalThreshold()
+    {
+        gameObject.layer = LayerMask.NameToLayer("NearPortal");
+    }
+    public virtual void ExitPortalThreshold()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Default");
+    }
 }

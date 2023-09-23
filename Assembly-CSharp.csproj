@@ -60,11 +60,11 @@
     <Compile Include="Assets\Scripts\Portal.cs" />
     <Compile Include="Assets\Scripts\PortalView.cs" />
     <Compile Include="Assets\Scripts\PortalController.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerTraveller.cs" />
     <Compile Include="Assets\Scripts\PortalTraveller.cs" />
     <Compile Include="Assets\Test\PostEffect.cs" />
     <Compile Include="Assets\Scripts\PortalGun.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Test\TestShader.shader" />

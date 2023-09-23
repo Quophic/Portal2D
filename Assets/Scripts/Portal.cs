@@ -6,6 +6,7 @@ public class Portal : MonoBehaviour
 {
     public Portal linkedPortal;
     public Transform playerEye;
+    public GameObject attachedObj;
     public Collider2D effectZone;
     public Camera playerCamera;
     public Camera portalCamera;
@@ -49,14 +50,53 @@ public class Portal : MonoBehaviour
         CreateViewTexture();
         Matrix4x4 cameraMatrix = TeleportMatrix * playerCamera.transform.localToWorldMatrix;
         portalCamera.transform.SetPositionAndRotation(cameraMatrix.GetPosition(), cameraMatrix.rotation);
+        CheckAndTeleportTravellers();
+
+    }
+
+    private void CheckAndTeleportTravellers()
+    {
+        List<PortalTraveller> needToTeleport = new List<PortalTraveller>();
+        foreach(PortalTraveller traveller in travellers)
+        {
+            Vector3 pointToTraveller = traveller.transform.position - transform.position;
+            if(Vector3.Dot(pointToTraveller, transform.right) < 0)
+            {
+                needToTeleport.Add(traveller);
+            }
+        }
+        foreach(PortalTraveller traveller in needToTeleport)
+        {
+            travellers.Remove(traveller);
+            traveller.Teleport(TeleportMatrix);
+            OnTravellerExit(traveller);
+            linkedPortal.OnTravellerExit(traveller);
+        }
+    }
+    private void OnTravellerEnter(PortalTraveller traveller)
+    {
+        if (travellers.Contains(traveller))
+        {
+            return;
+        }
+        travellers.Add(traveller);
+        traveller.EnterPortalThreshold();
+    } 
+    private void OnTravellerExit(PortalTraveller traveller)
+    {
+        if (!travellers.Contains(traveller))
+        {
+            return;
+        }
+        travellers.Remove(traveller);
+        traveller.ExitPortalThreshold();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PortalTraveller traveller = collision.gameObject.GetComponent<PortalTraveller>();
         if (traveller != null)
         {
-            travellers.Add(traveller);
-            Debug.Log("enter");
+            OnTravellerEnter(traveller);
         }
     }
 
@@ -65,7 +105,7 @@ public class Portal : MonoBehaviour
         PortalTraveller traveller = collision.gameObject.GetComponent<PortalTraveller>();
         if (traveller != null)
         {
-            travellers.Remove(traveller);
+            OnTravellerExit(traveller);
         }
     }
     

@@ -43,15 +43,47 @@ public class PortalController : MonoBehaviour
 
     public void SetPortalRed(Vector3 position, Quaternion rotation)
     {
-        portalRed.transform.SetPositionAndRotation(position, rotation);
+        SetPortal(portalRed, position, rotation);
     }
     public void SetPortalBlue(Vector3 position, Quaternion rotation)
     {
-        portalBlue.transform.SetPositionAndRotation(position, rotation);
+        SetPortal(portalBlue, position, rotation);
     }
 
-    
+    private void SetPortal(Portal portal, Vector3 position, Quaternion rotation)
+    {
+        portal.transform.SetLocalPositionAndRotation(position, rotation);
+    }
 
-    
-    
+    public void ResetPortalAttached()
+    {
+        if (portalRed.attachedObj)
+        {
+            portalRed.attachedObj.layer = LayerMask.NameToLayer("Ground");
+        }
+        if (portalBlue.attachedObj)
+        {
+            portalBlue.attachedObj.layer = LayerMask.NameToLayer("Ground");
+        }
+    }
+
+    public void SetPortalRedAttached(GameObject attached)
+    {
+        portalRed.attachedObj = attached;
+    }
+    public void SetPortalBlueAttached(GameObject attached)
+    {
+        portalBlue.attachedObj = attached;
+    }
+    public void SetPortalAttached()
+    {
+        if (portalRed.attachedObj)
+        {
+            portalRed.attachedObj.layer = LayerMask.NameToLayer("PortalAttached");
+        }
+        if (portalBlue.attachedObj)
+        {
+            portalBlue.attachedObj.layer = LayerMask.NameToLayer("PortalAttached");
+        }
+    }
 }
