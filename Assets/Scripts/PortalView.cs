@@ -76,13 +76,22 @@ public class PortalView : MonoBehaviour
 
     private void RenderPortalView(Portal portal ,RenderTexture source, RenderTexture destination)
     {
-        Material.SetTexture("_PortalTex", portal.ViewTexture);
-        Material.SetVector("_Plane1", GetViewPortPlane(portal.Top, controller.playerEye.position, portal.Bottom));
-        Material.SetVector("_Plane2", GetViewPortPlane(portal.Bottom, controller.playerEye.position, portal.Top));
-        Vector4 portalPlane = GetViewPortPlane(portal.Top, portal.Bottom, controller.playerEye.position);
-        portalPlane.z *= -1;
-        portalPlane.w *= -1;
-        Material.SetVector("_Plane3", portalPlane);
-        Graphics.Blit(source, destination, Material);
+        Vector3 portalToEye = controller.playerEye.position - portal.transform.position;
+        float dot = Vector3.Dot(portalToEye, portal.transform.right);
+        if(dot > 0)
+        {
+            Material.SetTexture("_PortalTex", portal.ViewTexture);
+            Material.SetVector("_Plane1", GetViewPortPlane(portal.Top, controller.playerEye.position, portal.Bottom));
+            Material.SetVector("_Plane2", GetViewPortPlane(portal.Bottom, controller.playerEye.position, portal.Top));
+            Vector4 portalPlane = GetViewPortPlane(portal.Top, portal.Bottom, controller.playerEye.position);
+            portalPlane.z *= -1;
+            portalPlane.w *= -1;
+            Material.SetVector("_Plane3", portalPlane);
+            Graphics.Blit(source, destination, Material);
+        }
+        else
+        {
+            Graphics.Blit(source, destination);
+        }
     }
 }
