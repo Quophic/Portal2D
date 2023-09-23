@@ -25,6 +25,20 @@ public class Portal : MonoBehaviour
             }
         } 
     }
+    private RenderTexture viewTexture;
+    public RenderTexture ViewTexture { get { return viewTexture; } }
+    void CreateViewTexture()
+    {
+        if (viewTexture == null || viewTexture.width != Screen.width || viewTexture.height != Screen.height)
+        {
+            if (viewTexture != null)
+            {
+                viewTexture.Release();
+            }
+            viewTexture = new RenderTexture(Screen.width, Screen.height, 0);
+            portalCamera.targetTexture = viewTexture;
+        }
+    }
 
     private void Awake()
     {
@@ -32,6 +46,7 @@ public class Portal : MonoBehaviour
     }
     private void Update()
     {
+        CreateViewTexture();
         Matrix4x4 cameraMatrix = TeleportMatrix * playerCamera.transform.localToWorldMatrix;
         portalCamera.transform.SetPositionAndRotation(cameraMatrix.GetPosition(), cameraMatrix.rotation);
     }

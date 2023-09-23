@@ -1,0 +1,68 @@
+Shader "Custom/PortalViewShader"
+{
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+    }
+    SubShader
+    {
+        Tags { "RenderType"="Opaque" }
+        LOD 100
+        Cull Off
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            // make fog work
+            #pragma multi_compile_fog
+
+            #include "UnityCG.cginc"
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+                float2 srcPos : TEXCOORD1;
+
+            };
+
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+            sampler2D _PortalTex;
+            float4 _Plane1;
+            float4 _Plane2;
+            float4 _Plane3;
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.uv;
+                o.srcPos = ComputeScreenPos(o.vertex);
+                return o;
+            }
+
+            fixed4 frag(v2f i) : SV_Target
+            {
+                fixed4 src = tex2D(_MainTex, i.uv);
+                fixed4 ano = tex2D(_PortalTex, i.uv);
+                fixed2 dir = i.srcPos - _Plane1.xy;
+                fixed mask = step(0, dot(dir, _Plane1.zw));
+                dir = i.srcPos - _Plane2.xy;
+                fixed mask2 = step(0, dot(dir, _Plane2.zw));
+                dir = i.srcPos - _Plane3.xy;
+                fixed mask3 = step(0, dot(dir, _Plane3.zw));
+                mask = mask * mask2 * mask3;
+                return  src * (1 - mask) + ano * mask;
+            }
+            ENDCG
+        }
+    }
+}

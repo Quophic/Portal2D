@@ -7,10 +7,9 @@ public class PortalController : MonoBehaviour
     public Portal portalPrefab;
     public Transform playerEye;
     public Camera playerCamera;
-    private Portal portalRed;
-    public RenderTexture prTexture;
-    private Portal portalBlue;
-    public RenderTexture pbTexture;
+    public Portal portalRed;
+    public Portal portalBlue;
+
     void Start()
     {
         portalRed = Instantiate(portalPrefab);
@@ -22,8 +21,6 @@ public class PortalController : MonoBehaviour
         portalRed.playerEye = playerEye;
         portalBlue.playerEye = playerEye;
 
-        portalRed.portalCamera.targetTexture = prTexture;
-        portalBlue.portalCamera.targetTexture = pbTexture;
         portalRed.playerCamera = playerCamera;
         portalBlue.playerCamera = playerCamera;
     }
@@ -52,4 +49,9 @@ public class PortalController : MonoBehaviour
     {
         portalBlue.transform.SetPositionAndRotation(position, rotation);
     }
+
+    
+
+    
+    
 }

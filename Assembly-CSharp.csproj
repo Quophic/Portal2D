@@ -58,10 +58,16 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Portal.cs" />
+    <Compile Include="Assets\Scripts\PortalView.cs" />
     <Compile Include="Assets\Scripts\PortalController.cs" />
     <Compile Include="Assets\Scripts\PlayerTraveller.cs" />
     <Compile Include="Assets\Scripts\PortalTraveller.cs" />
+    <Compile Include="Assets\Test\PostEffect.cs" />
     <Compile Include="Assets\Scripts\PortalGun.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Test\TestShader.shader" />
+    <None Include="Assets\Shaders\PortalViewShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
