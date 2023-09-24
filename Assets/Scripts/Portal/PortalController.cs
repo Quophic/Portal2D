@@ -14,8 +14,8 @@ public class PortalController : MonoBehaviour
     {
         portalRed = Instantiate(portalPrefab);
         portalBlue = Instantiate(portalPrefab);
-        portalRed.GetComponent<SpriteRenderer>().color = Color.red;
-        portalBlue.GetComponent<SpriteRenderer>().color = Color.blue;
+        portalRed.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        portalBlue.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         portalRed.linkedPortal = portalBlue;
         portalBlue.linkedPortal = portalRed;
         portalRed.playerEye = playerEye;

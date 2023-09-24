@@ -10,9 +10,11 @@ public class Portal : MonoBehaviour
     public Collider2D effectZone;
     public Camera playerCamera;
     public Camera portalCamera;
+    public Transform edgeTop;
+    public Transform edgeBottom;
     private List<PortalTraveller> travellers;
-    public Vector3 Top { get => transform.position + transform.up * transform.localScale.y / 2f; }
-    public Vector3 Bottom { get => transform.position - transform.up * transform.localScale.y / 2f; }
+    public Vector3 Top { get => edgeTop.position; }
+    public Vector3 Bottom { get => edgeBottom.position; }
     public Matrix4x4 TeleportMatrix { 
         get
         {
