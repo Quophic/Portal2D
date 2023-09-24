@@ -863,6 +863,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515564, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515564, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -906,6 +914,18 @@ PrefabInstance:
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515566, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: power
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515566, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: verticalMaxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515566, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: horizontalMaxSpped
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}

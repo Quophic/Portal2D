@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb2d;
-    public float speed;
+    public float power;
     public float jumpSpeed;
+    public float horizontalMaxSpped;
+    public float verticalMaxSpeed;
     public PortalGun gun;
     void Update()
     {
@@ -44,8 +46,17 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         float h = Input.GetAxis("Horizontal");
-        Vector2 velocity = Vector2.right * h * speed;
-        velocity.y = rb2d.velocity.y;
+        Vector2 force = Vector2.right * h * power;
+        rb2d.AddForce(force);
+        Vector2 velocity = rb2d.velocity;
+        if(Mathf.Abs(velocity.x) > horizontalMaxSpped)
+        {
+            velocity.x = Mathf.Sign(velocity.x) * horizontalMaxSpped;
+        }
+        if(Mathf.Abs(velocity.y) > verticalMaxSpeed)
+        {
+            velocity.y = Mathf.Sign(velocity.y) * verticalMaxSpeed;
+        }
         rb2d.velocity = velocity;
     }
     private void Jump()
