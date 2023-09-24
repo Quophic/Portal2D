@@ -370,6 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1572176071}
   portalViewShader: {fileID: 4800000, guid: b42a3d5f673133040bbff2d65cc9f0cd, type: 3}
+  maxPortalIterateCount: 1
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0

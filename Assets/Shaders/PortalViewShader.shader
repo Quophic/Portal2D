@@ -30,6 +30,7 @@ Shader "Custom/PortalViewShader"
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
                 float2 srcPos : TEXCOORD1;
+                float2 tuv : TEXCOORD2;
 
             };
 
@@ -39,6 +40,14 @@ Shader "Custom/PortalViewShader"
             float4 _Plane1;
             float4 _Plane2;
             float4 _Plane3;
+            float4 _Offset;
+            float _Rotation;
+            float _Ratio;
+
+            float2 rotate(float2 i)
+            {
+                return float2(i.x * cos(_Rotation) - i.y * (1 / _Ratio) * sin(_Rotation) , i.x * _Ratio * sin(_Rotation) + i.y * cos(_Rotation));
+            }
 
             v2f vert (appdata v)
             {
@@ -46,13 +55,17 @@ Shader "Custom/PortalViewShader"
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
                 o.srcPos = ComputeScreenPos(o.vertex);
+                o.tuv = o.uv - _Offset.zw;
+                o.tuv = o.tuv - _Offset.xy;
+                o.tuv = rotate(o.tuv);
+                o.tuv = o.tuv + _Offset.xy;
                 return o;
             }
 
             fixed4 frag(v2f i) : SV_Target
             {
                 fixed4 src = tex2D(_MainTex, i.uv);
-                fixed4 ano = tex2D(_PortalTex, i.uv);
+                fixed4 pv = tex2D(_PortalTex, i.tuv);
                 fixed2 dir = i.srcPos - _Plane1.xy;
                 fixed mask = step(0, dot(dir, _Plane1.zw));
                 dir = i.srcPos - _Plane2.xy;
@@ -60,7 +73,7 @@ Shader "Custom/PortalViewShader"
                 dir = i.srcPos - _Plane3.xy;
                 fixed mask3 = step(0, dot(dir, _Plane3.zw));
                 mask = mask * mask2 * mask3;
-                return  src * (1 - mask) + ano * mask;
+                return  src * (1 - mask) + pv * mask;
             }
             ENDCG
         }
