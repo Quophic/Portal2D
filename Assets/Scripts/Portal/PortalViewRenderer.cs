@@ -108,7 +108,11 @@ public class PortalViewRenderer : MonoBehaviour
 
         void _Render(Vector3 eyePos)
         {
-            if (iterateCount >= maxPortalIterateCount)
+            // 是否都可以通过一个传送门看到另一个传送门的正面， 传送门以右侧为正
+            bool canSeeRed = Vector3.Dot(controller.portalRed.transform.right, controller.portalBlue.transform.position - controller.portalRed.transform.position) > 0;
+            bool canSeeBlue = Vector3.Dot(controller.portalBlue.transform.right, controller.portalRed.transform.position - controller.portalBlue.transform.position) > 0;
+
+            if (iterateCount >= maxPortalIterateCount || !canSeeRed || !canSeeBlue)
             {
                 return;
             }
