@@ -68,7 +68,7 @@ public class Portal : MonoBehaviour
         List<PortalTraveller> needToTeleport = new List<PortalTraveller>();
         foreach(PortalTraveller traveller in travellers)
         {
-            Vector3 pointToTraveller = traveller.transform.position - transform.position;
+            Vector3 pointToTraveller = traveller.checkPoint.transform.position - transform.position;
             if(Vector3.Dot(pointToTraveller, transform.right) < 0)
             {
                 needToTeleport.Add(traveller);

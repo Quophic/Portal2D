@@ -7,6 +7,7 @@ public class PlayerTraveller : PortalTraveller
     public Rigidbody2D rb2d;
     public PortalController portalController;
     public CameraController CameraController;
+    public PlayerController playerController;
     public override void EnterPortalThreshold()
     {
         base.EnterPortalThreshold();
@@ -21,6 +22,9 @@ public class PlayerTraveller : PortalTraveller
     {
         rb2d.velocity = teleportMatrix.MultiplyVector(rb2d.velocity);
         transform.position = teleportMatrix.MultiplyPoint(transform.position);
+        Quaternion rotation = teleportMatrix.rotation;
+        transform.rotation = rotation * transform.rotation;
+
         CameraController.SetCameraTransform();
         portalController.SetPortalCamera();
     }

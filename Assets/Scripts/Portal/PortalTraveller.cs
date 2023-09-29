@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class PortalTraveller : MonoBehaviour
 {
+    public Transform checkPoint;
     public virtual void Teleport(Matrix4x4 teleportMatrix)
     {
 

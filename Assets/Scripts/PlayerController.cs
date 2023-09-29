@@ -5,14 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb2d;
+    public Camera mainCam;
     public float power;
     public float jumpSpeed;
     public float horizontalMaxSpped;
     public float verticalMaxSpeed;
+    public float returnSpeed;
     public PortalGun gun;
     void Update()
     {
-        
+        Stand();
         if (Input.GetMouseButtonDown(0))
         {
             gun.SetPortalRed();
@@ -26,7 +28,15 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
-        Face();
+        //Face();
+
+    }
+
+    private void Stand()
+    {
+        Vector3 r = transform.rotation.eulerAngles;
+        r.z = 0;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(r), returnSpeed * Time.deltaTime);
     }
 
     private void Face()
@@ -46,7 +56,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         float h = Input.GetAxis("Horizontal");
-        Vector2 force = Vector2.right * h * power;
+        Vector2 force = mainCam.transform.right * h * power;
         rb2d.AddForce(force);
         Vector2 velocity = rb2d.velocity;
         if(Mathf.Abs(velocity.x) > horizontalMaxSpped)
