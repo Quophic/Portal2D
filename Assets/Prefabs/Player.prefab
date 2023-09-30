@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   portalViewShader: {fileID: 4800000, guid: b42a3d5f673133040bbff2d65cc9f0cd, type: 3}
-  maxPortalIterateCount: 1
+  maxPortalIterateCount: 3
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 6012966145313515564}
   mainCam: {fileID: 519420031}
+  body: {fileID: 8900860579536023452}
   power: 60
   jumpSpeed: 16
   horizontalMaxSpped: 10

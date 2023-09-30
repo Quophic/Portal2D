@@ -1081,10 +1081,6 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 1572176071}
-    - target: {fileID: 519420033, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: maxPortalIterateCount
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6012966144842030278, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: portalController
       value: 

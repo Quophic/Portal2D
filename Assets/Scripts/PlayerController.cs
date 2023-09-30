@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb2d;
     public Camera mainCam;
+    public GameObject body;
     public float power;
     public float jumpSpeed;
     public float horizontalMaxSpped;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
-        //Face();
+        Face();
 
     }
 
@@ -42,14 +43,15 @@ public class PlayerController : MonoBehaviour
     private void Face()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        bool aimRight = mousePos.x - transform.position.x > 0;
-        if (aimRight)
+        Vector2 toMouse = mousePos - (Vector2)transform.position;
+        bool faceRight = Vector2.Dot(toMouse, transform.right) >= 0;
+        if (faceRight)
         {
-            transform.rotation = Quaternion.identity;
+            body.transform.localRotation = Quaternion.identity;
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            body.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
