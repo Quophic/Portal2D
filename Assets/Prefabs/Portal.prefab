@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9111964149763106419}
   - component: {fileID: 5169638270527558375}
   - component: {fileID: 397342184054795104}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5266287381386621235}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 74201778970797540}
   - component: {fileID: 8965672932701890616}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3720161047074462503}
   - component: {fileID: 6513241848805354117}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
