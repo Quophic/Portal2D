@@ -6,7 +6,7 @@ static class PolygonUtils
     static public List<Vector2> Intersection(List<Vector2> polygon1, List<Vector2> polygon2)
     {
         List<Vector2> result = polygon1;
-        for(int i = 0; i < polygon2.Count; i++)
+        for(int i = 0; i < polygon2.Count && result.Count > 2; i++)
         {
             int next = (i + 1) % polygon2.Count;
             Vector2 dir = polygon2[next] - polygon2[i];
@@ -18,10 +18,6 @@ static class PolygonUtils
     static private List<Vector2> Clip(List<Vector2> polygon, Vector2 point, Vector2 normal)
     {
         List<Vector2> result = new List<Vector2>();
-        if( polygon == null || polygon.Count <= 3)
-        {
-            return result;
-        }
         float pre = Vector2.Dot(polygon[polygon.Count - 1] - point, normal);
         for (int i = 0; i < polygon.Count; i++)
         {
