@@ -61,16 +61,16 @@
     <Compile Include="Assets\Scripts\Portal\Portal.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalViewRenderer.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalController.cs" />
+    <Compile Include="Assets\Scripts\Portal\PortalLocalSnap.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerTraveller.cs" />
     <Compile Include="Assets\Test\TeleportTest\Transfermer.cs" />
     <Compile Include="Assets\Scripts\PolygonUtils.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalTraveller.cs" />
-    <Compile Include="Assets\Test\ShaderTest\PostEffect.cs" />
-    <Compile Include="Assets\Scripts\PortalGun.cs" />
-    <Compile Include="Assets\Test\PhysicsTest\Near.cs" />
-    <Compile Include="Assets\Scripts\Portal\PortalLocalSnap.cs" />
     <Compile Include="Assets\Test\PhysicsTest\DrawCollider.cs" />
+    <Compile Include="Assets\Test\ShaderTest\PostEffect.cs" />
+    <Compile Include="Assets\Test\PhysicsTest\Near.cs" />
+    <Compile Include="Assets\Scripts\PortalGun.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Test\ShaderTest\TestShader.shader" />
