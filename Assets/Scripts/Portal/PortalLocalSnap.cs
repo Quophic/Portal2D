@@ -10,7 +10,7 @@ public class PortalLocalSnap : MonoBehaviour
     List<Vector2> self => GetBoxCollider2DCorners(SnapZone);
     private void FixedUpdate()
     {
-        var r = Physics2D.OverlapBoxAll((Vector2)transform.position + SnapZone.offset, SnapZone.size, 0, LayerMask.GetMask("Ground"));
+        var r = Physics2D.OverlapBoxAll((Vector2)transform.position, SnapZone.size, transform.rotation.eulerAngles.z, LayerMask.GetMask("Ground"));
         if (r != null)
         {
             ColliderSnaps.pathCount = r.Length;
@@ -33,10 +33,10 @@ public class PortalLocalSnap : MonoBehaviour
     {
         List<Vector2> result = new List<Vector2>();
         Matrix4x4 m = b.gameObject.transform.localToWorldMatrix;
-        result.Add(m.MultiplyPoint(b.offset + new Vector2(-b.size.x, b.size.y) / 2));
-        result.Add(m.MultiplyPoint(b.offset + new Vector2(b.size.x, b.size.y) / 2));
-        result.Add(m.MultiplyPoint(b.offset + new Vector2(b.size.x, -b.size.y) / 2));
-        result.Add(m.MultiplyPoint(b.offset + new Vector2(-b.size.x, -b.size.y) / 2));
+        result.Add(m.MultiplyPoint(new Vector2(-b.size.x, b.size.y) / 2));
+        result.Add(m.MultiplyPoint(new Vector2(b.size.x, b.size.y) / 2));
+        result.Add(m.MultiplyPoint(new Vector2(b.size.x, -b.size.y) / 2));
+        result.Add(m.MultiplyPoint(new Vector2(-b.size.x, -b.size.y) / 2));
         return result;
     }
 
