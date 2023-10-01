@@ -8,9 +8,13 @@ public class PortalLocalSnap : MonoBehaviour
     public PolygonCollider2D ColliderSnaps;
 
     List<Vector2> self => GetBoxCollider2DCorners(SnapZone);
+
+    bool isClockWise => Vector3.Dot(transform.forward, Vector3.forward) >= 0;
     private void FixedUpdate()
     {
-        var r = Physics2D.OverlapBoxAll((Vector2)transform.position, SnapZone.size, transform.rotation.eulerAngles.z, LayerMask.GetMask("Ground"));
+        float zRotation = transform.rotation.eulerAngles.z;
+        zRotation = isClockWise ? zRotation : -zRotation;
+        var r = Physics2D.OverlapBoxAll(transform.position, SnapZone.size, zRotation, LayerMask.GetMask("Ground"));
         if (r != null)
         {
             ColliderSnaps.pathCount = r.Length;
@@ -37,6 +41,15 @@ public class PortalLocalSnap : MonoBehaviour
         result.Add(m.MultiplyPoint(new Vector2(b.size.x, b.size.y) / 2));
         result.Add(m.MultiplyPoint(new Vector2(b.size.x, -b.size.y) / 2));
         result.Add(m.MultiplyPoint(new Vector2(-b.size.x, -b.size.y) / 2));
+        if (!isClockWise)
+        {
+            for (int i = 0; i < result.Count / 2; i++)
+            {
+                Vector3 temp = result[i];
+                result[i] = result[result.Count - 1 - i];
+                result[result.Count - 1 - i] = temp;
+            }
+        }
         return result;
     }
 
