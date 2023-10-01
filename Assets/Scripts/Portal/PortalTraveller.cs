@@ -15,6 +15,6 @@ public abstract class PortalTraveller : MonoBehaviour
     }
     public virtual void ExitPortalThreshold()
     {
-        gameObject.layer = LayerMask.NameToLayer("Default");
+        gameObject.layer = LayerMask.NameToLayer("Dynamic");
     }
 }
