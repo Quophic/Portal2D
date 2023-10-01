@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 6012966145313515567}
   - component: {fileID: 6012966145313515564}
   - component: {fileID: 90702445}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3573657565189965840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4896043167863823007}
   - component: {fileID: 3836566646276871793}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,6 +355,10 @@ PrefabInstance:
     - target: {fileID: 6652722456330408542, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
       propertyPath: m_Name
       value: PortalGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652722456330408542, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
       propertyPath: m_RootOrder

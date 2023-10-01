@@ -870,7 +870,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667336122}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -3.0500011, y: 2.53, z: 0.06999999}
+  m_LocalPosition: {x: -3.05, y: 3.41, z: 0.06999999}
   m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -981,7 +981,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949575333}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2.61, y: 2.69, z: 0.08}
+  m_LocalPosition: {x: 2.61, y: 3.37, z: 0.08}
   m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1077,18 +1077,10 @@ PrefabInstance:
       propertyPath: portalController
       value: 
       objectReference: {fileID: 1572176071}
-    - target: {fileID: 519420028, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 519420033, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 1572176071}
-    - target: {fileID: 6012966144842030277, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6012966144842030278, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: portalController
       value: 
@@ -1096,10 +1088,6 @@ PrefabInstance:
     - target: {fileID: 6012966145313515552, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012966145313515552, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_RootOrder
@@ -1144,14 +1132,6 @@ PrefabInstance:
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283758531221247199, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8900860579536023452, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
@@ -1216,24 +1196,12 @@ PrefabInstance:
       value: PortalController
       objectReference: {fileID: 0}
     - target: {fileID: 7294316151833940456, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
-      propertyPath: pbTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: cd5e672864592034c990be81c2b7815d, type: 2}
-    - target: {fileID: 7294316151833940456, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
       propertyPath: playerEye
       value: 
       objectReference: {fileID: 6012966144747587014}
     - target: {fileID: 7294316151833940456, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
-      propertyPath: prTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: 4e73e6f462827ac4a968e2287ad38733, type: 2}
-    - target: {fileID: 7294316151833940456, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 7294316151833940456, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
-      propertyPath: portalViewShader
-      value: 
-      objectReference: {fileID: 4800000, guid: b42a3d5f673133040bbff2d65cc9f0cd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
