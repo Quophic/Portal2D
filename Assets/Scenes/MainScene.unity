@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 103774096}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,10 +1077,18 @@ PrefabInstance:
       propertyPath: portalController
       value: 
       objectReference: {fileID: 1572176071}
+    - target: {fileID: 519420028, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 519420033, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 1572176071}
+    - target: {fileID: 6012966144842030277, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6012966144842030278, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: portalController
       value: 
@@ -1088,6 +1096,10 @@ PrefabInstance:
     - target: {fileID: 6012966145313515552, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515552, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_RootOrder
@@ -1132,6 +1144,14 @@ PrefabInstance:
     - target: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283758531221247199, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900860579536023452, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
