@@ -12,6 +12,7 @@ public class Portal : MonoBehaviour
     public Camera portalCamera;
     public Transform edgeTop;
     public Transform edgeBottom;
+    public LayerMask localLayer;
     private List<PortalTraveller> travellers;
     public Vector3 Top { get => edgeTop.position; }
     public Vector3 Bottom { get => edgeBottom.position; }
@@ -42,10 +43,11 @@ public class Portal : MonoBehaviour
             portalCamera.targetTexture = viewTexture;
         }
     }
-
+    private PortalLocalSnap[] snaps;
     private void Awake()
     {
         travellers = new List<PortalTraveller>();
+        snaps = GetComponentsInChildren<PortalLocalSnap>();
     }
     private void Update()
     {
@@ -54,6 +56,14 @@ public class Portal : MonoBehaviour
         CheckAndTeleportTravellers();
     }
 
+    private void FixedUpdate()
+    {
+        foreach(PortalLocalSnap snap in snaps)
+        {
+            snap.SetLayer(localLayer);
+            snap.GenerateSnap();
+        }  
+    }
     public void SetCameraTransform()
     {
         Matrix4x4 cameraMatrix = TeleportMatrix * playerCamera.transform.localToWorldMatrix;

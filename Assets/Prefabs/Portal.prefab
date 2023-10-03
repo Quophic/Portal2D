@@ -83,6 +83,9 @@ MonoBehaviour:
   portalCamera: {fileID: 9056320498421400422}
   edgeTop: {fileID: 74201778970797540}
   edgeBottom: {fileID: 3720161047074462503}
+  localLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1938148432866125208
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SnapZone: {fileID: 4584537537118564}
   ColliderSnaps: {fileID: 83835808174147436}
+  snap: {fileID: 5653582186650998489}
 --- !u!61 &4584537537118564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -410,6 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SnapZone: {fileID: 4934440579239998172}
   ColliderSnaps: {fileID: 969602933387457482}
+  snap: {fileID: 3335177876447561297}
 --- !u!61 &4934440579239998172
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -824,6 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SnapZone: {fileID: 8774030230717380344}
   ColliderSnaps: {fileID: 2138979557329646642}
+  snap: {fileID: 3006500018755522499}
 --- !u!61 &8774030230717380344
 BoxCollider2D:
   m_ObjectHideFlags: 0

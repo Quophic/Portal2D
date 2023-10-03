@@ -6,11 +6,18 @@ public class PortalLocalSnap : MonoBehaviour
 {
     public BoxCollider2D SnapZone;
     public PolygonCollider2D ColliderSnaps;
+    public GameObject snap;
 
     List<Vector2> self => GetBoxCollider2DCorners(SnapZone);
 
     bool isClockWise => Vector3.Dot(transform.forward, Vector3.forward) >= 0;
-    private void FixedUpdate()
+
+    public void SetLayer(LayerMask layer)
+    {
+        snap.layer = layer;
+    }
+
+    public void GenerateSnap()
     {
         float zRotation = transform.rotation.eulerAngles.z;
         zRotation = isClockWise ? zRotation : -zRotation;
@@ -31,7 +38,6 @@ public class PortalLocalSnap : MonoBehaviour
             }
         }
     }
-
 
     public List<Vector2> GetBoxCollider2DCorners(BoxCollider2D b)
     {

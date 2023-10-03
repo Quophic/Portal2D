@@ -23,6 +23,8 @@ public class PortalController : MonoBehaviour
 
         portalRed.playerCamera = playerCamera;
         portalBlue.playerCamera = playerCamera;
+        portalRed.localLayer = LayerMask.NameToLayer("NearPortalRed");
+        portalBlue.localLayer = LayerMask.NameToLayer("NearPortalBlue");
     }
 
     private void Update()
