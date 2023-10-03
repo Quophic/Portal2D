@@ -75,21 +75,15 @@ public class Portal : MonoBehaviour
 
     private void CheckAndTeleportTravellers()
     {
-        List<PortalTraveller> needToTeleport = new List<PortalTraveller>();
         foreach(PortalTraveller traveller in travellers)
         {
             Vector3 pointToTraveller = traveller.checkPoint.transform.position - transform.position;
             if(Vector3.Dot(pointToTraveller, transform.right) < 0)
             {
-                needToTeleport.Add(traveller);
+                traveller.Teleport(TeleportMatrix);
             }
         }
-        foreach(PortalTraveller traveller in needToTeleport)
-        {
-            traveller.Teleport(TeleportMatrix);
-            OnTravellerExit(traveller);
-            linkedPortal.OnTravellerEnter(traveller);
-        }
+        
     }
     private void OnTravellerEnter(PortalTraveller traveller)
     {
