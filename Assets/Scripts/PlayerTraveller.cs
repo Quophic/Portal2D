@@ -8,14 +8,14 @@ public class PlayerTraveller : PortalTraveller
     public PortalController portalController;
     public CameraController CameraController;
     public PlayerController playerController;
-    public override void EnterPortalThreshold()
+    public override void EnterPortalThreshold(Portal portal)
     {
-        base.EnterPortalThreshold();
+        base.EnterPortalThreshold(portal);
     }
 
-    public override void ExitPortalThreshold()
+    public override void ExitPortalThreshold(Portal portal)
     {
-        base.ExitPortalThreshold();
+        base.ExitPortalThreshold(portal);
     }
 
     public override void Teleport(Matrix4x4 teleportMatrix)

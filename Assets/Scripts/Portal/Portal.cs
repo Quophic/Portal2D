@@ -86,7 +86,6 @@ public class Portal : MonoBehaviour
         }
         foreach(PortalTraveller traveller in needToTeleport)
         {
-            travellers.Remove(traveller);
             traveller.Teleport(TeleportMatrix);
             OnTravellerExit(traveller);
             linkedPortal.OnTravellerEnter(traveller);
@@ -99,7 +98,7 @@ public class Portal : MonoBehaviour
             return;
         }
         travellers.Add(traveller);
-        traveller.EnterPortalThreshold();
+        traveller.EnterPortalThreshold(this);
     } 
     private void OnTravellerExit(PortalTraveller traveller)
     {
@@ -108,7 +107,7 @@ public class Portal : MonoBehaviour
             return;
         }
         travellers.Remove(traveller);
-        traveller.ExitPortalThreshold();
+        traveller.ExitPortalThreshold(this);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

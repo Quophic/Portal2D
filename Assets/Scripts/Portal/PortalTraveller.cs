@@ -5,16 +5,51 @@ using UnityEngine;
 public abstract class PortalTraveller : MonoBehaviour
 {
     public Transform checkPoint;
+    private LayerMask originLayer;
+    private List<Portal> portalsNear;
+    private void Awake()
+    {
+        portalsNear = new List<Portal>();
+        originLayer = gameObject.layer;
+    }
+    private void FixedUpdate()
+    {
+        if(portalsNear.Count == 0)
+        {
+            gameObject.layer = originLayer;
+        }
+        else
+        {
+            Portal closestPortal = null;
+            float closestSqrDis = float.MaxValue;
+            foreach( Portal portal in portalsNear)
+            {
+                float sqrDis = Vector3.SqrMagnitude(portal.transform.position - transform.position);
+                if (sqrDis < closestSqrDis)
+                {
+                    closestSqrDis = sqrDis;
+                    closestPortal = portal;
+                }
+            }
+            gameObject.layer = closestPortal.localLayer;
+        }
+    }
     public virtual void Teleport(Matrix4x4 teleportMatrix)
     {
 
     }
-    public virtual void EnterPortalThreshold()
+    public virtual void EnterPortalThreshold(Portal portal)
     {
-        gameObject.layer = LayerMask.NameToLayer("NearPortal");
+        if (!portalsNear.Contains(portal))
+        {
+            portalsNear.Add(portal);
+        }
     }
-    public virtual void ExitPortalThreshold()
+    public virtual void ExitPortalThreshold(Portal portal)
     {
-        gameObject.layer = LayerMask.NameToLayer("Dynamic");
+        if (portalsNear.Contains(portal))
+        {
+            portalsNear.Remove(portal);
+        }
     }
 }
