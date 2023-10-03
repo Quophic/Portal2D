@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && rb2d.velocity.y == 0)
+        if (Input.GetKeyDown(KeyCode.Space) && rb2d.velocity.y <= 0.00001f)
         {
             Vector2 velocity = Vector2.up  * jumpSpeed;
             velocity.x = rb2d.velocity.x;
