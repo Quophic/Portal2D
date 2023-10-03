@@ -37,7 +37,15 @@ public class PortalGun : MonoBehaviour
     private Matrix4x4 GetPortalMatrix(RaycastHit2D hit2D)
     {
         Vector3 aimDirection = transform.right;
-        Vector3 zDirection = Vector3.Cross(Vector3.up, aimDirection).normalized;
+        Vector3 zDirection;
+        if ( Vector3.Dot(hit2D.normal, Vector3.right) == 0)
+        {
+            zDirection = Vector3.Cross(hit2D.normal, aimDirection).normalized;
+        }
+        else
+        {
+            zDirection = Vector3.Cross(Vector3.up, aimDirection).normalized;
+        }
         Vector3 xDirection = hit2D.normal;
         Vector3 yDirection = Vector3.Cross(zDirection, xDirection).normalized;
         Vector4 point = hit2D.point;
