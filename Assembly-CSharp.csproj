@@ -71,6 +71,7 @@
     <Compile Include="Assets\Test\ShaderTest\PostEffect.cs" />
     <Compile Include="Assets\Test\PhysicsTest\Near.cs" />
     <Compile Include="Assets\Scripts\PortalGun.cs" />
+    <Compile Include="Assets\Scripts\Portal\LinkedSnap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Test\ShaderTest\TestShader.shader" />

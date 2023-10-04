@@ -44,6 +44,7 @@ public class Portal : MonoBehaviour
         }
     }
     private PortalLocalSnap[] snaps;
+    public LinkedSnap linkedSnap;
     private void Awake()
     {
         travellers = new List<PortalTraveller>();
@@ -62,7 +63,9 @@ public class Portal : MonoBehaviour
         {
             snap.SetLayer(localLayer);
             snap.GenerateSnap();
-        }  
+        }
+        linkedSnap.gameObject.layer = localLayer;
+        linkedSnap.GenerateLinkedSnap(linkedPortal.snaps[0].ColliderSnaps, linkedPortal.TeleportMatrix);
     }
     public void SetCameraTransform()
     {
