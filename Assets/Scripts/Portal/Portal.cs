@@ -5,11 +5,11 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public Portal linkedPortal;
+    public PortalInteractor interactor;
     public Transform playerEye;
     public GameObject attachedObj;
     public Collider2D effectZone;
     public Camera playerCamera;
-    public Camera portalCamera;
     public Transform edgeTop;
     public Transform edgeBottom;
     public LayerMask localLayer;
@@ -29,20 +29,8 @@ public class Portal : MonoBehaviour
             }
         } 
     }
-    private RenderTexture viewTexture;
-    public RenderTexture ViewTexture { get { return viewTexture; } }
-    void CreateViewTexture()
-    {
-        if (viewTexture == null || viewTexture.width != Screen.width || viewTexture.height != Screen.height)
-        {
-            if (viewTexture != null)
-            {
-                viewTexture.Release();
-            }
-            viewTexture = new RenderTexture(Screen.width, Screen.height, 0);
-            portalCamera.targetTexture = viewTexture;
-        }
-    }
+    public RenderTexture ViewTexture { get { return interactor.viewTexture; } }
+    
     private PortalLocalSnap[] snaps;
     public LinkedSnap linkedSnap;
 
@@ -57,8 +45,8 @@ public class Portal : MonoBehaviour
     }
     private void Update()
     {
-        CreateViewTexture();
         SetCameraTransform();
+        Render();
         CheckAndTeleportTravellers();
     }
 
@@ -85,16 +73,12 @@ public class Portal : MonoBehaviour
 
     public void SetCameraTransform()
     {
-        Matrix4x4 cameraMatrix = TeleportMatrix * playerCamera.transform.localToWorldMatrix;
-        portalCamera.transform.SetPositionAndRotation(cameraMatrix.GetPosition(), cameraMatrix.rotation);
-        Render();
+        interactor.SetCameraPosition(TeleportMatrix, playerCamera.transform.position, playerCamera.transform.rotation);
     }
 
-    private void Render()
+    public void Render()
     {
-        portalCamera.enabled = false;
-        portalCamera.Render();
-        portalCamera.enabled = true;
+        interactor.RenderPortalView();
     }
 
     private void CheckAndTeleportTravellers()

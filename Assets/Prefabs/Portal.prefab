@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedPortal: {fileID: 0}
+  interactor: {fileID: 1292220235840531200}
   playerEye: {fileID: 0}
   attachedObj: {fileID: 0}
   effectZone: {fileID: 0}
@@ -818,6 +819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2051797985000126191}
+  - component: {fileID: 1292220235840531200}
   m_Layer: 0
   m_Name: Interactor
   m_TagString: Untagged
@@ -844,6 +846,19 @@ Transform:
   m_Father: {fileID: 9111964149763106419}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1292220235840531200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456883630179696632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc86ca58764c8354bb91f091f80cedf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalCamera: {fileID: 9056320498421400422}
 --- !u!1 &8665187334929320577
 GameObject:
   m_ObjectHideFlags: 0

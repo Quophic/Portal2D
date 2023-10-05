@@ -34,18 +34,6 @@ public class PortalController : MonoBehaviour
 
     private void Update()
     {
-        Ray redTopRay = new Ray(playerEye.position, portalRed.Top - playerEye.position);
-        Ray redBottomRay = new Ray(playerEye.position, portalRed.Bottom - playerEye.position);
-        Ray blueTopRay = new Ray(playerEye.position, portalBlue.Top - playerEye.position);
-        Ray blueBottomRay = new Ray(playerEye.position, portalBlue.Bottom - playerEye.position);
-        Debug.DrawRay(redTopRay.origin, redTopRay.direction * 100f, Color.red);
-        Debug.DrawRay(redBottomRay.origin, redBottomRay. direction * 100f, Color.red);
-        Debug.DrawRay(blueTopRay.origin, blueTopRay.direction * 100f, Color.blue);
-        Debug.DrawRay(blueBottomRay.origin, blueBottomRay.direction * 100f, Color.blue);
-        Debug.DrawLine(playerCamera.transform.position, portalRed.transform.position, Color.red);
-        Debug.DrawLine(portalRed.portalCamera.transform.position, portalBlue.transform.position, Color.red);
-        Debug.DrawLine(playerCamera.transform.position, portalBlue.transform.position, Color.blue);
-        Debug.DrawLine(portalBlue.portalCamera.transform.position, portalRed.transform.position, Color.blue);
     }
 
     public void SetPortalRed(Vector3 position, Quaternion rotation)
@@ -61,13 +49,14 @@ public class PortalController : MonoBehaviour
     {
         portal.gameObject.SetActive(true);
         portal.transform.SetLocalPositionAndRotation(position, rotation);
-        
     } 
     
 
     public void SetPortalCamera()
     {
         portalRed.SetCameraTransform();
-        portalBlue.SetCameraTransform();                                 
+        portalRed.Render();
+        portalBlue.SetCameraTransform();
+        portalBlue.Render();
     }
 }
