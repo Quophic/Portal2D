@@ -7,8 +7,6 @@ public class Portal : MonoBehaviour
     public Portal linkedPortal;
     public PortalInteractor interactor;
     public Transform playerEye;
-    public GameObject attachedObj;
-    public Collider2D effectZone;
     public Camera playerCamera;
     public Transform edgeTop;
     public Transform edgeBottom;
