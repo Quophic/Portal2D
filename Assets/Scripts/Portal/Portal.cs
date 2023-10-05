@@ -12,7 +12,11 @@ public class Portal : MonoBehaviour
     public Camera playerCamera;
     public Transform edgeTop;
     public Transform edgeBottom;
-    public LayerMask localLayer;
+    public LayerMask localLayer
+    {
+        get => interactor.snapLayerMask;
+        set => interactor.snapLayerMask = value;
+    }
     private List<PortalTraveller> travellers;
     public Vector3 Top { get => edgeTop.position; }
     public Vector3 Bottom { get => edgeBottom.position; }
@@ -31,15 +35,12 @@ public class Portal : MonoBehaviour
     }
     public RenderTexture ViewTexture { get { return interactor.viewTexture; } }
     
-    private PortalLocalSnap[] snaps;
-    public LinkedSnap linkedSnap;
-
     public CloseToPortalChecker closeChecker;
 
     private void Awake()
     {
+        interactor.Actived = false;
         travellers = new List<PortalTraveller>();
-        snaps = GetComponentsInChildren<PortalLocalSnap>();
         closeChecker.OnClose = OnTravellerEnter;
         closeChecker.OnAway = OnTravellerExit;
     }
@@ -49,26 +50,14 @@ public class Portal : MonoBehaviour
         Render();
         CheckAndTeleportTravellers();
     }
-
-    private void FixedUpdate()
-    {
-        GenerateLocalSnap();
-        GenerateLinkedSnap();
-    }
-
     public void GenerateLocalSnap()
     {
-        foreach (PortalLocalSnap snap in snaps)
-        {
-            snap.SetLayer(localLayer);
-            snap.GenerateSnap();
-        }
+        interactor.GenerateLocalSnap();
     }
 
     public void GenerateLinkedSnap()
     {
-        linkedSnap.gameObject.layer = localLayer;
-        linkedSnap.GenerateLinkedSnap(linkedPortal.snaps[0].ColliderSnaps, linkedPortal.TeleportMatrix);
+        interactor.GenerateLinkedSnap(linkedPortal.interactor.NeedLinkSnap, linkedPortal.TeleportMatrix);
     }
 
     public void SetCameraTransform()

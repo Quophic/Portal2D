@@ -5,9 +5,10 @@ using UnityEngine;
 public class LinkedSnap : MonoBehaviour
 {
     public PolygonCollider2D linkedSnap;
-    public void GenerateLinkedSnap(PolygonCollider2D snap, Matrix4x4 teleportMtr)
+    public void GenerateLinkedSnap(PortalLocalSnap needLinkedSnap, Matrix4x4 teleportMtr)
     {
-        Matrix4x4 m = linkedSnap.transform.worldToLocalMatrix * teleportMtr * snap.transform.localToWorldMatrix;
+        Matrix4x4 m = linkedSnap.transform.worldToLocalMatrix * teleportMtr * needLinkedSnap.transform.localToWorldMatrix;
+        PolygonCollider2D snap = needLinkedSnap.ColliderSnaps;
         linkedSnap.pathCount = snap.pathCount;
         for(int i = 0; i < snap.pathCount; i++)
         {

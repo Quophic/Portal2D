@@ -52,12 +52,8 @@ MonoBehaviour:
   attachedObj: {fileID: 0}
   effectZone: {fileID: 0}
   playerCamera: {fileID: 0}
-  portalCamera: {fileID: 9056320498421400422}
   edgeTop: {fileID: 74201778970797540}
   edgeBottom: {fileID: 3720161047074462503}
-  localLayer:
-    serializedVersion: 2
-    m_Bits: 0
   linkedSnap: {fileID: 5812529423537461379}
   closeChecker: {fileID: 1565702397295067529}
 --- !u!1 &1938148432866125208
@@ -859,6 +855,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalCamera: {fileID: 9056320498421400422}
+  viewTexture: {fileID: 0}
+  snapLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  linkedSnap: {fileID: 5812529423537461379}
 --- !u!1 &8665187334929320577
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,10 +32,6 @@ public class PortalController : MonoBehaviour
         portalBlue.localLayer = LayerMask.NameToLayer("NearPortalBlue");
     }
 
-    private void Update()
-    {
-    }
-
     public void SetPortalRed(Vector3 position, Quaternion rotation)
     {
         SetPortal(portalRed, position, rotation);
@@ -49,8 +45,15 @@ public class PortalController : MonoBehaviour
     {
         portal.gameObject.SetActive(true);
         portal.transform.SetLocalPositionAndRotation(position, rotation);
-    } 
-    
+        if (connected)
+        {
+            OnPortalConnected();
+        }
+        else
+        {
+            OnPortalDisconnect();
+        }
+    }
 
     public void SetPortalCamera()
     {
@@ -58,5 +61,22 @@ public class PortalController : MonoBehaviour
         portalRed.Render();
         portalBlue.SetCameraTransform();
         portalBlue.Render();
+    }
+
+    private void OnPortalConnected()
+    {
+        portalRed.interactor.Actived = true;
+        portalBlue.interactor.Actived = true;
+
+        portalRed.GenerateLocalSnap();
+        portalBlue.GenerateLocalSnap();
+
+        portalRed.GenerateLinkedSnap();
+        portalBlue.GenerateLinkedSnap();
+    }
+    private void OnPortalDisconnect()
+    {
+        portalRed.interactor.Actived = false;
+        portalBlue.interactor.Actived = false;
     }
 }

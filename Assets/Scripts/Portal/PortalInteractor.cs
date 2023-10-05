@@ -6,6 +6,29 @@ public class PortalInteractor : MonoBehaviour
 {
     public Camera portalCamera;
     public RenderTexture viewTexture;
+    public LayerMask snapLayerMask;
+    public LinkedSnap linkedSnap;
+    
+    private PortalLocalSnap[] localSnaps;
+    public PortalLocalSnap NeedLinkSnap
+    {
+        get
+        {
+            if(localSnaps != null)
+            {
+                return localSnaps[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+
+    public bool Actived
+    {
+        set => gameObject.SetActive(value);
+    }
 
     private void CreateViewTexture()
     {
@@ -30,4 +53,29 @@ public class PortalInteractor : MonoBehaviour
         portalCamera.Render();
         portalCamera.enabled = true;
     }
+
+
+
+    private void InitLocalSnap()
+    {
+        localSnaps = GetComponentsInChildren<PortalLocalSnap>();
+        foreach (var snap in localSnaps)
+        {
+            snap.SetLayer(snapLayerMask);
+        }
+    }
+    public void GenerateLocalSnap()
+    {
+        InitLocalSnap();
+        foreach (PortalLocalSnap snap in localSnaps)
+        {
+            snap.GenerateSnap();
+        }
+    }
+    public void GenerateLinkedSnap(PortalLocalSnap needLinkedSnap, Matrix4x4 teleportMatrix)
+    {
+        linkedSnap.gameObject.layer = snapLayerMask;
+        linkedSnap.GenerateLinkedSnap(needLinkedSnap, teleportMatrix);
+    }
+
 }
