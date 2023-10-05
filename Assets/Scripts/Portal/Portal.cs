@@ -82,6 +82,11 @@ public class Portal : MonoBehaviour
     {
         Matrix4x4 cameraMatrix = TeleportMatrix * playerCamera.transform.localToWorldMatrix;
         portalCamera.transform.SetPositionAndRotation(cameraMatrix.GetPosition(), cameraMatrix.rotation);
+        Render();
+    }
+
+    private void Render()
+    {
         portalCamera.enabled = false;
         portalCamera.Render();
         portalCamera.enabled = true;

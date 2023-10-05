@@ -61,6 +61,7 @@ public class PortalController : MonoBehaviour
     {
         portal.gameObject.SetActive(true);
         portal.transform.SetLocalPositionAndRotation(position, rotation);
+        
     } 
     
 
@@ -68,8 +69,5 @@ public class PortalController : MonoBehaviour
     {
         portalRed.SetCameraTransform();
         portalBlue.SetCameraTransform();
-        playerCamera.enabled = false;
-        playerCamera.Render();
-        playerCamera.enabled = true;
     }
 }
