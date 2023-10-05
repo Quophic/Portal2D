@@ -59,14 +59,25 @@ public class Portal : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach(PortalLocalSnap snap in snaps)
+        GenerateLocalSnap();
+        GenerateLinkedSnap();
+    }
+
+    public void GenerateLocalSnap()
+    {
+        foreach (PortalLocalSnap snap in snaps)
         {
             snap.SetLayer(localLayer);
             snap.GenerateSnap();
         }
+    }
+
+    public void GenerateLinkedSnap()
+    {
         linkedSnap.gameObject.layer = localLayer;
         linkedSnap.GenerateLinkedSnap(linkedPortal.snaps[0].ColliderSnaps, linkedPortal.TeleportMatrix);
     }
+
     public void SetCameraTransform()
     {
         Matrix4x4 cameraMatrix = TeleportMatrix * playerCamera.transform.localToWorldMatrix;
