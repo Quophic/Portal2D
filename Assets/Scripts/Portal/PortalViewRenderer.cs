@@ -51,7 +51,7 @@ public class PortalViewRenderer : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (Material)
+        if (controller.connected && Material)
         {
             float redDist = Vector3.Distance(controller.playerEye.position, controller.portalRed.transform.position);
             float blueDist = Vector3.Distance(controller.playerEye.position, controller.portalBlue.transform.position);
