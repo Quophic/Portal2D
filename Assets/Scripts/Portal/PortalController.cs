@@ -23,11 +23,10 @@ public class PortalController : MonoBehaviour
         portalBlue.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         portalRed.linkedPortal = portalBlue;
         portalBlue.linkedPortal = portalRed;
-        portalRed.playerEye = playerEye;
-        portalBlue.playerEye = playerEye;
 
-        portalRed.playerCamera = playerCamera;
-        portalBlue.playerCamera = playerCamera;
+        portalRed.controller = this;
+        portalBlue.controller = this;
+
         portalRed.localLayer = LayerMask.NameToLayer("NearPortalRed");
         portalBlue.localLayer = LayerMask.NameToLayer("NearPortalBlue");
     }

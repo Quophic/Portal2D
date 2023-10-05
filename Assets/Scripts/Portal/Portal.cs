@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
+    public PortalController controller;
+    private Camera PlayerCamera
+    {
+        get => controller.playerCamera;
+    }
     public Portal linkedPortal;
     public PortalInteractor interactor;
-    public Transform playerEye;
-    public Camera playerCamera;
     public Transform edgeTop;
     public Transform edgeBottom;
     public LayerMask localLayer
@@ -60,7 +63,7 @@ public class Portal : MonoBehaviour
 
     public void SetCameraTransform()
     {
-        interactor.SetCameraPosition(TeleportMatrix, playerCamera.transform.position, playerCamera.transform.rotation);
+        interactor.SetCameraPosition(TeleportMatrix, PlayerCamera.transform.position, PlayerCamera.transform.rotation);
     }
 
     public void Render()
