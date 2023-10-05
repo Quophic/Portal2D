@@ -68,6 +68,6 @@ public class PortalController : MonoBehaviour
     public void SetPortalCamera()
     {
         portalRed.SetCameraTransform();
-        portalBlue.SetCameraTransform();
+        portalBlue.SetCameraTransform();                                 
     }
 }

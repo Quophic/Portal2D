@@ -45,10 +45,15 @@ public class Portal : MonoBehaviour
     }
     private PortalLocalSnap[] snaps;
     public LinkedSnap linkedSnap;
+
+    public CloseToPortalChecker closeChecker;
+
     private void Awake()
     {
         travellers = new List<PortalTraveller>();
         snaps = GetComponentsInChildren<PortalLocalSnap>();
+        closeChecker.OnClose = OnTravellerEnter;
+        closeChecker.OnAway = OnTravellerExit;
     }
     private void Update()
     {
@@ -122,22 +127,4 @@ public class Portal : MonoBehaviour
         travellers.Remove(traveller);
         traveller.ExitPortalThreshold(this);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        PortalTraveller traveller = collision.gameObject.GetComponent<PortalTraveller>();
-        if (traveller != null)
-        {
-            OnTravellerEnter(traveller);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        PortalTraveller traveller = collision.gameObject.GetComponent<PortalTraveller>();
-        if (traveller != null)
-        {
-            OnTravellerExit(traveller);
-        }
-    }
-    
 }
