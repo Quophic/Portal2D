@@ -78,6 +78,7 @@ public class Portal : MonoBehaviour
             if(PortalPhysics.ThroughPortal(traveller.lastPosition, traveller.CurrentPosition))
             {
                 traveller.Teleport(TeleportMatrix);
+                linkedPortal.OnTravellerEnter(traveller);
             }
             traveller.lastPosition = traveller.CurrentPosition;
         }
