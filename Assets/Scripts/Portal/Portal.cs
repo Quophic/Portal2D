@@ -75,11 +75,11 @@ public class Portal : MonoBehaviour
     {
         foreach(PortalTraveller traveller in travellers)
         {
-            Vector3 pointToTraveller = traveller.checkPoint.transform.position - transform.position;
-            if(Vector3.Dot(pointToTraveller, transform.right) < 0)
+            if(PortalPhysics.ThroughPortal(traveller.lastPosition, traveller.CurrentPosition))
             {
                 traveller.Teleport(TeleportMatrix);
             }
+            traveller.lastPosition = traveller.CurrentPosition;
         }
         
     }

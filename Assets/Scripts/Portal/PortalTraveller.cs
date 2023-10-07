@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class PortalTraveller : MonoBehaviour
 {
+    public Vector2 lastPosition;
+    public Vector2 CurrentPosition { get => checkPoint.transform.position; }
     public Transform checkPoint;
     private LayerMask originLayer;
     private List<Portal> portalsNear;
@@ -40,6 +42,7 @@ public abstract class PortalTraveller : MonoBehaviour
     }
     public virtual void EnterPortalThreshold(Portal portal)
     {
+        lastPosition = CurrentPosition;
         if (!portalsNear.Contains(portal))
         {
             portalsNear.Add(portal);
