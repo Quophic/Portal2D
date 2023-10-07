@@ -168,6 +168,7 @@ MonoBehaviour:
   rb2d: {fileID: 6012966145313515564}
   mainCam: {fileID: 519420031}
   body: {fileID: 8900860579536023452}
+  eye: {fileID: 3573657565189965840}
   power: 60
   jumpSpeed: 16
   horizontalMaxSpped: 10

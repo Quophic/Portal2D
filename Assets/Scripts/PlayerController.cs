@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb2d;
     public Camera mainCam;
     public GameObject body;
+    public Transform eye;
     public float power;
     public float jumpSpeed;
     public float horizontalMaxSpped;
@@ -37,7 +38,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 r = transform.rotation.eulerAngles;
         r.z = 0;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(r), returnSpeed * Time.deltaTime);
+        Quaternion newRotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(r), returnSpeed * Time.deltaTime);
+        transform.RotateAround(eye.position, transform.forward, newRotation.eulerAngles.z - transform.rotation.eulerAngles.z);
     }
 
     private void Face()
