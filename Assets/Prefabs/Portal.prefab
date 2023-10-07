@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9111964149763106419}
   - component: {fileID: 397342184054795104}
-  m_Layer: 11
+  - component: {fileID: 7291291330928562579}
+  m_Layer: 8
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,16 +47,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ea5308cadfa82499bb16c81bdf6f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
   linkedPortal: {fileID: 0}
   interactor: {fileID: 1292220235840531200}
-  playerEye: {fileID: 0}
-  attachedObj: {fileID: 0}
-  effectZone: {fileID: 0}
-  playerCamera: {fileID: 0}
   edgeTop: {fileID: 74201778970797540}
   edgeBottom: {fileID: 3720161047074462503}
-  linkedSnap: {fileID: 5812529423537461379}
   closeChecker: {fileID: 1565702397295067529}
+--- !u!68 &7291291330928562579
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770752017696168317}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0, y: 1.5}
+  - {x: 0, y: -1.5}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1938148432866125208
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5266287381386621235}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 172579819645871301}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Self
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7419225377218289019}
   - component: {fileID: 2138979557329646642}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Snap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 74201778970797540}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4445460110610902674}
   - component: {fileID: 969602933387457482}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Snap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +386,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4047707008130135643}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.25, y: -3.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -502,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8327544868427955824}
   - component: {fileID: 83835808174147436}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Snap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5108209126558865986}
   - component: {fileID: 3577204148545126353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3720161047074462503}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
