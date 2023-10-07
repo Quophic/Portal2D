@@ -5,10 +5,17 @@ using UnityEngine;
 public class PortalGun : MonoBehaviour
 {
     public PortalController portalController;
-    
+    public Transform grabPosition;
+    public bool Grabed { get => grabed != null; }
+    private Rigidbody2D grabed;
     void Update()
     {
         Aim();
+        if( grabed != null)
+        {
+            grabed.MovePosition(grabPosition.position);
+            grabed.MoveRotation(grabPosition.rotation);
+        }
     }
     private void Aim()
     {
@@ -53,5 +60,17 @@ public class PortalGun : MonoBehaviour
         Matrix4x4 matrix = new Matrix4x4(xDirection, yDirection, zDirection, point);
         return matrix;
     }
-
+    public void Grab()
+    {
+        RaycastHit2D hit = PortalPhysics.Raycast(transform.position, transform.right, 2f);
+        if (hit)
+        {
+            GameObject g = hit.collider.gameObject;
+            grabed = g.GetComponent<Rigidbody2D>();
+        }    
+    }
+    public void Put()
+    {
+        grabed = null;
+    }
 }

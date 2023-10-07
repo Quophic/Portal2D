@@ -25,6 +25,17 @@ public class PlayerController : MonoBehaviour
         {
             gun.SetPortalBlue();
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (gun.Grabed)
+            {
+                gun.Put();
+            }
+            else
+            {
+                gun.Grab();
+            }
+        }
     }
     private void FixedUpdate()
     {
