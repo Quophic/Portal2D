@@ -12,6 +12,10 @@ static class PortalPhysics
     public static RaycastHit2D ThroughPortal(Vector2 origin, Vector2 dir, float dis)
     {
         RaycastHit2D hit = Physics2D.Raycast(origin, dir, dis, LayerMask.GetMask("PortalPlane"));
+        if(Vector2.Dot(hit.normal, dir) >= 0)
+        {
+            hit = new RaycastHit2D();
+        }
         return hit;
     }
 
