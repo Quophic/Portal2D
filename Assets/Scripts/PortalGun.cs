@@ -14,7 +14,8 @@ public class PortalGun : MonoBehaviour
         Aim();
         if( grabed != null)
         {
-            grabed.MovePosition(grabPosition.position);
+            Vector2 pos = PortalPhysics.GetRayEndPos(transform.position, transform.right, 2f, LayerMask.GetMask("Ground"));
+            grabed.MovePosition(pos);
             grabed.MoveRotation(grabPosition.rotation);
         }
     }
