@@ -62,7 +62,7 @@ public class PortalGun : MonoBehaviour
     }
     public void Grab()
     {
-        RaycastHit2D hit = PortalPhysics.Raycast(transform.position, transform.right, 2f);
+        RaycastHit2D hit = PortalPhysics.Raycast(transform.position, transform.right, 2f, LayerMask.GetMask("Dynamic"));
         if (hit)
         {
             GameObject g = hit.collider.gameObject;

@@ -15,9 +15,9 @@ static class PortalPhysics
         return hit;
     }
 
-    public static RaycastHit2D Raycast(Vector2 origin, Vector2 dir, float dis)
+    public static RaycastHit2D Raycast(Vector2 origin, Vector2 dir, float dis, LayerMask layer)
     {
-        RaycastHit2D hit = Physics2D.Raycast(origin, dir, dis, LayerMask.GetMask("Dynamic"));
+        RaycastHit2D hit = Physics2D.Raycast(origin, dir, dis, layer);
         if (hit)
         {
             Debug.DrawLine(origin, origin + dir.normalized * dis, Color.white, 1f);
@@ -30,7 +30,7 @@ static class PortalPhysics
             Vector2 newOrigin = portal.TeleportMatrix.MultiplyPoint(portalHit.point);
             Vector2 newDir = portal.TeleportMatrix.MultiplyVector(dir);
             float newDis = dis - portalHit.distance;
-            hit = Physics2D.Raycast(newOrigin, newDir, newDis, LayerMask.GetMask("Dynamic"));
+            hit = Physics2D.Raycast(newOrigin, newDir, newDis, layer);
 
             Debug.DrawLine(origin, origin + dir.normalized * portalHit.distance, Color.white, 1f);
             Debug.DrawLine(newOrigin, newOrigin + newDir.normalized * newDis, Color.white, 1f);
