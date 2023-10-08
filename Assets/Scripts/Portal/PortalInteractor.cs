@@ -9,14 +9,14 @@ public class PortalInteractor : MonoBehaviour
     public LayerMask snapLayerMask;
     public LinkedSnap linkedSnap;
     
-    private PortalLocalSnap[] localSnaps;
-    public PortalLocalSnap NeedLinkSnap
+    private PortalStaticSnap[] staticSnaps;
+    public PortalStaticSnap NeedLinkSnap
     {
         get
         {
-            if(localSnaps != null)
+            if(staticSnaps != null)
             {
-                return localSnaps[0];
+                return staticSnaps[0];
             }
             else
             {
@@ -58,8 +58,8 @@ public class PortalInteractor : MonoBehaviour
 
     private void InitLocalSnap()
     {
-        localSnaps = GetComponentsInChildren<PortalLocalSnap>();
-        foreach (var snap in localSnaps)
+        staticSnaps = GetComponentsInChildren<PortalStaticSnap>();
+        foreach (var snap in staticSnaps)
         {
             snap.SetLayer(snapLayerMask);
         }
@@ -67,12 +67,12 @@ public class PortalInteractor : MonoBehaviour
     public void GenerateLocalSnap()
     {
         InitLocalSnap();
-        foreach (PortalLocalSnap snap in localSnaps)
+        foreach (PortalStaticSnap snap in staticSnaps)
         {
             snap.GenerateSnap();
         }
     }
-    public void GenerateLinkedSnap(PortalLocalSnap needLinkedSnap, Matrix4x4 teleportMatrix)
+    public void GenerateLinkedSnap(PortalStaticSnap needLinkedSnap, Matrix4x4 teleportMatrix)
     {
         linkedSnap.gameObject.layer = snapLayerMask;
         linkedSnap.GenerateLinkedSnap(needLinkedSnap, teleportMatrix);

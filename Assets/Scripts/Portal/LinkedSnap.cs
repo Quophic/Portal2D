@@ -5,7 +5,7 @@ using UnityEngine;
 public class LinkedSnap : MonoBehaviour
 {
     public PolygonCollider2D linkedSnap;
-    public void GenerateLinkedSnap(PortalLocalSnap needLinkedSnap, Matrix4x4 teleportMtr)
+    public void GenerateLinkedSnap(PortalStaticSnap needLinkedSnap, Matrix4x4 teleportMtr)
     {
         Matrix4x4 m = linkedSnap.transform.worldToLocalMatrix * teleportMtr * needLinkedSnap.transform.localToWorldMatrix;
         PolygonCollider2D snap = needLinkedSnap.ColliderSnaps;

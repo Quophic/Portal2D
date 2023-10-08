@@ -63,7 +63,7 @@
     <Compile Include="Assets\Scripts\Portal\PortalViewRenderer.cs" />
     <Compile Include="Assets\Scripts\Portal\CloseToPortalChecker.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalController.cs" />
-    <Compile Include="Assets\Scripts\Portal\PortalLocalSnap.cs" />
+    <Compile Include="Assets\Scripts\Portal\PortalStaticSnap.cs" />
     <Compile Include="Assets\Scripts\Portal\LinkedSnap.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalInteractor.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />

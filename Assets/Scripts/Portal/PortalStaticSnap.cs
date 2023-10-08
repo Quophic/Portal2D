@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PortalLocalSnap : MonoBehaviour
+public class PortalStaticSnap : MonoBehaviour
 {
     public BoxCollider2D SnapZone;
     public PolygonCollider2D ColliderSnaps;
