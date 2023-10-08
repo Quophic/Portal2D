@@ -33,6 +33,12 @@ public class PortalLocalSnap : MonoBehaviour
                     List<Vector2> world = GetBoxCollider2DCorners(c as BoxCollider2D);
                     List<Vector2> result = PolygonUtils.Intersection(world, self);
                     TransformLocal(result);
+                    if (result.Count == 0)
+                    {
+                        result.Add(Vector2.zero);
+                        result.Add(Vector2.zero);
+                        result.Add(Vector2.zero);
+                    } 
                     ColliderSnaps.SetPath(i, result);
                 }
             }
