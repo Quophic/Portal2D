@@ -16,7 +16,12 @@ public abstract class PortalTraveller : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(portalsNear.Count == 0)
+        UpdatePortalLayer();
+    }
+
+    private void UpdatePortalLayer()
+    {
+        if (portalsNear.Count == 0)
         {
             gameObject.layer = originLayer;
         }
@@ -24,7 +29,7 @@ public abstract class PortalTraveller : MonoBehaviour
         {
             Portal closestPortal = null;
             float closestSqrDis = float.MaxValue;
-            foreach( Portal portal in portalsNear)
+            foreach (Portal portal in portalsNear)
             {
                 float sqrDis = Vector3.SqrMagnitude(portal.transform.position - transform.position);
                 if (sqrDis < closestSqrDis)
@@ -36,6 +41,7 @@ public abstract class PortalTraveller : MonoBehaviour
             gameObject.layer = closestPortal.localLayer;
         }
     }
+
     public virtual void Teleport(Matrix4x4 teleportMatrix)
     {
 
@@ -47,6 +53,7 @@ public abstract class PortalTraveller : MonoBehaviour
         {
             portalsNear.Add(portal);
         }
+        UpdatePortalLayer();
     }
     public virtual void ExitPortalThreshold(Portal portal)
     {
