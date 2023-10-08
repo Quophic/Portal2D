@@ -7,6 +7,7 @@ public class PortalGun : MonoBehaviour
     public PortalController portalController;
     public Transform grabPosition;
     public bool Grabed { get => grabed != null; }
+    public float portalShift;
     private Rigidbody2D grabed;
     void Update()
     {
@@ -57,6 +58,7 @@ public class PortalGun : MonoBehaviour
         Vector3 yDirection = Vector3.Cross(zDirection, xDirection).normalized;
         Vector4 point = hit2D.point;
         point.w = 1;
+        point += (Vector4)xDirection * portalShift;
         Matrix4x4 matrix = new Matrix4x4(xDirection, yDirection, zDirection, point);
         return matrix;
     }
