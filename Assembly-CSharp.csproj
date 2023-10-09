@@ -81,6 +81,7 @@
   <ItemGroup>
     <None Include="Assets\Test\ShaderTest\TestShader.shader" />
     <None Include="Assets\Shaders\PortalViewShader.shader" />
+    <None Include="Assets\Test\SliceTest\SliceShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -44,3 +44,9 @@ TagManager:
   - name: PortalView
     uniqueID: 2386253113
     locked: 0
+  - name: NearPortalRed
+    uniqueID: 3748743289
+    locked: 0
+  - name: NearPortalBlue
+    uniqueID: 2386462057
+    locked: 0

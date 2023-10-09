@@ -19,6 +19,11 @@ public class Portal : MonoBehaviour
         get => interactor.snapLayerMask;
         set => interactor.snapLayerMask = value;
     }
+    public int MaskLayerID
+    {
+        get => interactor.MaskLayerID;
+        set => interactor.MaskLayerID = value;
+    }
     private List<PortalTraveller> travellers;
     public Vector3 Top { get => edgeTop.position; }
     public Vector3 Bottom { get => edgeBottom.position; }
@@ -50,6 +55,7 @@ public class Portal : MonoBehaviour
         Render();
         CheckAndTeleportTravellers();
     }
+
     public void GenerateLocalSnap()
     {
         interactor.GenerateLocalSnap();

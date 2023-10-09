@@ -26,10 +26,19 @@ public class PortalInteractor : MonoBehaviour
     }
 
     public CloseToPortalChecker closeChecker;
+    public SpriteMask spriteMask;
 
     public bool Actived
     {
         set => gameObject.SetActive(value);
+    }
+    public int MaskLayerID
+    {
+        get => spriteMask.frontSortingLayerID;
+        set {
+            spriteMask.frontSortingLayerID = value;
+            spriteMask.backSortingLayerID = value;
+        }
     }
 
     private void CreateViewTexture()

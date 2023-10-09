@@ -31,6 +31,8 @@ public class PortalController : MonoBehaviour
         portalBlue.nearLayer = LayerMask.NameToLayer("NearPortalBlue");
         portalRed.localLayer = LayerMask.NameToLayer("PortalRed");
         portalBlue.localLayer = LayerMask.NameToLayer("PortalBlue");
+        portalRed.MaskLayerID = SortingLayer.NameToID("NearPortalRed");
+        portalBlue.MaskLayerID = SortingLayer.NameToID("NearPortalBlue");
     }
 
     public void SetPortalRed(Vector3 position, Quaternion rotation)

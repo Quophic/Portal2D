@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a361b8e52f43e1442bbeb0ae460a9981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1160118340292952618}
   lastPosition: {x: 0, y: 0}
   checkPoint: {fileID: 1160118340292952619}
   rb2d: {fileID: 1160118340292952629}

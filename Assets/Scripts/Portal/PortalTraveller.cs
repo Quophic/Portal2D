@@ -4,15 +4,18 @@ using UnityEngine;
 
 public abstract class PortalTraveller : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
     public Vector2 lastPosition;
     public Vector2 CurrentPosition { get => checkPoint.transform.position; }
     public Transform checkPoint;
     private LayerMask originLayer;
     private List<Portal> portalsNear;
+    private int originSortingLayerID;
     private void Awake()
     {
         portalsNear = new List<Portal>();
         originLayer = gameObject.layer;
+        originSortingLayerID = spriteRenderer.sortingLayerID;
     }
     private void FixedUpdate()
     {
@@ -24,6 +27,8 @@ public abstract class PortalTraveller : MonoBehaviour
         if (portalsNear.Count == 0)
         {
             gameObject.layer = originLayer;
+            spriteRenderer.sortingLayerID = originSortingLayerID;
+            spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
         }
         else
         {
@@ -39,6 +44,8 @@ public abstract class PortalTraveller : MonoBehaviour
                 }
             }
             gameObject.layer = closestPortal.nearLayer;
+            spriteRenderer.sortingLayerID = closestPortal.MaskLayerID;
+            spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
         }
     }
 
