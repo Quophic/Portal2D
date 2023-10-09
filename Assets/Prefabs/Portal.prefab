@@ -52,7 +52,9 @@ MonoBehaviour:
   interactor: {fileID: 1292220235840531200}
   edgeTop: {fileID: 74201778970797540}
   edgeBottom: {fileID: 3720161047074462503}
-  closeChecker: {fileID: 1565702397295067529}
+  nearLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!68 &7291291330928562579
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -884,6 +886,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   linkedSnap: {fileID: 5812529423537461379}
+  closeChecker: {fileID: 1565702397295067529}
 --- !u!1 &8665187334929320577
 GameObject:
   m_ObjectHideFlags: 0

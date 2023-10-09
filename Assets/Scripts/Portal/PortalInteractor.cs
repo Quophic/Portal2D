@@ -25,6 +25,8 @@ public class PortalInteractor : MonoBehaviour
         }
     }
 
+    public CloseToPortalChecker closeChecker;
+
     public bool Actived
     {
         set => gameObject.SetActive(value);

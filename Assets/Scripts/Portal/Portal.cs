@@ -36,15 +36,13 @@ public class Portal : MonoBehaviour
         } 
     }
     public RenderTexture ViewTexture { get { return interactor.viewTexture; } }
-    
-    public CloseToPortalChecker closeChecker;
 
     private void Awake()
     {
         interactor.Actived = false;
         travellers = new List<PortalTraveller>();
-        closeChecker.OnClose = OnTravellerEnter;
-        closeChecker.OnAway = OnTravellerExit;
+        interactor.closeChecker.OnClose = OnTravellerEnter;
+        interactor.closeChecker.OnAway = OnTravellerExit;
     }
     private void Update()
     {
