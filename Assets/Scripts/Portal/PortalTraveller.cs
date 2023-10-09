@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class PortalTraveller : MonoBehaviour
 {
+    public PortalShadow shadowPrefab;
     public SpriteRenderer spriteRenderer;
     public Vector2 lastPosition;
     public Vector2 CurrentPosition { get => checkPoint.transform.position; }
@@ -11,6 +12,7 @@ public abstract class PortalTraveller : MonoBehaviour
     private LayerMask originLayer;
     private List<Portal> portalsNear;
     private int originSortingLayerID;
+    private PortalShadow shadow;
     private void Awake()
     {
         portalsNear = new List<Portal>();
@@ -20,6 +22,10 @@ public abstract class PortalTraveller : MonoBehaviour
     private void FixedUpdate()
     {
         UpdatePortalLayer();
+    }
+    private void Update()
+    {
+        UpdateShadow();
     }
 
     private void UpdatePortalLayer()
@@ -67,6 +73,48 @@ public abstract class PortalTraveller : MonoBehaviour
         if (portalsNear.Contains(portal))
         {
             portalsNear.Remove(portal);
+        }
+    }
+
+    private void EnableShadow()
+    {
+        if(shadow == null)
+        {
+            shadow = Instantiate(shadowPrefab);
+            shadow.InitStatus(this);
+        }
+        shadow.Enabled = true;
+    }
+    private void DisableShadow()
+    {
+        if(shadow == null)
+        {
+            return;
+        }
+        shadow.Enabled = false;
+    }
+    private void UpdateShadow()
+    {
+        Portal closestPortal = null;
+        float closestSqrDis = float.MaxValue;
+        foreach (Portal portal in portalsNear)
+        {
+            float sqrDis = Vector3.SqrMagnitude(portal.transform.position - transform.position);
+            if (sqrDis < closestSqrDis)
+            {
+                closestSqrDis = sqrDis;
+                closestPortal = portal;
+            }
+        }
+        if(closestPortal == null)
+        {
+            DisableShadow();
+        }
+        else
+        {
+            EnableShadow();
+            shadow.UpdateStatus(closestPortal);
+            shadow.gameObject.layer = closestPortal.linkedPortal.nearLayer;
         }
     }
 }
