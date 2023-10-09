@@ -38,7 +38,7 @@ public abstract class PortalTraveller : MonoBehaviour
                     closestPortal = portal;
                 }
             }
-            gameObject.layer = closestPortal.localLayer;
+            gameObject.layer = closestPortal.nearLayer;
         }
     }
 
