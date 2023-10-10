@@ -114,7 +114,7 @@ public abstract class PortalTraveller : MonoBehaviour
         {
             EnableShadow();
             shadow.UpdateStatus(closestPortal);
-            shadow.gameObject.layer = closestPortal.linkedPortal.nearLayer;
+            shadow.gameObject.layer = closestPortal.linkedPortal.localLayer;
         }
     }
 }
