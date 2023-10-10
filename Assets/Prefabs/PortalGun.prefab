@@ -131,4 +131,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalController: {fileID: 0}
   grabPosition: {fileID: 5749305994140498277}
-  portalShift: 0.01
+  portalShift: 0.001
