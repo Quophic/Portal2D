@@ -147,7 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowPrefab: {fileID: 7863334571610949617, guid: 9d9cfd039dda1a44ebc1b2bc702fb430, type: 3}
-  spriteRenderer: {fileID: 1160118340292952618}
+  spriteRenderers:
+  - {fileID: 1160118340292952618}
   lastPosition: {x: 0, y: 0}
   checkPoint: {fileID: 1160118340292952619}
   rb2d: {fileID: 1160118340292952629}

@@ -225,7 +225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowPrefab: {fileID: 3302486963887757180, guid: 70bbef317ee17b6418f3254962e54ecc, type: 3}
-  spriteRenderer: {fileID: 3836566646276871793}
+  spriteRenderers:
+  - {fileID: 3836566646276871793}
+  - {fileID: 6012966144842030279}
   lastPosition: {x: 0, y: 0}
   checkPoint: {fileID: 3573657565189965840}
   rb2d: {fileID: 6012966145313515564}
@@ -426,3 +428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d5c349b4374354483427ed8a492e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &6012966144842030279 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6652722456330408540, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+  m_PrefabInstance: {fileID: 1090274674800381595}
+  m_PrefabAsset: {fileID: 0}
