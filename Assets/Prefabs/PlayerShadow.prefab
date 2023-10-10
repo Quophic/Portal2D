@@ -84,7 +84,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74dd6a222c00c1f4ab9e79a0f6d7aa43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 3836566646276871793}
+  spriteRenderers:
+  - {fileID: 3836566646276871793}
+  - {fileID: 6012966144842030279}
   body: {fileID: 4896043167863823007}
   portalGun: {fileID: 6012966144842030276}
 --- !u!1 &8900860579536023452
@@ -237,5 +239,10 @@ PrefabInstance:
 --- !u!4 &6012966144842030276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+  m_PrefabInstance: {fileID: 1090274674800381595}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6012966144842030279 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6652722456330408540, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
   m_PrefabInstance: {fileID: 1090274674800381595}
   m_PrefabAsset: {fileID: 0}

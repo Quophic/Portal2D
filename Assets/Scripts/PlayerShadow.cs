@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShadow : PortalShadow
 {
-    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer[] spriteRenderers;
     public Transform body;
     public Transform portalGun;
     private Transform targetPlayer;
@@ -15,6 +15,10 @@ public class PlayerShadow : PortalShadow
         targetPlayer = traveller.transform;
         targetBody = targetPlayer.Find("Body");
         targetPortalGun = targetBody.Find("PortalGun");
+        foreach(SpriteRenderer sprite in spriteRenderers)
+        {
+            sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+        }
     }
     public override void UpdateStatus(Portal portal)
     {
@@ -22,7 +26,9 @@ public class PlayerShadow : PortalShadow
         transform.SetPositionAndRotation(m.MultiplyPoint(targetPlayer.position), m.rotation * targetPlayer.rotation);
         body.SetPositionAndRotation(m.MultiplyPoint(targetBody.position), m.rotation * targetBody.rotation);
         portalGun.SetPositionAndRotation(m.MultiplyPoint(targetPortalGun.position), m.rotation * targetPortalGun.rotation);
-        spriteRenderer.sortingLayerID = portal.linkedPortal.MaskLayerID;
-        spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+        foreach (SpriteRenderer sprite in spriteRenderers)
+        {
+            sprite.sortingLayerID = portal.linkedPortal.MaskLayerID;
+        }
     }
 }
