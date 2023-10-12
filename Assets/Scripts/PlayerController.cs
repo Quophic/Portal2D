@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = gunSocket.position - eye.position;
         Vector3 endPos = PortalPhysics.GetRayEndPos(eye.position, direction, direction.magnitude, LayerMask.GetMask("Ignore Raycast"));
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 aimDir = (Vector3)mousePos - gun.transform.position;
+        Vector3 aimDir = (Vector3)mousePos - gunSocket.transform.position;
         RaycastHit2D hit = PortalPhysics.ThroughPortal(endPos, direction, direction.magnitude);
         if (hit)
         {
