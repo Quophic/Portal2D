@@ -11,7 +11,6 @@ public class PortalGun : MonoBehaviour
     private Rigidbody2D grabed;
     void Update()
     {
-        Aim();
         if( grabed != null)
         {
             Vector2 pos = PortalPhysics.GetRayEndPos(transform.position, transform.right, 2f, LayerMask.GetMask("Ground"));
@@ -19,12 +18,7 @@ public class PortalGun : MonoBehaviour
             grabed.MoveRotation(grabPosition.rotation);
         }
     }
-    private void Aim()
-    {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePos - (Vector2)transform.position;
-        transform.right = direction.normalized;
-    }
+    
     public void SetPortalRed()
     {
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position, transform.right, 100f, LayerMask.GetMask("Ground"));
