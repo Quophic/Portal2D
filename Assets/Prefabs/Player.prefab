@@ -206,6 +206,7 @@ MonoBehaviour:
   horizontalMaxSpped: 10
   verticalMaxSpeed: 10
   returnSpeed: 300
+  gunSocket: {fileID: 2133776847710525079}
   gun: {fileID: 6012966144842030278}
 --- !u!70 &6012966145313515567
 CapsuleCollider2D:
