@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Test\Rotate.cs" />
     <Compile Include="Assets\Test\TeleportTest\AutoReturn.cs" />
     <Compile Include="Assets\Scripts\Portal\Portal.cs" />
     <Compile Include="Assets\Scripts\PlayerShadow.cs" />
@@ -80,6 +79,9 @@
     <Compile Include="Assets\Scripts\PortalGun.cs" />
     <Compile Include="Assets\Scripts\CubeTraveller.cs" />
     <Compile Include="Assets\Scripts\CubeShadow.cs" />
+    <Compile Include="Assets\Scripts\Button.cs" />
+    <Compile Include="Assets\Scripts\Activator.cs" />
+    <Compile Include="Assets\Scripts\Effector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Test\ShaderTest\TestShader.shader" />
