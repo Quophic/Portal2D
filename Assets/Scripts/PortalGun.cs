@@ -64,6 +64,10 @@ public class PortalGun : MonoBehaviour
         {
             GameObject g = hit.collider.gameObject;
             grabed = g.GetComponent<Rigidbody2D>();
+            if(grabed == null)
+            {
+                grabed = g.GetComponentInParent<Rigidbody2D>();
+            }
         }    
     }
     public void Put()
