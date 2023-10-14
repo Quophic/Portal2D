@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float returnSpeed;
     public Transform gunSocket;
     public PortalGun gun;
+    public BoxCollider2D groundChecker;
     void Update()
     {
         Aim();
@@ -38,11 +39,12 @@ public class PlayerController : MonoBehaviour
                 gun.Grab();
             }
         }
+        Jump();
     }
     private void FixedUpdate()
     {
         Move();
-        Jump();
+        
         Face();
 
     }
@@ -88,7 +90,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && rb2d.velocity.y <= 0.00001f)
+        if (Input.GetKeyDown(KeyCode.Space) && CheckOnGround())
         {
             Vector2 velocity = Vector2.up  * jumpSpeed;
             velocity.x = rb2d.velocity.x;
@@ -115,4 +117,12 @@ public class PlayerController : MonoBehaviour
         gun.transform.right = direction;
     }
     
+    private bool CheckOnGround()
+    {
+        Transform t = groundChecker.transform;
+        bool isClockWise = Vector3.Dot(transform.forward, Vector3.forward) >= 0;
+        float zRotation = t.rotation.eulerAngles.z;
+        zRotation = isClockWise ? zRotation : -zRotation;
+        return Physics2D.BoxCast(t.position, groundChecker.size, zRotation, -t.up, 0, LayerMask.GetMask("Ground", "PortalRed", "NearProtalRed", "PortalBlue", "NearPortalBlue", "Dynamic"));
+    }
 }
