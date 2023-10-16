@@ -82,7 +82,7 @@
     <Compile Include="Assets\Scripts\PortalGun.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\Scripts\UI\LevelSelectionView.cs" />
-    <Compile Include="Assets\Scripts\Button.cs" />
+    <Compile Include="Assets\Scripts\PortalButton.cs" />
     <Compile Include="Assets\Scripts\CubeTraveller.cs" />
     <Compile Include="Assets\Scripts\Effector.cs" />
     <Compile Include="Assets\Scripts\CubeShadow.cs" />

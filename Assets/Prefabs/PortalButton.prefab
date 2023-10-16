@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 3488075327946959436}
   - component: {fileID: 2097064127}
   m_Layer: 17
-  m_Name: Button
+  m_Name: PortalButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
