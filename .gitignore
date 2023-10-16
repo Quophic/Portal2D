@@ -365,3 +365,4 @@ FodyWeavers.xsd
 /Temp
 /UserSettings
 Assets/Test
+Builds/*
