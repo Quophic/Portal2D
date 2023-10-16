@@ -22,7 +22,7 @@ public class LevelSelectionView : MonoBehaviour
         foreach(var info in manager.Infos) 
         {
             LevelItem item = Instantiate(levelItemPrefab, content);
-            item.LevelName = info.levelName;
+            item.Info = info;
         }
     }
     public void Back()
