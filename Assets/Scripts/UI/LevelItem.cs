@@ -11,6 +11,7 @@ public class LevelItem : MonoBehaviour
         get => text.text;
         set => text.text = value;
     }
+    
 
     private TextMeshProUGUI text;
 

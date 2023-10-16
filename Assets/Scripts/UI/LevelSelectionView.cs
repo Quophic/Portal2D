@@ -8,17 +8,22 @@ public class LevelSelectionView : MonoBehaviour
     public LevelItem levelItemPrefab;
     public ScrollRect levelsView;
 
+    private LevelManager manager;
     private RectTransform content;
     public void Start()
     {
         content = levelsView.content;
-        AddItem();
+        manager = new LevelManager();
+        UpdateItem();
     }
     
-    private void AddItem()
+    private void UpdateItem()
     {
-        LevelItem item = Instantiate(levelItemPrefab, content);
-        item.LevelName = "new Level";
+        foreach(var info in manager.Infos) 
+        {
+            LevelItem item = Instantiate(levelItemPrefab, content);
+            item.LevelName = info.levelName;
+        }
     }
     public void Back()
     {

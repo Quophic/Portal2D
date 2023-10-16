@@ -8,7 +8,8 @@ public class LevelManager
 {
     public static readonly string PATH = Application.streamingAssetsPath + "/Level/LevelInfos.json";
     private List<LevelInfo> levelInfos = null;
-
+    public LevelInfo[] Infos => levelInfos.ToArray();
+    public int Count => levelInfos.Count;
     public LevelManager()
     {
         Load();
