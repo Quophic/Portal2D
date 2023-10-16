@@ -21,8 +21,8 @@ public class PortalGun : MonoBehaviour
     
     public void SetPortalRed()
     {
-        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, transform.right, 100f, LayerMask.GetMask("Ground"));
-        if (hit2D)
+        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, transform.right, 100f, LayerMask.GetMask("Ground", "ActiveComponent"));
+        if (hit2D && hit2D.collider.gameObject.tag.Equals("PortalPlane"))
         {
             Matrix4x4 matrix = GetPortalMatrix(hit2D);
             portalController.SetPortalRed(matrix.GetPosition(), matrix.rotation);
@@ -30,8 +30,8 @@ public class PortalGun : MonoBehaviour
     }
     public void SetPortalBlue()
     {
-        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, transform.right, 100f, LayerMask.GetMask("Ground"));
-        if (hit2D)
+        RaycastHit2D hit2D = Physics2D.Raycast(transform.position, transform.right, 100f, LayerMask.GetMask("Ground", "ActiveComponent"));
+        if (hit2D && hit2D.collider.gameObject.tag.Equals("PortalPlane"))
         {
             Matrix4x4 matrix = GetPortalMatrix(hit2D);
             portalController.SetPortalBlue(matrix.GetPosition(), matrix.rotation);
