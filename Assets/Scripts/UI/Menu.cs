@@ -42,4 +42,8 @@ public class Menu : MonoBehaviour
     {        
         SceneManager.LoadScene(levelName);
     }
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
