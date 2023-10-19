@@ -76,6 +76,12 @@ public class PortalController : MonoBehaviour
 
         portalRed.GenerateLinkedSnap();
         portalBlue.GenerateLinkedSnap();
+
+        portalRed.SetCameraTransform();
+        portalBlue.SetCameraTransform();
+
+        portalRed.Render();
+        portalBlue.Render();
     }
     private void OnPortalDisconnect()
     {
