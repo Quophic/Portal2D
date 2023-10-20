@@ -21,7 +21,8 @@ public class LevelManager
         }
     }
     private int currentLevelIndex;
-    public LevelInfo Current
+    public int CurrentIndex => currentLevelIndex;
+    public LevelInfo CurrentInfo
     {
         get => FindAt(currentLevelIndex);
     }
@@ -80,7 +81,7 @@ public class LevelManager
             return;
         }
         currentLevelIndex = index;
-        SceneManager.LoadScene(Current.scene);
+        SceneManager.LoadScene(CurrentInfo.scene);
     }
     public void Save()
     {
