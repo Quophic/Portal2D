@@ -7,10 +7,24 @@ using Newtonsoft.Json;
 public class LevelManager
 {
     public static readonly string PATH = Application.streamingAssetsPath + "/Level/LevelInfos.json";
+    private static LevelManager manager;
+    public static LevelManager Instance
+    {
+        get
+        {
+            if (manager == null)
+            {
+                manager = new LevelManager();
+            }
+            return manager;
+        }
+    }
+
     private List<LevelInfo> levelInfos = null;
     public LevelInfo[] Infos => levelInfos.ToArray();
     public int Count => levelInfos.Count;
-    public LevelManager()
+    
+    private LevelManager()
     {
         Load();
     }

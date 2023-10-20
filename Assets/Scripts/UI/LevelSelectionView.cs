@@ -13,7 +13,7 @@ public class LevelSelectionView : MonoBehaviour
     public void Start()
     {
         content = levelsView.content;
-        manager = new LevelManager();
+        manager = LevelManager.Instance;
         UpdateItem();
     }
     
