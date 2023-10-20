@@ -8,11 +8,9 @@ public class Menu : MonoBehaviour
 {
     public GameObject canvas;
     public TextMeshProUGUI levelNameText;
-    private string levelName;
     private void Awake()
     {
-        levelName = SceneManager.GetActiveScene().name;
-        levelNameText.text = levelName;
+        levelNameText.text = LevelManager.Instance.CurrentInfo.levelName;
     }
     private void Update()
     {
@@ -39,8 +37,8 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1;
     }
     public void Restart()
-    {        
-        SceneManager.LoadScene(levelName);
+    {
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.CurrentIndex);
     }
     public void ReturnToMainMenu()
     {
