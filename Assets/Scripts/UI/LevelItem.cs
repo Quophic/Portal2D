@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class LevelItem : MonoBehaviour
 {
-    private LevelInfo info;
-    public LevelInfo Info
+    private int levelIndex;
+    public int LevelIndex
     {
-        get => info;
+        get => levelIndex;
         set
         {
-            info = value;
-            text.text = value.levelName;
+            levelIndex = value;
+            var info = LevelManager.Instance.FindAt(levelIndex);
+            text.text = info.levelName;
         }
     }
 
@@ -29,6 +27,6 @@ public class LevelItem : MonoBehaviour
     }
     private void LoadLevel()
     {
-        SceneManager.LoadScene(info.scene);
+        LevelManager.Instance.LoadLevel(LevelIndex);
     }
 }

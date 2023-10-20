@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,10 +17,10 @@ public class LevelSelectionView : MonoBehaviour
     
     private void UpdateItem()
     {
-        foreach(var info in manager.Infos) 
+        for(int i = 0; i < manager.Count; i++) 
         {
             LevelItem item = Instantiate(levelItemPrefab, content);
-            item.Info = info;
+            item.LevelIndex = i;
         }
     }
     public void Back()
