@@ -1,8 +1,9 @@
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 public class LevelManager
 {
@@ -19,7 +20,19 @@ public class LevelManager
             return manager;
         }
     }
-
+    private int currentLevelIndex;
+    public LevelInfo Current
+    {
+        get => FindAt(currentLevelIndex);
+    }
+    public LevelInfo FindAt(int index)
+    {
+        if (index < 0 || index >= levelInfos.Count)
+        {
+            return new LevelInfo();
+        }
+        return levelInfos[index];
+    }
     private List<LevelInfo> levelInfos = null;
     public LevelInfo[] Infos => levelInfos.ToArray();
     public int Count => levelInfos.Count;
@@ -27,6 +40,7 @@ public class LevelManager
     private LevelManager()
     {
         Load();
+        currentLevelIndex = -1;
     }
     public void Load()
     {
@@ -58,6 +72,15 @@ public class LevelManager
         }
         levelInfos.Add(levelInfo);
         return true;
+    }
+    public void LoadLevel(int index)
+    {
+        if(index < 0 || index >= levelInfos.Count)
+        {
+            return;
+        }
+        currentLevelIndex = index;
+        SceneManager.LoadScene(Current.scene);
     }
     public void Save()
     {
