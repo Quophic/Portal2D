@@ -89,6 +89,8 @@
     <Compile Include="Assets\Scripts\CubeTraveller.cs" />
     <Compile Include="Assets\Scripts\Effector.cs" />
     <Compile Include="Assets\Scripts\CubeShadow.cs" />
+    <Compile Include="Assets\Scripts\Elevator.cs" />
+    <Compile Include="Assets\Scripts\ElevatorDoor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
