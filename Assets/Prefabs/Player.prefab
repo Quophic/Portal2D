@@ -203,7 +203,7 @@ MonoBehaviour:
   body: {fileID: 8900860579536023452}
   eye: {fileID: 3573657565189965840}
   power: 60
-  jumpSpeed: 16
+  jumpSpeed: 6
   horizontalMaxSpped: 10
   verticalMaxSpeed: 10
   returnSpeed: 300
@@ -326,7 +326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6753637057796177235}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.057, z: -1.0161155}
+  m_LocalPosition: {x: 0, y: -1.057, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

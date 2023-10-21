@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\UI\Menu.cs" />
     <Compile Include="Assets\Test\D.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\ElevatorDoor.cs" />
     <Compile Include="Assets\Test\TeleportTest\AutoReturn.cs" />
     <Compile Include="Assets\Scripts\Portal\Portal.cs" />
     <Compile Include="Assets\Scripts\PlayerShadow.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\PlayerTraveller.cs" />
     <Compile Include="Assets\Test\TeleportTest\Transfermer.cs" />
     <Compile Include="Assets\Scripts\PolygonUtils.cs" />
+    <Compile Include="Assets\Scripts\Elevator.cs" />
     <Compile Include="Assets\Scripts\UI\LevelItem.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalTraveller.cs" />
     <Compile Include="Assets\Test\PhysicsTest\DrawCollider.cs" />
@@ -89,8 +91,6 @@
     <Compile Include="Assets\Scripts\CubeTraveller.cs" />
     <Compile Include="Assets\Scripts\Effector.cs" />
     <Compile Include="Assets\Scripts\CubeShadow.cs" />
-    <Compile Include="Assets\Scripts\Elevator.cs" />
-    <Compile Include="Assets\Scripts\ElevatorDoor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
