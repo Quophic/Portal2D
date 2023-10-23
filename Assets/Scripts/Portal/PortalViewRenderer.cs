@@ -99,23 +99,22 @@ public class PortalViewRenderer : MonoBehaviour
 
     private void StartRenderPortalView(Portal portal, RenderTexture destination)
     {
+        Graphics.Blit(portal.ViewTexture, destination);
+        if (!portal.CanBeSeeThroughLinkedPortal)
+        {
+            return;
+        }
         iterateCount = 0;
         Vector3 topPos = portal.linkedPortal.TeleportMatrix.MultiplyPoint(portal.Top);
         Vector3 bottomPos = portal.linkedPortal.TeleportMatrix.MultiplyPoint(portal.Bottom);
         Vector3 eyePos = portal.linkedPortal.TeleportMatrix.MultiplyPoint(controller.playerEye.position);
-        Graphics.Blit(portal.ViewTexture, destination);
-
         RenderTexture buffer = RenderTexture.GetTemporary(Screen.width, Screen.height);
         _Render(eyePos);
         RenderTexture.ReleaseTemporary(buffer);
 
         void _Render(Vector3 eyePos)
         {
-            // 是否都可以通过一个传送门看到另一个传送门的正面， 传送门以右侧为正
-            bool canSeeRed = Vector3.Dot(controller.portalRed.transform.right, controller.portalBlue.transform.position - controller.portalRed.transform.position) > 0;
-            bool canSeeBlue = Vector3.Dot(controller.portalBlue.transform.right, controller.portalRed.transform.position - controller.portalBlue.transform.position) > 0;
-
-            if (iterateCount >= maxPortalIterateCount || !canSeeRed || !canSeeBlue)
+            if (iterateCount >= maxPortalIterateCount)
             {
                 return;
             }

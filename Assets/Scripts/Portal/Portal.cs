@@ -41,6 +41,15 @@ public class Portal : MonoBehaviour
         } 
     }
     public RenderTexture ViewTexture { get { return interactor.viewTexture; } }
+    public bool CanBeSeeThroughLinkedPortal
+    {
+        get
+        {
+            bool cameraSee = Vector3.Dot(transform.right, interactor.portalCamera.transform.position - transform.position) >= 0;
+            bool linkedPortalSee = Vector3.Dot(transform.right, linkedPortal.transform.position - transform.position) >= 0;
+            return cameraSee & linkedPortalSee;
+        }
+    }
 
     private void Awake()
     {
