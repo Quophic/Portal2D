@@ -17,6 +17,9 @@ public class PortalViewRenderer : MonoBehaviour
             return material;
         }
     }
+
+    private float ratio => (float)Screen.width / Screen.height;
+
     private Material CheckShaderAndCreateMaterial(Shader shader, Material material)
     {
         if (shader == null || !shader.isSupported)
@@ -142,10 +145,18 @@ public class PortalViewRenderer : MonoBehaviour
         Vector2 offset = dest - origin;
         Material.SetVector("_Offset", new Vector4(origin.x, origin.y, offset.x, offset.y));
 
-        float ratio = (float)Screen.width / Screen.height;
-        Material.SetFloat("_Rotation", -Mathf.Deg2Rad * offsetMatrix.rotation.eulerAngles.z);
-        Material.SetFloat("_Ratio", ratio);
-
+        Vector2 col0 = offsetMatrix.GetColumn(0);
+        Vector2 col1 = offsetMatrix.GetColumn(1);
+        col0.y *= ratio;
+        col1.x *= 1 / ratio;
+        bool isPortalCameraReversed = Vector3.Dot(Vector3.forward, offsetMatrix.MultiplyVector(transform.forward)) < 0;
+        if (!isPortalCameraReversed)
+        {
+            col0.y = -col0.y;
+            col1.x = -col1.x;
+        }
+        Material.SetVector("_TMcol0", col0);
+        Material.SetVector("_TMcol1", col1);
         Graphics.Blit(source, destination, Material);
     }
 }
