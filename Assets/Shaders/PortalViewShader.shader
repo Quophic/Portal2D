@@ -40,24 +40,15 @@ Shader "Custom/PortalViewShader"
             float4 _Plane1;
             float4 _Plane2;
             float4 _Plane3;
-            float4 _Offset;
-            float2 _TMcol0;
-            float2 _TMcol1;
 
-            float2 transfer(float2 i){
-                return float2(i.x * _TMcol0.x + i.y * _TMcol1.x , i.x * _TMcol0.y + i.y * _TMcol1.y);
-            }
-
+            
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
                 o.srcPos = ComputeScreenPos(o.vertex);
-                o.tuv = o.uv - _Offset.zw;
-                o.tuv = o.tuv - _Offset.xy;
-                o.tuv = transfer(o.tuv);
-                o.tuv = o.tuv + _Offset.xy;
+                o.tuv = o.uv;
                 return o;
             }
 

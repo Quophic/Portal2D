@@ -41,15 +41,30 @@ public class PortalViewRenderer : MonoBehaviour
             return null;
         }
     }
-    private Vector4 GetViewPortPlane(Vector3 origin, Vector3 onPlane, Vector3 onNormal)
+
+    private Vector4 GetViewFieldPlane(Vector3 origin, Vector3 onPlane, Vector3 onNormal)
     {
-        Vector2 point = controller.playerCamera.WorldToViewportPoint(origin);
-        Vector2 dir = controller.playerCamera.WorldToViewportPoint(onPlane);
+        Vector2 point = origin;
+        Vector2 dir = onPlane;
         dir = (dir - point).normalized;
-        Vector2 normal = controller.playerCamera.WorldToViewportPoint(onNormal);
+        Vector2 normal = onNormal;
         normal = (normal - point).normalized;
         normal = (normal - Vector2.Dot(dir, normal) * dir).normalized;
         return new Vector4(point.x, point.y, normal.x, normal.y);
+    }
+
+    private void SetPortalViewField(Camera portalCam, Vector3 portalTop, Vector3 portalBottom, Vector3 playerEye)
+    {
+        Vector2 top = portalCam.WorldToViewportPoint(portalTop);
+        Vector2 bottom = portalCam.WorldToViewportPoint(portalBottom);
+        Vector2 eye = portalCam.WorldToViewportPoint(playerEye);
+
+        Material.SetVector("_Plane1", GetViewFieldPlane(top, eye, bottom));
+        Material.SetVector("_Plane2", GetViewFieldPlane(bottom, eye, top));
+        Vector4 portalPlane = GetViewFieldPlane(top, bottom, eye);
+        portalPlane.z *= -1;
+        portalPlane.w *= -1;
+        Material.SetVector("_Plane3", portalPlane);
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -79,17 +94,25 @@ public class PortalViewRenderer : MonoBehaviour
         }
     }
 
+    private RenderTexture SetAndRenderPortalView(Portal portal, Matrix4x4 offsetMatrix)
+    {
+        portal.SetPortalCamera(offsetMatrix);
+        portal.Render();
+        return portal.ViewTexture;
+    }
+
     private void RenderView(Portal portal ,RenderTexture source, RenderTexture destination)
     {
         Vector3 portalToEye = controller.playerEye.position - portal.transform.position;
         float dot = Vector3.Dot(portalToEye, portal.transform.right);
-        if(dot > 0)
+        if (dot > 0 && maxPortalIterateCount > 0)
         {
             RenderTexture portalView = RenderTexture.GetTemporary(Screen.width, Screen.height);
             StartRenderPortalView(portal, portalView);
 
-            SetParamAndRender(Matrix4x4.identity, portal.Top, portal.Bottom, controller.playerEye.position, portalView, source, destination);
+            SetParamAndRender(controller.playerCamera, portal, controller.playerEye.position, portalView, source, destination);
             RenderTexture.ReleaseTemporary(portalView);
+            
         }
         else
         {
@@ -99,63 +122,36 @@ public class PortalViewRenderer : MonoBehaviour
 
     private void StartRenderPortalView(Portal portal, RenderTexture destination)
     {
-        Graphics.Blit(portal.ViewTexture, destination);
-        if (!portal.CanBeSeeThroughLinkedPortal)
-        {
-            return;
-        }
+        
         iterateCount = 0;
-        Vector3 topPos = portal.linkedPortal.TeleportMatrix.MultiplyPoint(portal.Top);
-        Vector3 bottomPos = portal.linkedPortal.TeleportMatrix.MultiplyPoint(portal.Bottom);
-        Vector3 eyePos = portal.linkedPortal.TeleportMatrix.MultiplyPoint(controller.playerEye.position);
+        
         RenderTexture buffer = RenderTexture.GetTemporary(Screen.width, Screen.height);
-        _Render(eyePos);
+        _Render(Matrix4x4.identity);
         RenderTexture.ReleaseTemporary(buffer);
 
-        void _Render(Vector3 eyePos)
+        void _Render(Matrix4x4 offsetMatrix)
         {
-            if (iterateCount >= maxPortalIterateCount)
+            iterateCount++;
+            offsetMatrix *= portal.TeleportMatrix;
+            if (iterateCount >= maxPortalIterateCount || !portal.CanBeSeeThroughLinkedPortal)
             {
+                Graphics.Blit(SetAndRenderPortalView(portal, offsetMatrix), destination);
                 return;
             }
-            iterateCount++;
-
-            eyePos = portal.TeleportMatrix.MultiplyPoint(eyePos);
-
-            _Render(eyePos);
-
-            SetParamAndRender(portal.linkedPortal.TeleportMatrix, topPos, bottomPos, eyePos, destination, portal.ViewTexture, buffer);
+            _Render(offsetMatrix);
+            Material.SetTexture("_PortalTex", destination);
+            SetAndRenderPortalView(portal, offsetMatrix);
+            SetPortalViewField(portal.PortalCamera, portal.Top, portal.Bottom, offsetMatrix.MultiplyPoint(controller.playerEye.position));
+            Graphics.Blit(portal.ViewTexture, buffer, Material);
+           
             Graphics.Blit(buffer, destination);
         }
     }
 
-    private void SetParamAndRender(Matrix4x4 offsetMatrix, Vector3 topPos, Vector3 bottomPos, Vector3 eyePos ,RenderTexture addition, RenderTexture source, RenderTexture destination)
+    private void SetParamAndRender(Camera camera, Portal portal, Vector3 eyePos ,RenderTexture addition, RenderTexture source, RenderTexture destination)
     {
         Material.SetTexture("_PortalTex", addition);
-        Material.SetVector("_Plane1", GetViewPortPlane(topPos, eyePos, bottomPos));
-        Material.SetVector("_Plane2", GetViewPortPlane(bottomPos, eyePos, topPos));
-        Vector4 portalPlane = GetViewPortPlane(topPos, bottomPos, eyePos);
-        portalPlane.z *= -1;
-        portalPlane.w *= -1;
-        Material.SetVector("_Plane3", portalPlane);
-
-        Vector2 origin = controller.playerCamera.WorldToViewportPoint(controller.playerEye.position);
-        Vector2 dest = controller.playerCamera.WorldToViewportPoint(offsetMatrix.MultiplyPoint(controller.playerEye.position));
-        Vector2 offset = dest - origin;
-        Material.SetVector("_Offset", new Vector4(origin.x, origin.y, offset.x, offset.y));
-
-        Vector2 col0 = offsetMatrix.GetColumn(0);
-        Vector2 col1 = offsetMatrix.GetColumn(1);
-        col0.y *= ratio;
-        col1.x *= 1 / ratio;
-        bool isPortalCameraReversed = Vector3.Dot(Vector3.forward, offsetMatrix.MultiplyVector(transform.forward)) < 0;
-        if (!isPortalCameraReversed)
-        {
-            col0.y = -col0.y;
-            col1.x = -col1.x;
-        }
-        Material.SetVector("_TMcol0", col0);
-        Material.SetVector("_TMcol1", col1);
+        SetPortalViewField(camera, portal.Top, portal.Bottom, eyePos);
         Graphics.Blit(source, destination, Material);
     }
 }

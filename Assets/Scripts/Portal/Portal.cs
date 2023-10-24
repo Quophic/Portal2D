@@ -10,6 +10,7 @@ public class Portal : MonoBehaviour
         get => controller.playerCamera;
     }
     public Portal linkedPortal;
+    public Camera PortalCamera => interactor.portalCamera;
     public PortalInteractor interactor;
     public Transform edgeTop;
     public Transform edgeBottom;
@@ -84,6 +85,8 @@ public class Portal : MonoBehaviour
     {
         interactor.RenderPortalView();
     }
+
+    public void SetPortalCamera(Matrix4x4 offsetMatrix) => interactor.SetCameraPosition(offsetMatrix, PlayerCamera.transform.position, PlayerCamera.transform.rotation); 
 
     private void CheckAndTeleportTravellers()
     {
