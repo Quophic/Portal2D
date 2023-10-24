@@ -57,15 +57,6 @@ public class PortalController : MonoBehaviour
             OnPortalDisconnect();
         }
     }
-
-    public void SetPortalCamera()
-    {
-        portalRed.SetCameraTransform();
-        portalRed.Render();
-        portalBlue.SetCameraTransform();
-        portalBlue.Render();
-    }
-
     private void OnPortalConnected()
     {
         portalRed.interactor.Actived = true;
@@ -76,12 +67,6 @@ public class PortalController : MonoBehaviour
 
         portalRed.GenerateLinkedSnap();
         portalBlue.GenerateLinkedSnap();
-
-        portalRed.SetCameraTransform();
-        portalBlue.SetCameraTransform();
-
-        portalRed.Render();
-        portalBlue.Render();
     }
     private void OnPortalDisconnect()
     {

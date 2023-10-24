@@ -26,6 +26,5 @@ public class PlayerTraveller : PortalTraveller
         transform.rotation = rotation * transform.rotation;
 
         CameraController.SetCameraTransform();
-        portalController.SetPortalCamera();
     }
 }

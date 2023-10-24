@@ -61,8 +61,6 @@ public class Portal : MonoBehaviour
     }
     private void Update()
     {
-        SetCameraTransform();
-        Render();
         CheckAndTeleportTravellers();
     }
 
@@ -74,11 +72,6 @@ public class Portal : MonoBehaviour
     public void GenerateLinkedSnap()
     {
         interactor.GenerateLinkedSnap(linkedPortal.interactor.NeedLinkSnap, linkedPortal.TeleportMatrix);
-    }
-
-    public void SetCameraTransform()
-    {
-        interactor.SetCameraPosition(TeleportMatrix, PlayerCamera.transform.position, PlayerCamera.transform.rotation);
     }
 
     public void Render()

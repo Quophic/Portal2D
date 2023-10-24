@@ -18,8 +18,6 @@ public class PortalViewRenderer : MonoBehaviour
         }
     }
 
-    private float ratio => (float)Screen.width / Screen.height;
-
     private Material CheckShaderAndCreateMaterial(Shader shader, Material material)
     {
         if (shader == null || !shader.isSupported)
@@ -94,25 +92,23 @@ public class PortalViewRenderer : MonoBehaviour
         }
     }
 
-    private RenderTexture SetAndRenderPortalView(Portal portal, Matrix4x4 offsetMatrix)
+    private void SetAndRenderPortalView(Portal portal, Matrix4x4 offsetMatrix)
     {
         portal.SetPortalCamera(offsetMatrix);
         portal.Render();
-        return portal.ViewTexture;
     }
 
     private void RenderView(Portal portal ,RenderTexture source, RenderTexture destination)
     {
         Vector3 portalToEye = controller.playerEye.position - portal.transform.position;
-        float dot = Vector3.Dot(portalToEye, portal.transform.right);
-        if (dot > 0 && maxPortalIterateCount > 0)
+        bool canSeeThroughPortal = Vector3.Dot(portalToEye, portal.transform.right) > 0;
+        if (canSeeThroughPortal && maxPortalIterateCount > 0)
         {
             RenderTexture portalView = RenderTexture.GetTemporary(Screen.width, Screen.height);
             StartRenderPortalView(portal, portalView);
 
             SetParamAndRender(controller.playerCamera, portal, controller.playerEye.position, portalView, source, destination);
             RenderTexture.ReleaseTemporary(portalView);
-            
         }
         else
         {
@@ -122,9 +118,7 @@ public class PortalViewRenderer : MonoBehaviour
 
     private void StartRenderPortalView(Portal portal, RenderTexture destination)
     {
-        
         iterateCount = 0;
-        
         RenderTexture buffer = RenderTexture.GetTemporary(Screen.width, Screen.height);
         _Render(Matrix4x4.identity);
         RenderTexture.ReleaseTemporary(buffer);
@@ -135,15 +129,13 @@ public class PortalViewRenderer : MonoBehaviour
             offsetMatrix *= portal.TeleportMatrix;
             if (iterateCount >= maxPortalIterateCount || !portal.CanBeSeeThroughLinkedPortal)
             {
-                Graphics.Blit(SetAndRenderPortalView(portal, offsetMatrix), destination);
+                SetAndRenderPortalView(portal, offsetMatrix);
+                Graphics.Blit(portal.ViewTexture, destination);
                 return;
             }
             _Render(offsetMatrix);
-            Material.SetTexture("_PortalTex", destination);
             SetAndRenderPortalView(portal, offsetMatrix);
-            SetPortalViewField(portal.PortalCamera, portal.Top, portal.Bottom, offsetMatrix.MultiplyPoint(controller.playerEye.position));
-            Graphics.Blit(portal.ViewTexture, buffer, Material);
-           
+            SetParamAndRender(portal.PortalCamera, portal, offsetMatrix.MultiplyPoint(controller.playerEye.position), destination, portal.ViewTexture, buffer);
             Graphics.Blit(buffer, destination);
         }
     }

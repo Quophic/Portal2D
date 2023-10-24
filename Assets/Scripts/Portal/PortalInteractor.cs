@@ -62,7 +62,6 @@ public class PortalInteractor : MonoBehaviour
         CreateViewTexture();
         portalCamera.enabled = false;
         portalCamera.Render();
-        portalCamera.enabled = true;
     }
 
 
