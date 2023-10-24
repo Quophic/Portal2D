@@ -59,11 +59,7 @@ public class Portal : MonoBehaviour
         interactor.closeChecker.OnClose = OnTravellerEnter;
         interactor.closeChecker.OnAway = OnTravellerExit;
     }
-    private void Update()
-    {
-        CheckAndTeleportTravellers();
-    }
-
+    
     public void GenerateLocalSnap()
     {
         interactor.GenerateLocalSnap();
@@ -81,7 +77,7 @@ public class Portal : MonoBehaviour
 
     public void SetPortalCamera(Matrix4x4 offsetMatrix) => interactor.SetCameraPosition(offsetMatrix, PlayerCamera.transform.position, PlayerCamera.transform.rotation); 
 
-    private void CheckAndTeleportTravellers()
+    public void CheckAndTeleportTravellers()
     {
         foreach(PortalTraveller traveller in travellers)
         {
