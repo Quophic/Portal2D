@@ -81,14 +81,19 @@ public class Portal : MonoBehaviour
     {
         foreach(PortalTraveller traveller in travellers)
         {
-            if(PortalPhysics.ThroughPortal(traveller.lastPosition, traveller.CurrentPosition))
+            if(CheckThrough(traveller))
             {
                 traveller.Teleport(TeleportMatrix);
                 linkedPortal.OnTravellerEnter(traveller);
             }
+        }
+    }
+    public void UpdateTravellerLastPosition()
+    {
+        foreach (PortalTraveller traveller in travellers)
+        {
             traveller.lastPosition = traveller.CurrentPosition;
         }
-        
     }
     private void OnTravellerEnter(PortalTraveller traveller)
     {
@@ -107,5 +112,17 @@ public class Portal : MonoBehaviour
         }
         travellers.Remove(traveller);
         traveller.ExitPortalThreshold(this);
+    }
+    private bool CheckThrough(PortalTraveller traveller)
+    {
+        Vector3 lastToCurrent = traveller.CurrentPosition - traveller.lastPosition;
+        Vector3 lastToTop = Top - (Vector3)traveller.lastPosition;
+        Vector3 lastToBottom = Bottom - (Vector3)traveller.lastPosition;
+        Vector3 crossCT = Vector3.Cross(lastToCurrent, lastToTop);
+        Vector3 crossCB = Vector3.Cross(lastToCurrent, lastToBottom);
+        bool lastAtFront = Vector3.Dot(transform.right, (Vector3)traveller.lastPosition - transform.position) > 0;
+        bool currentAtBehind = Vector3.Dot(transform.right, (Vector3)traveller.CurrentPosition - transform.position) < 0;
+        bool through = Vector3.Dot(crossCT, crossCB) < 0;
+        return lastAtFront & currentAtBehind & through;
     }
 }

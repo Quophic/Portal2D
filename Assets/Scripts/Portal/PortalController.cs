@@ -39,6 +39,9 @@ public class PortalController : MonoBehaviour
     {
         portalRed.CheckAndTeleportTravellers();
         portalBlue.CheckAndTeleportTravellers();
+
+        portalRed.UpdateTravellerLastPosition();
+        portalBlue.UpdateTravellerLastPosition();
     }
 
     public void SetPortalRed(Vector3 position, Quaternion rotation)
