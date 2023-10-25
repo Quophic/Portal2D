@@ -20,6 +20,7 @@ public class PlayerTraveller : PortalTraveller
 
     public override void Teleport(Matrix4x4 teleportMatrix)
     {
+        base.Teleport(teleportMatrix);
         rb2d.velocity = teleportMatrix.MultiplyVector(rb2d.velocity);
         rb2d.position = teleportMatrix.MultiplyPoint(rb2d.position);
         transform.position = teleportMatrix.MultiplyPoint(transform.position);

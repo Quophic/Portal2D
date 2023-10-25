@@ -67,7 +67,7 @@ public abstract class PortalTraveller : MonoBehaviour
 
     public virtual void Teleport(Matrix4x4 teleportMatrix)
     {
-
+        lastPosition = teleportMatrix.MultiplyPoint(lastPosition);
     }
     public virtual void EnterPortalThreshold(Portal portal)
     {
