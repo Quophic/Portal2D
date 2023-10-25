@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         Vector3 r = transform.rotation.eulerAngles;
         r.z = 0;
         Quaternion newRotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(r), returnSpeed * Time.deltaTime);
-        transform.RotateAround(eye.position, transform.forward, newRotation.eulerAngles.z - transform.rotation.eulerAngles.z);
+        transform.rotation = newRotation;
     }
 
     private void Face()
