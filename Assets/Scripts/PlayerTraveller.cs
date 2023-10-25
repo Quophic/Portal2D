@@ -25,7 +25,6 @@ public class PlayerTraveller : PortalTraveller
         transform.position = teleportMatrix.MultiplyPoint(transform.position);
         Quaternion rotation = teleportMatrix.rotation;
         transform.rotation = rotation * transform.rotation;
-        rb2d.rotation = Mathf.Sign(Vector3.Dot(transform.forward, Vector3.forward)) * rotation.eulerAngles.z;
         CameraController.SetCameraTransform();
     }
 }
