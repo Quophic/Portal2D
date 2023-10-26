@@ -31,6 +31,10 @@ public abstract class PortalTraveller : MonoBehaviour
     {
         UpdateShadow();
     }
+    private void LateUpdate()
+    {
+        lastPosition = CurrentPosition;
+    }
 
     private void UpdatePortalLayer()
     {
@@ -71,7 +75,7 @@ public abstract class PortalTraveller : MonoBehaviour
     }
     public virtual void EnterPortalThreshold(Portal portal)
     {
-        lastPosition = CurrentPosition;
+        
         if (!portalsNear.Contains(portal))
         {
             portalsNear.Add(portal);

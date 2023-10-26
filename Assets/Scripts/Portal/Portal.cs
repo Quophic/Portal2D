@@ -88,13 +88,7 @@ public class Portal : MonoBehaviour
             }
         }
     }
-    public void UpdateTravellerLastPosition()
-    {
-        foreach (PortalTraveller traveller in travellers)
-        {
-            traveller.lastPosition = traveller.CurrentPosition;
-        }
-    }
+
     private void OnTravellerEnter(PortalTraveller traveller)
     {
         if (travellers.Contains(traveller))
