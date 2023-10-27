@@ -27,12 +27,10 @@ public abstract class PortalTraveller : MonoBehaviour
     {
         UpdatePortalLayer();
     }
-    private void Update()
-    {
-        UpdateShadow();
-    }
+    
     private void LateUpdate()
     {
+        UpdateShadow();
         lastPosition = CurrentPosition;
     }
 
