@@ -91,6 +91,9 @@
     <Compile Include="Assets\Scripts\CubeTraveller.cs" />
     <Compile Include="Assets\Scripts\Effector.cs" />
     <Compile Include="Assets\Scripts\CubeShadow.cs" />
+    <Compile Include="Assets\Test\Traveller\Traveller2D.cs" />
+    <Compile Include="Assets\Test\Traveller\Portal2DManager.cs" />
+    <Compile Include="Assets\Scripts\Portal\TravellerSpriteRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

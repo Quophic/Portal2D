@@ -5,23 +5,17 @@ using UnityEngine;
 public abstract class PortalTraveller : MonoBehaviour
 {
     public PortalShadow shadowPrefab;
-    public SpriteRenderer[] spriteRenderers;
     public Vector2 lastPosition;
     public Vector2 CurrentPosition { get => checkPoint.transform.position; }
     public Transform checkPoint;
+    public TravellerSpriteRenderer travellerRenderer;
     private LayerMask originLayer;
     private List<Portal> portalsNear;
-    private int[] originSortingLayerIDs;
     private PortalShadow shadow;
     private void Awake()
     {
         portalsNear = new List<Portal>();
         originLayer = gameObject.layer;
-        originSortingLayerIDs = new int[spriteRenderers.Length];
-        for(int i = 0; i < spriteRenderers.Length; i++)
-        {
-            originSortingLayerIDs[i] = spriteRenderers[i].sortingLayerID;
-        }
     }
     private void FixedUpdate()
     {
@@ -39,11 +33,7 @@ public abstract class PortalTraveller : MonoBehaviour
         if (portalsNear.Count == 0)
         {
             gameObject.layer = originLayer;
-            for(int i = 0; i < spriteRenderers.Length; i++)
-            {
-                spriteRenderers[i].sortingLayerID = originSortingLayerIDs[i];
-                spriteRenderers[i].maskInteraction = SpriteMaskInteraction.None;
-            }
+            travellerRenderer.RecoverSortingLayer();
         }
         else
         {
@@ -59,11 +49,7 @@ public abstract class PortalTraveller : MonoBehaviour
                 }
             }
             gameObject.layer = closestPortal.nearLayer;
-            for (int i = 0; i < spriteRenderers.Length; i++)
-            {
-                spriteRenderers[i].sortingLayerID = closestPortal.MaskLayerID;
-                spriteRenderers[i].maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
-            }
+            travellerRenderer.SetPortalLayer(closestPortal);
         }
     }
 

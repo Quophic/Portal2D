@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1160118340292952629}
   - component: {fileID: 1160118340292952628}
   - component: {fileID: 7730116434582869919}
+  - component: {fileID: 8287002772881464954}
   m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
@@ -148,11 +149,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowPrefab: {fileID: 7863334571610949617, guid: 9d9cfd039dda1a44ebc1b2bc702fb430, type: 3}
-  spriteRenderers:
-  - {fileID: 1160118340292952618}
   lastPosition: {x: 0, y: 0}
   checkPoint: {fileID: 1160118340292952619}
+  travellerRenderer: {fileID: 8287002772881464954}
   rb2d: {fileID: 1160118340292952629}
+--- !u!114 &8287002772881464954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160118340292952631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5d38513cebd9944acf88c91ae35df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 1160118340292952618}
 --- !u!1 &2444312505787315686
 GameObject:
   m_ObjectHideFlags: 0

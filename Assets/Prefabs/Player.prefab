@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 6012966145313515567}
   - component: {fileID: 6012966145313515564}
   - component: {fileID: 90702445}
+  - component: {fileID: 6526397643702645208}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -265,10 +266,26 @@ MonoBehaviour:
   - {fileID: 6012966144842030279}
   lastPosition: {x: 0, y: 0}
   checkPoint: {fileID: 3573657565189965840}
+  travellerRenderer: {fileID: 6526397643702645208}
   rb2d: {fileID: 6012966145313515564}
   portalController: {fileID: 0}
   CameraController: {fileID: 519420034}
   playerController: {fileID: 6012966145313515566}
+--- !u!114 &6526397643702645208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012966145313515552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5d38513cebd9944acf88c91ae35df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 3836566646276871793}
+  - {fileID: 6012966144842030279}
 --- !u!1 &6283758531221247199
 GameObject:
   m_ObjectHideFlags: 0
