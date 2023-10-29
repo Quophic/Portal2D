@@ -14,18 +14,7 @@ public class TravellerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach (var traveller in travellers)
-        {
-            traveller.ResetClosestPortal();
-        }
-        controller.UpdateTravellersClosestPortal();
-        controller.CheckAndTeleportTravellers();
-        foreach (var traveller in travellers)
-        {
-            traveller.SetClosestPortalLayer();
-            traveller.lastPosition = traveller.CurrentPosition;
-            traveller.teleported = false;
-        }
+        
         
     }
 
@@ -36,7 +25,15 @@ public class TravellerManager : MonoBehaviour
             yield return new WaitForFixedUpdate();
             foreach (var traveller in travellers)
             {
-               
+                traveller.ResetClosestPortal();
+            }
+            controller.UpdateTravellersClosestPortal();
+            controller.CheckAndTeleportTravellers();
+            foreach (var traveller in travellers)
+            {
+                traveller.SetClosestPortalLayer();
+                traveller.lastPosition = traveller.CurrentPosition;
+                traveller.teleported = false;
             }
         }
     }
