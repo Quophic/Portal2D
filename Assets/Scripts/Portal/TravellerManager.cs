@@ -17,6 +17,7 @@ public class TravellerManager : MonoBehaviour
         foreach (var traveller in travellers)
         {
             traveller.teleported = false;
+            traveller.lastPosition = traveller.CurrentPosition;
         }
 
     }
@@ -35,7 +36,6 @@ public class TravellerManager : MonoBehaviour
             foreach (var traveller in travellers)
             {
                 traveller.SetClosestPortalLayer();
-                traveller.lastPosition = traveller.CurrentPosition;
             }
         }
     }
