@@ -14,8 +14,11 @@ public class TravellerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-        
+        foreach (var traveller in travellers)
+        {
+            traveller.teleported = false;
+        }
+
     }
 
     IEnumerator LateFixedUpdate()
@@ -33,7 +36,6 @@ public class TravellerManager : MonoBehaviour
             {
                 traveller.SetClosestPortalLayer();
                 traveller.lastPosition = traveller.CurrentPosition;
-                traveller.teleported = false;
             }
         }
     }
