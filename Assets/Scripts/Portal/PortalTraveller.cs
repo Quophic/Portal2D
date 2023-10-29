@@ -17,18 +17,14 @@ public abstract class PortalTraveller : MonoBehaviour
         portalsNear = new List<Portal>();
         originLayer = gameObject.layer;
     }
-    private void FixedUpdate()
-    {
-        UpdatePortalLayer();
-    }
-    
+
     private void LateUpdate()
     {
         UpdateShadow();
         lastPosition = CurrentPosition;
     }
 
-    private void UpdatePortalLayer()
+    public void UpdatePortalLayer()
     {
         if (portalsNear.Count == 0)
         {
