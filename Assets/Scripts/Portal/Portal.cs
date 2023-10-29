@@ -128,13 +128,17 @@ public class Portal : MonoBehaviour
     }
     private bool CheckThrough(PortalTraveller traveller)
     {
-        Vector3 lastToCurrent = traveller.CurrentPosition - traveller.lastPosition;
-        Vector3 lastToTop = Top - (Vector3)traveller.lastPosition;
-        Vector3 lastToBottom = Bottom - (Vector3)traveller.lastPosition;
+        return CheckThrough(traveller.lastPosition, traveller.CurrentPosition);
+    }
+    public bool CheckThrough(Vector2 lastPos, Vector2 currentPos)
+    {
+        Vector3 lastToCurrent = currentPos - lastPos;
+        Vector3 lastToTop = Top - (Vector3)lastPos;
+        Vector3 lastToBottom = Bottom - (Vector3)lastPos;
         Vector3 crossCT = Vector3.Cross(lastToCurrent, lastToTop);
         Vector3 crossCB = Vector3.Cross(lastToCurrent, lastToBottom);
-        bool lastAtFront = Vector3.Dot(transform.right, (Vector3)traveller.lastPosition - transform.position) > 0;
-        bool currentAtBehind = Vector3.Dot(transform.right, (Vector3)traveller.CurrentPosition - transform.position) < 0;
+        bool lastAtFront = Vector3.Dot(transform.right, (Vector3)lastPos - transform.position) > 0;
+        bool currentAtBehind = Vector3.Dot(transform.right, (Vector3)currentPos - transform.position) < 0;
         bool through = Vector3.Dot(crossCT, crossCB) < 0;
         return lastAtFront & currentAtBehind & through;
     }
