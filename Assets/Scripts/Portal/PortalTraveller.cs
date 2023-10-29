@@ -6,9 +6,8 @@ public abstract class PortalTraveller : MonoBehaviour
 {
     public PortalShadow shadowPrefab;
     public Vector2 lastPosition;
-    public Vector2 CurrentPosition { get => checkPoint.transform.position; }
+    public Vector2 CurrentPosition { get => transform.position; }
     public bool teleported;
-    public Transform checkPoint;
     public TravellerSpriteRenderer travellerRenderer;
     private LayerMask originLayer;
     private PortalShadow shadow;
