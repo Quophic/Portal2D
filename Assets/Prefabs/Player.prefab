@@ -244,7 +244,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -261,12 +261,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowPrefab: {fileID: 3302486963887757180, guid: 70bbef317ee17b6418f3254962e54ecc, type: 3}
-  spriteRenderers:
-  - {fileID: 3836566646276871793}
-  - {fileID: 6012966144842030279}
   lastPosition: {x: 0, y: 0}
+  teleported: 0
   checkPoint: {fileID: 3573657565189965840}
   travellerRenderer: {fileID: 6526397643702645208}
+  closestPortalSqrDis: 0
+  closestPortal: {fileID: 0}
   rb2d: {fileID: 6012966145313515564}
   portalController: {fileID: 0}
   CameraController: {fileID: 519420034}

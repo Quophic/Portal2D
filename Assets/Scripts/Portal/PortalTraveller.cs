@@ -7,6 +7,7 @@ public abstract class PortalTraveller : MonoBehaviour
     public PortalShadow shadowPrefab;
     public Vector2 lastPosition;
     public Vector2 CurrentPosition { get => checkPoint.transform.position; }
+    public bool teleported;
     public Transform checkPoint;
     public TravellerSpriteRenderer travellerRenderer;
     private LayerMask originLayer;
@@ -21,7 +22,6 @@ public abstract class PortalTraveller : MonoBehaviour
     private void LateUpdate()
     {
         UpdateShadow();
-        lastPosition = CurrentPosition;
     }
     public void ResetClosestPortal()
     {
@@ -44,7 +44,7 @@ public abstract class PortalTraveller : MonoBehaviour
 
     public virtual void Teleport(Matrix4x4 teleportMatrix)
     {
-        lastPosition = teleportMatrix.MultiplyPoint(lastPosition);
+        teleported = true;
     }
     public virtual void EnterPortalThreshold(Portal portal)
     {

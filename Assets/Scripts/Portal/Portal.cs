@@ -107,11 +107,13 @@ public class Portal : MonoBehaviour
             return;
         }
         travellers.Add(traveller);
-        float sqrDis = Vector3.SqrMagnitude(transform.position - traveller.transform.position);
-        if (sqrDis < traveller.closestPortalSqrDis)
+        if (traveller.teleported)
         {
+            float sqrDis = Vector3.SqrMagnitude(transform.position - linkedPortal.TeleportMatrix.MultiplyPoint(traveller.transform.position));
+            
             traveller.closestPortalSqrDis = sqrDis;
             traveller.closestPortal = this;
+            traveller.SetClosestPortalLayer();
         }
         traveller.EnterPortalThreshold(this);
     } 

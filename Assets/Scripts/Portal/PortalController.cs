@@ -41,7 +41,7 @@ public class PortalController : MonoBehaviour
         portalBlue.SetTravellerClosestPortal();
     }
 
-    private void Update()
+    public void CheckAndTeleportTravellers()
     {
         portalRed.CheckAndTeleportTravellers();
         portalBlue.CheckAndTeleportTravellers();

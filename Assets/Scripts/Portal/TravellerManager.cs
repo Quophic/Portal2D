@@ -19,10 +19,14 @@ public class TravellerManager : MonoBehaviour
             traveller.ResetClosestPortal();
         }
         controller.UpdateTravellersClosestPortal();
+        controller.CheckAndTeleportTravellers();
         foreach (var traveller in travellers)
         {
             traveller.SetClosestPortalLayer();
+            traveller.lastPosition = traveller.CurrentPosition;
+            traveller.teleported = false;
         }
+        
     }
 
     IEnumerator LateFixedUpdate()
