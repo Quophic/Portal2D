@@ -116,6 +116,7 @@ MonoBehaviour:
   playerEye: {fileID: 3573657565189965840}
   offsetFactor: 0
   mainCam: {fileID: 519420031}
+  playerTraveller: {fileID: 343617302}
 --- !u!1 &2760486473280115413
 GameObject:
   m_ObjectHideFlags: 0
