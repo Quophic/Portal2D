@@ -1369,10 +1369,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 90702445, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: portalController
-      value: 
-      objectReference: {fileID: 568827849}
     - target: {fileID: 519420033, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: controller
       value: 

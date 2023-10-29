@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PortalTraveller : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+public class PortalTraveller : MonoBehaviour
 {
     public PortalShadow shadowPrefab;
     public Vector2 lastPosition;
@@ -13,8 +14,13 @@ public abstract class PortalTraveller : MonoBehaviour
     private PortalShadow shadow;
     public float closestPortalSqrDis;
     public Portal closestPortal;
+
+    public delegate void OnTeleport(Matrix4x4 teleportMatrix);
+    public OnTeleport OnTeleported;
+    private Rigidbody2D rb2D;
     private void Awake()
     {
+        rb2D = GetComponent<Rigidbody2D>();
         originLayer = gameObject.layer;
     }
 
@@ -41,15 +47,24 @@ public abstract class PortalTraveller : MonoBehaviour
     }
     
 
-    public virtual void Teleport(Matrix4x4 teleportMatrix)
+    public void Teleport(Matrix4x4 teleportMatrix)
     {
         teleported = true;
+        rb2D.velocity = teleportMatrix.MultiplyVector(rb2D.velocity);
+        rb2D.position = teleportMatrix.MultiplyPoint(rb2D.position);
+        Vector3 rotation = teleportMatrix.rotation.eulerAngles;
+        bool reversed = teleportMatrix.m22 < 0;
+        rb2D.rotation = reversed ? -rotation.z : rotation.z;
+        if(OnTeleported != null)
+        {
+            OnTeleported(teleportMatrix);
+        }    
     }
-    public virtual void EnterPortalThreshold(Portal portal)
+    public void EnterPortalThreshold(Portal portal)
     {
 
     }
-    public virtual void ExitPortalThreshold(Portal portal)
+    public void ExitPortalThreshold(Portal portal)
     {
         
     }

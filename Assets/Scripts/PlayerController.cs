@@ -16,6 +16,21 @@ public class PlayerController : MonoBehaviour
     public Transform gunSocket;
     public PortalGun gun;
     public BoxCollider2D groundChecker;
+    public PortalTraveller traveller;
+
+    private void Awake()
+    {
+        traveller.OnTeleported = new PortalTraveller.OnTeleport(SetPlayerCamera);
+    }
+
+    void SetPlayerCamera(Matrix4x4 teleportMatrix)
+    {
+        Vector3 rotation = teleportMatrix.rotation.eulerAngles;
+        rotation.x = 0;
+        rotation.z = 0;
+        eye.localRotation = Quaternion.Euler(rotation) * eye.localRotation;
+    }
+
     void Update()
     {
         Aim();

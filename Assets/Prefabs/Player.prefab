@@ -160,8 +160,8 @@ GameObject:
   - component: {fileID: 6012966145313515566}
   - component: {fileID: 6012966145313515567}
   - component: {fileID: 6012966145313515564}
-  - component: {fileID: 90702445}
   - component: {fileID: 6526397643702645208}
+  - component: {fileID: 343617302}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -211,6 +211,7 @@ MonoBehaviour:
   gunSocket: {fileID: 2133776847710525079}
   gun: {fileID: 6012966144842030278}
   groundChecker: {fileID: 6872080748377037516}
+  traveller: {fileID: 343617302}
 --- !u!70 &6012966145313515567
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -248,30 +249,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &90702445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6012966145313515552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aea176cd8e5a564aa8b5130dc6a347a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shadowPrefab: {fileID: 3302486963887757180, guid: 70bbef317ee17b6418f3254962e54ecc, type: 3}
-  lastPosition: {x: 0, y: 0}
-  teleported: 0
-  checkPoint: {fileID: 3573657565189965840}
-  travellerRenderer: {fileID: 6526397643702645208}
-  closestPortalSqrDis: 0
-  closestPortal: {fileID: 0}
-  rb2d: {fileID: 6012966145313515564}
-  portalController: {fileID: 0}
-  CameraController: {fileID: 519420034}
-  playerController: {fileID: 6012966145313515566}
-  playerEye: {fileID: 3573657565189965840}
 --- !u!114 &6526397643702645208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +264,24 @@ MonoBehaviour:
   spriteRenderers:
   - {fileID: 3836566646276871793}
   - {fileID: 6012966144842030279}
+--- !u!114 &343617302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012966145313515552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c254abdb1dc6442b7bf3eb2a38e384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowPrefab: {fileID: 3302486963887757180, guid: 70bbef317ee17b6418f3254962e54ecc, type: 3}
+  lastPosition: {x: 0, y: 0}
+  teleported: 0
+  travellerRenderer: {fileID: 6526397643702645208}
+  closestPortalSqrDis: 0
+  closestPortal: {fileID: 0}
 --- !u!1 &6283758531221247199
 GameObject:
   m_ObjectHideFlags: 0
