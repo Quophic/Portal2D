@@ -10,11 +10,11 @@ public abstract class PortalTraveller : MonoBehaviour
     public Transform checkPoint;
     public TravellerSpriteRenderer travellerRenderer;
     private LayerMask originLayer;
-    private List<Portal> portalsNear;
     private PortalShadow shadow;
+    public float closestPortalSqrDis;
+    public Portal closestPortal;
     private void Awake()
     {
-        portalsNear = new List<Portal>();
         originLayer = gameObject.layer;
     }
 
@@ -23,31 +23,24 @@ public abstract class PortalTraveller : MonoBehaviour
         UpdateShadow();
         lastPosition = CurrentPosition;
     }
-
-    public void UpdatePortalLayer()
+    public void ResetClosestPortal()
     {
-        if (portalsNear.Count == 0)
+        closestPortal = null;
+        closestPortalSqrDis = float.MaxValue;
+    }
+    public void SetClosestPortalLayer()
+    {
+        if(closestPortal == null)
         {
             gameObject.layer = originLayer;
             travellerRenderer.RecoverSortingLayer();
         }
-        else
-        {
-            Portal closestPortal = null;
-            float closestSqrDis = float.MaxValue;
-            foreach (Portal portal in portalsNear)
-            {
-                float sqrDis = Vector3.SqrMagnitude(portal.transform.position - transform.position);
-                if (sqrDis < closestSqrDis)
-                {
-                    closestSqrDis = sqrDis;
-                    closestPortal = portal;
-                }
-            }
+        else{
             gameObject.layer = closestPortal.nearLayer;
             travellerRenderer.SetPortalLayer(closestPortal);
         }
     }
+    
 
     public virtual void Teleport(Matrix4x4 teleportMatrix)
     {
@@ -55,19 +48,11 @@ public abstract class PortalTraveller : MonoBehaviour
     }
     public virtual void EnterPortalThreshold(Portal portal)
     {
-        
-        if (!portalsNear.Contains(portal))
-        {
-            portalsNear.Add(portal);
-        }
-        UpdatePortalLayer();
+
     }
     public virtual void ExitPortalThreshold(Portal portal)
     {
-        if (portalsNear.Contains(portal))
-        {
-            portalsNear.Remove(portal);
-        }
+        
     }
 
     private void EnableShadow()
@@ -89,17 +74,6 @@ public abstract class PortalTraveller : MonoBehaviour
     }
     private void UpdateShadow()
     {
-        Portal closestPortal = null;
-        float closestSqrDis = float.MaxValue;
-        foreach (Portal portal in portalsNear)
-        {
-            float sqrDis = Vector3.SqrMagnitude(portal.transform.position - transform.position);
-            if (sqrDis < closestSqrDis)
-            {
-                closestSqrDis = sqrDis;
-                closestPortal = portal;
-            }
-        }
         if(closestPortal == null)
         {
             DisableShadow();

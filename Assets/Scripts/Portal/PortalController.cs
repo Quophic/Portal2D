@@ -35,6 +35,12 @@ public class PortalController : MonoBehaviour
         portalBlue.MaskLayerID = SortingLayer.NameToID("NearPortalBlue");
     }
 
+    public void UpdateTravellersClosestPortal()
+    {
+        portalRed.SetTravellerClosestPortal();
+        portalBlue.SetTravellerClosestPortal();
+    }
+
     private void Update()
     {
         portalRed.CheckAndTeleportTravellers();

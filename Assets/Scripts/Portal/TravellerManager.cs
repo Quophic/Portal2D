@@ -5,6 +5,7 @@ using UnityEngine;
 public class TravellerManager : MonoBehaviour
 {
     private PortalTraveller[] travellers;
+    public PortalController controller;
     private void Awake()
     {
         travellers = FindObjectsOfType<PortalTraveller>();
@@ -13,9 +14,14 @@ public class TravellerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach(var traveller in travellers)
+        foreach (var traveller in travellers)
         {
-            traveller.UpdatePortalLayer();
+            traveller.ResetClosestPortal();
+        }
+        controller.UpdateTravellersClosestPortal();
+        foreach (var traveller in travellers)
+        {
+            traveller.SetClosestPortalLayer();
         }
     }
 

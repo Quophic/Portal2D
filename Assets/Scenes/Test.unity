@@ -1686,6 +1686,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4600051279013532464, guid: da61f73cd05ea2941a9ea0172f84216a, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 568827849}
     - target: {fileID: 4600051279013532465, guid: da61f73cd05ea2941a9ea0172f84216a, type: 3}
       propertyPath: m_Name
       value: PortalTravellerManager

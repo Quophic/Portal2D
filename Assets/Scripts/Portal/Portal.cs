@@ -59,7 +59,18 @@ public class Portal : MonoBehaviour
         interactor.closeChecker.OnClose = OnTravellerEnter;
         interactor.closeChecker.OnAway = OnTravellerExit;
     }
-    
+    public void SetTravellerClosestPortal()
+    {
+        foreach(var traveller in travellers)
+        {
+            float sqrDis = Vector3.SqrMagnitude(transform.position - traveller.transform.position);
+            if (sqrDis < traveller.closestPortalSqrDis)
+            {
+                traveller.closestPortalSqrDis = sqrDis;
+                traveller.closestPortal = this;
+            }
+        }
+    }
     public void GenerateLocalSnap()
     {
         interactor.GenerateLocalSnap();
@@ -96,6 +107,12 @@ public class Portal : MonoBehaviour
             return;
         }
         travellers.Add(traveller);
+        float sqrDis = Vector3.SqrMagnitude(transform.position - traveller.transform.position);
+        if (sqrDis < traveller.closestPortalSqrDis)
+        {
+            traveller.closestPortalSqrDis = sqrDis;
+            traveller.closestPortal = this;
+        }
         traveller.EnterPortalThreshold(this);
     } 
     private void OnTravellerExit(PortalTraveller traveller)
