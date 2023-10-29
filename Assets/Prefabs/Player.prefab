@@ -271,6 +271,7 @@ MonoBehaviour:
   portalController: {fileID: 0}
   CameraController: {fileID: 519420034}
   playerController: {fileID: 6012966145313515566}
+  playerEye: {fileID: 3573657565189965840}
 --- !u!114 &6526397643702645208
 MonoBehaviour:
   m_ObjectHideFlags: 0
