@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Menu.cs" />
+    <Compile Include="Assets\Scripts\Portal\SubPortalTraveller.cs" />
     <Compile Include="Assets\Test\D.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ElevatorDoor.cs" />
