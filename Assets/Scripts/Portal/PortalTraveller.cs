@@ -25,10 +25,6 @@ public class PortalTraveller : MonoBehaviour
         originLayer = gameObject.layer;
     }
 
-    private void LateUpdate()
-    {
-        UpdateShadow();
-    }
     public void ResetClosestPortal()
     {
         closestPortal = null;
@@ -55,8 +51,9 @@ public class PortalTraveller : MonoBehaviour
         rb2D.position = teleportMatrix.MultiplyPoint(rb2D.position);
         Vector3 rotation = teleportMatrix.rotation.eulerAngles;
         bool reversed = teleportMatrix.m22 < 0;
-        rb2D.rotation = reversed ? -rotation.z : rotation.z;
-        if(OnTeleported != null)
+        rb2D.rotation += reversed ? -rotation.z : rotation.z;
+        rb2D.angularVelocity *= reversed ? -1 : 1;
+        if (OnTeleported != null)
         {
             OnTeleported(teleportMatrix);
         }    
@@ -87,7 +84,7 @@ public class PortalTraveller : MonoBehaviour
         }
         shadow.Enabled = false;
     }
-    private void UpdateShadow()
+    public void UpdateShadow()
     {
         if(closestPortal == null)
         {
