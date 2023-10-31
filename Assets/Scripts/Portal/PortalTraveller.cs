@@ -9,6 +9,7 @@ public class PortalTraveller : MonoBehaviour
     public Vector2 lastPosition;
     public Vector2 CurrentPosition { get => transform.position; }
     public bool teleported;
+    public Vector2 TeleportedPosition { get => rb2D.position; }
     public TravellerSpriteRenderer travellerRenderer;
     private LayerMask originLayer;
     private PortalShadow shadow;

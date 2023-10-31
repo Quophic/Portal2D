@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  targetTraveller: {fileID: 343617302}
   portalViewShader: {fileID: 4800000, guid: b42a3d5f673133040bbff2d65cc9f0cd, type: 3}
   maxPortalIterateCount: 3
 --- !u!114 &519420034

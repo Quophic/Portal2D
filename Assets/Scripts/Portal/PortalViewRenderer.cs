@@ -5,6 +5,8 @@ using UnityEngine;
 public class PortalViewRenderer : MonoBehaviour
 {
     public PortalController controller;
+    public PortalTraveller targetTraveller;
+    private Vector3 targetPos => targetTraveller.TeleportedPosition;
     public Shader portalViewShader;
     public int maxPortalIterateCount;
     private int iterateCount;
@@ -69,8 +71,8 @@ public class PortalViewRenderer : MonoBehaviour
     {
         if (controller.connected && Material)
         {
-            float redDist = Vector3.Distance(controller.playerEye.position, controller.portalRed.transform.position);
-            float blueDist = Vector3.Distance(controller.playerEye.position, controller.portalBlue.transform.position);
+            float redDist = Vector3.Distance(targetPos, controller.portalRed.transform.position);
+            float blueDist = Vector3.Distance(targetPos, controller.portalBlue.transform.position);
             
             RenderTexture tempTex = RenderTexture.GetTemporary(Screen.width, Screen.height);
             if(redDist > blueDist)
@@ -100,14 +102,14 @@ public class PortalViewRenderer : MonoBehaviour
 
     private void RenderView(Portal portal ,RenderTexture source, RenderTexture destination)
     {
-        Vector3 portalToEye = controller.playerEye.position - portal.transform.position;
+        Vector3 portalToEye = targetPos - portal.transform.position;
         bool canSeeThroughPortal = Vector3.Dot(portalToEye, portal.transform.right) > 0;
         if (canSeeThroughPortal && maxPortalIterateCount > 0)
         {
             RenderTexture portalView = RenderTexture.GetTemporary(Screen.width, Screen.height);
             StartRenderPortalView(portal, portalView);
 
-            SetParamAndRender(controller.playerCamera, portal, controller.playerEye.position, portalView, source, destination);
+            SetParamAndRender(controller.playerCamera, portal, targetPos, portalView, source, destination);
             RenderTexture.ReleaseTemporary(portalView);
         }
         else
@@ -135,7 +137,7 @@ public class PortalViewRenderer : MonoBehaviour
             }
             _Render(offsetMatrix);
             SetAndRenderPortalView(portal, offsetMatrix);
-            SetParamAndRender(portal.PortalCamera, portal, offsetMatrix.MultiplyPoint(controller.playerEye.position), destination, portal.ViewTexture, buffer);
+            SetParamAndRender(portal.PortalCamera, portal, offsetMatrix.MultiplyPoint(targetPos), destination, portal.ViewTexture, buffer);
             Graphics.Blit(buffer, destination);
         }
     }
