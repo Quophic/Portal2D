@@ -18,6 +18,7 @@ public class TravellerManager : MonoBehaviour
         {
             traveller.teleported = false;
             traveller.lastPosition = traveller.CurrentPosition;
+            traveller.UpdateShadow();
         }
 
     }

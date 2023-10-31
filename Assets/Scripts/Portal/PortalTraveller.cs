@@ -19,6 +19,7 @@ public class PortalTraveller : MonoBehaviour
     public delegate void OnTeleport(Matrix4x4 teleportMatrix);
     public OnTeleport OnTeleported;
     private Rigidbody2D rb2D;
+    public Rigidbody2D Rb2D { get => rb2D; }
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -49,10 +50,18 @@ public class PortalTraveller : MonoBehaviour
         teleported = true;
         rb2D.velocity = teleportMatrix.MultiplyVector(rb2D.velocity);
         rb2D.position = teleportMatrix.MultiplyPoint(rb2D.position);
-        Vector3 rotation = teleportMatrix.rotation.eulerAngles;
-        bool reversed = teleportMatrix.m22 < 0;
-        rb2D.rotation += reversed ? -rotation.z : rotation.z;
-        rb2D.angularVelocity *= reversed ? -1 : 1;
+        Quaternion rotation = Quaternion.Euler(0, 0, rb2D.rotation);
+        Quaternion newRotation = teleportMatrix.rotation * rotation;
+        if (newRotation.eulerAngles.y < 90 && newRotation.eulerAngles.y > -90)
+        {
+            rb2D.rotation = newRotation.eulerAngles.z;
+        }
+        else
+        {
+            rb2D.rotation = -newRotation.eulerAngles.z;
+            rb2D.angularVelocity = -rb2D.angularVelocity;
+        }
+        
         if (OnTeleported != null)
         {
             OnTeleported(teleportMatrix);
@@ -93,8 +102,7 @@ public class PortalTraveller : MonoBehaviour
         else
         {
             EnableShadow();
-            shadow.UpdateStatus(closestPortal);
-            shadow.gameObject.layer = closestPortal.linkedPortal.localLayer;
+            shadow.UpdateStatus();
         }
     }
 }

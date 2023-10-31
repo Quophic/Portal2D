@@ -5,16 +5,14 @@ using UnityEngine;
 public class CubeShadow : PortalShadow
 {
     public SpriteRenderer spriteRenderer;
-    private Transform targetCube;
     public override void InitStatus(PortalTraveller traveller)
     {
-        targetCube = traveller.transform;
+        base.InitStatus(traveller);
     }
-    public override void UpdateStatus(Portal portal)
+    public override void UpdateStatus()
     {
-        Matrix4x4 m = portal.TeleportMatrix;
-        transform.SetPositionAndRotation(m.MultiplyPoint(targetCube.position), m.rotation * targetCube.rotation);
-        spriteRenderer.sortingLayerID = portal.linkedPortal.MaskLayerID;
+        base.UpdateStatus();
+        spriteRenderer.sortingLayerID = target.closestPortal.linkedPortal.MaskLayerID;
         spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
     }
 }

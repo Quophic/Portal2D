@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3960202929071051840
+--- !u!1 &2760486473280115413
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5543753694296429008}
-  m_Layer: 7
-  m_Name: Eye
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5543753694296429008
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3960202929071051840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6012966145313515565}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4296493227415921020
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1733298566927713455}
+  - component: {fileID: 2133776847710525079}
   m_Layer: 7
   m_Name: PortalGunSocket
   m_TagString: Untagged
@@ -47,13 +16,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1733298566927713455
+--- !u!4 &2133776847710525079
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4296493227415921020}
+  m_GameObject: {fileID: 2760486473280115413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.44, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -74,7 +43,7 @@ GameObject:
   - component: {fileID: 6012966145313515565}
   - component: {fileID: 6012966145313515567}
   - component: {fileID: 6012966145313515564}
-  - component: {fileID: 3302486963887757180}
+  - component: {fileID: 6818199736219202751}
   m_Layer: 7
   m_Name: PlayerShadow
   m_TagString: Untagged
@@ -94,7 +63,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5543753694296429008}
   - {fileID: 4896043167863823007}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -112,7 +80,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.5}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
 --- !u!50 &6012966145313515564
@@ -134,9 +102,9 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &3302486963887757180
+--- !u!114 &6818199736219202751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,11 +118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderers:
   - {fileID: 3836566646276871793}
-  - {fileID: 6012966144842030279}
-  eye: {fileID: 5543753694296429008}
-  body: {fileID: 4896043167863823007}
-  portalGunSocket: {fileID: 1733298566927713455}
-  portalGun: {fileID: 6012966144842030276}
 --- !u!1 &8900860579536023452
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,13 +143,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8900860579536023452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1733298566927713455}
+  - {fileID: 2133776847710525079}
   m_Father: {fileID: 6012966145313515565}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3836566646276871793
 SpriteRenderer:
@@ -245,7 +208,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1733298566927713455}
+    m_TransformParent: {fileID: 2133776847710525079}
     m_Modifications:
     - target: {fileID: 6652722456330408542, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
       propertyPath: m_Name
@@ -299,16 +262,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6652722456330408541, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
 --- !u!4 &6012966144842030276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-  m_PrefabInstance: {fileID: 1090274674800381595}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &6012966144842030279 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6652722456330408540, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
   m_PrefabInstance: {fileID: 1090274674800381595}
   m_PrefabAsset: {fileID: 0}
