@@ -113,7 +113,6 @@ public class Portal : MonoBehaviour
             
             traveller.closestPortalSqrDis = sqrDis;
             traveller.closestPortal = this;
-            traveller.SetClosestPortalLayer();
         }
         traveller.EnterPortalThreshold(this);
     } 
