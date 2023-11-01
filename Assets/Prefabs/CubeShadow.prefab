@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1160118340292952618}
   - component: {fileID: 1160118340292952629}
   - component: {fileID: 1160118340292952628}
-  - component: {fileID: 7863334571610949617}
+  - component: {fileID: 7543314143247577935}
+  - component: {fileID: 5437282427808867027}
   m_Layer: 10
   m_Name: CubeShadow
   m_TagString: Untagged
@@ -134,7 +135,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7863334571610949617
+--- !u!114 &7543314143247577935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +144,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1160118340292952631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62250833494ddeb4d8a334f2284f4fae, type: 3}
+  m_Script: {fileID: 11500000, guid: 08aad886a4bb10a4cade1efefc867e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1160118340292952618}
+  travellerRenderer: {fileID: 5437282427808867027}
+--- !u!114 &5437282427808867027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160118340292952631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5d38513cebd9944acf88c91ae35df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 1160118340292952618}

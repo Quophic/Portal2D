@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PortalShadow : MonoBehaviour
 {
+    public TravellerSpriteRenderer travellerRenderer;
     protected PortalTraveller target;
     private Rigidbody2D rb2D;
     private void Awake()
@@ -22,6 +23,7 @@ public class PortalShadow : MonoBehaviour
     public virtual void UpdateStatus() 
     {
         gameObject.layer = target.closestPortal.linkedPortal.localLayer;
+        travellerRenderer.SetPortalLayer(target.closestPortal.linkedPortal);
         rb2D.position = target.closestPortal.TeleportMatrix.MultiplyPoint(target.Rb2D.position);
         rb2D.velocity = target.closestPortal.TeleportMatrix.MultiplyVector(target.Rb2D.velocity);
         Quaternion targetRotation = Quaternion.Euler(0, 0, target.Rb2D.rotation);
