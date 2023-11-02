@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float returnSpeed;
     public Transform gunSocket;
     public PortalGun gun;
+    public SubPortalTraveller gunTraveller;
     public BoxCollider2D groundChecker;
     public PortalTraveller traveller;
 
@@ -114,22 +115,10 @@ public class PlayerController : MonoBehaviour
     }
     private void Aim()
     {
-        Vector3 direction = gunSocket.position - eye.position;
-        Vector3 endPos = PortalPhysics.GetRayEndPos(eye.position, direction, direction.magnitude, LayerMask.GetMask("Ignore Raycast"));
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 aimDir = (Vector3)mousePos - gunSocket.transform.position;
-        RaycastHit2D hit = PortalPhysics.ThroughPortal(eye.position, direction, direction.magnitude);
-        if (hit)
-        {
-            Portal portal = hit.collider.GetComponent<Portal>();
-            aimDir = portal.TeleportMatrix.MultiplyVector(aimDir);
-        }
-        SetPortalGun(endPos, aimDir);
-    }
-    private void SetPortalGun(Vector3 position, Vector3 direction)
-    {
-        gun.transform.position = position;
-        gun.transform.right = direction;
+        gunSocket.right = aimDir;
+        gunTraveller.CheckAndTeleport();
     }
     
     private bool CheckOnGround()

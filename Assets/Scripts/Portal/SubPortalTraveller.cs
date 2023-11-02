@@ -6,6 +6,7 @@ public class SubPortalTraveller : MonoBehaviour
 {
     public PortalTraveller parentTraveller;
     public Transform attached;
+    public TravellerSpriteRenderer travellerRenderer;
     private Vector3 localPosition;
     private Quaternion localRotation;
     private void Awake()
@@ -20,11 +21,16 @@ public class SubPortalTraveller : MonoBehaviour
             return;
         }
         Vector3 expectedPos = attached.localToWorldMatrix.MultiplyPoint(localPosition);
-        Quaternion expectedRot = transform.rotation * localRotation;
+        Quaternion expectedRot = attached.rotation * localRotation;
         if (parentTraveller.closestPortal.CheckThrough(parentTraveller.TeleportedPosition, expectedPos))
         {
             expectedPos = parentTraveller.closestPortal.TeleportMatrix.MultiplyPoint(expectedPos);
             expectedRot = parentTraveller.closestPortal.TeleportMatrix.rotation * expectedRot;
+            travellerRenderer.SetPortalLayer(parentTraveller.closestPortal.linkedPortal);
+        }
+        else
+        {
+            travellerRenderer.SetPortalLayer(parentTraveller.closestPortal);
         }
         transform.SetPositionAndRotation(expectedPos, expectedRot);
     }

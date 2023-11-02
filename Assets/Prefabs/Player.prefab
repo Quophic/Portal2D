@@ -212,6 +212,7 @@ MonoBehaviour:
   returnSpeed: 300
   gunSocket: {fileID: 2133776847710525079}
   gun: {fileID: 6012966144842030278}
+  gunTraveller: {fileID: 1090274675118850050}
   groundChecker: {fileID: 6872080748377037516}
   traveller: {fileID: 343617302}
 --- !u!70 &6012966145313515567
@@ -265,7 +266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderers:
   - {fileID: 3836566646276871793}
-  - {fileID: 6012966144842030279}
 --- !u!114 &343617302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,12 +278,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c254abdb1dc6442b7bf3eb2a38e384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowPrefab: {fileID: 3302486963887757180, guid: 70bbef317ee17b6418f3254962e54ecc, type: 3}
+  shadowPrefab: {fileID: 2347702942724284873, guid: 4d71e8e17f540284fa4f8eaa85051207, type: 3}
   lastPosition: {x: 0, y: 0}
   teleported: 0
   travellerRenderer: {fileID: 6526397643702645208}
   closestPortalSqrDis: 0
   closestPortal: {fileID: 0}
+  subTravellers:
+  - {fileID: 1090274675118850050}
 --- !u!1 &6283758531221247199
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,13 +468,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2133776847710525079}
     m_Modifications:
+    - target: {fileID: 352620185, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+      propertyPath: attached
+      value: 
+      objectReference: {fileID: 2133776847710525079}
+    - target: {fileID: 352620185, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+      propertyPath: parentTraveller
+      value: 
+      objectReference: {fileID: 343617302}
     - target: {fileID: 6652722456330408542, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
       propertyPath: m_Name
       value: PortalGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408542, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
       propertyPath: m_RootOrder
@@ -520,6 +526,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+--- !u!114 &1090274675118850050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 352620185, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+  m_PrefabInstance: {fileID: 1090274674800381595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c3b460ae0d25043bcc5ed659f4cf6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6012966144842030276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
@@ -536,8 +553,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d5c349b4374354483427ed8a492e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &6012966144842030279 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6652722456330408540, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-  m_PrefabInstance: {fileID: 1090274674800381595}
-  m_PrefabAsset: {fileID: 0}

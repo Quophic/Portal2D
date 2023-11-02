@@ -42,7 +42,9 @@ GameObject:
   - component: {fileID: 6652722456330408543}
   - component: {fileID: 6652722456330408540}
   - component: {fileID: 6652722456330408541}
-  m_Layer: 0
+  - component: {fileID: 352620185}
+  - component: {fileID: 352620186}
+  m_Layer: 7
   m_Name: PortalGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,3 +134,32 @@ MonoBehaviour:
   portalController: {fileID: 0}
   grabPosition: {fileID: 5749305994140498277}
   portalShift: 0.001
+--- !u!114 &352620185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652722456330408542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c3b460ae0d25043bcc5ed659f4cf6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTraveller: {fileID: 0}
+  attached: {fileID: 0}
+  travellerRenderer: {fileID: 352620186}
+--- !u!114 &352620186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652722456330408542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5d38513cebd9944acf88c91ae35df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 6652722456330408540}

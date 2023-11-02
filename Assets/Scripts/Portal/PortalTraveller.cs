@@ -20,6 +20,8 @@ public class PortalTraveller : MonoBehaviour
     public OnTeleport OnTeleported;
     private Rigidbody2D rb2D;
     public Rigidbody2D Rb2D { get => rb2D; }
+
+    public SubPortalTraveller[] subTravellers;
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -41,6 +43,13 @@ public class PortalTraveller : MonoBehaviour
         else{
             gameObject.layer = closestPortal.nearLayer;
             travellerRenderer.SetPortalLayer(closestPortal);
+        }
+        if(subTravellers != null)
+        {
+            foreach(var sub in subTravellers)
+            {
+                sub.CheckAndTeleport();
+            }
         }
     }
     
