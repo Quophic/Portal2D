@@ -76,6 +76,10 @@ public class PlayerController : MonoBehaviour
     private void Face()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (traveller.teleported)
+        {
+            mousePos = traveller.closestPortal.TeleportMatrix.MultiplyPoint(mousePos);
+        }
         Vector2 toMouse = mousePos - (Vector2)transform.position;
         bool faceRight = Vector2.Dot(toMouse, transform.right) >= 0;
         if (faceRight)
@@ -116,7 +120,11 @@ public class PlayerController : MonoBehaviour
     private void Aim()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 aimDir = (Vector3)mousePos - gunSocket.transform.position;
+        if (traveller.teleported)
+        {
+            mousePos = traveller.closestPortal.TeleportMatrix.MultiplyPoint(mousePos);
+        }
+        Vector3 aimDir = (Vector3)mousePos - gunSocket.position;
         gunSocket.right = aimDir;
         gunTraveller.CheckAndTeleport();
     }
