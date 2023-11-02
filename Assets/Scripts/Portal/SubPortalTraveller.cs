@@ -7,6 +7,8 @@ public class SubPortalTraveller : MonoBehaviour
     public PortalTraveller parentTraveller;
     public Transform attached;
     public TravellerSpriteRenderer travellerRenderer;
+    public Portal ClosestPortal;
+    private Portal closestPortal;
     private Vector3 localPosition;
     private Quaternion localRotation;
     private void Awake()
@@ -18,6 +20,7 @@ public class SubPortalTraveller : MonoBehaviour
     {
         if(parentTraveller.closestPortal == null)
         {
+            closestPortal = null;
             return;
         }
         Vector3 expectedPos = attached.localToWorldMatrix.MultiplyPoint(localPosition);
@@ -26,12 +29,13 @@ public class SubPortalTraveller : MonoBehaviour
         {
             expectedPos = parentTraveller.closestPortal.TeleportMatrix.MultiplyPoint(expectedPos);
             expectedRot = parentTraveller.closestPortal.TeleportMatrix.rotation * expectedRot;
-            travellerRenderer.SetPortalLayer(parentTraveller.closestPortal.linkedPortal);
+            closestPortal = parentTraveller.closestPortal.linkedPortal;
         }
         else
         {
-            travellerRenderer.SetPortalLayer(parentTraveller.closestPortal);
+            closestPortal = parentTraveller.closestPortal;
         }
         transform.SetPositionAndRotation(expectedPos, expectedRot);
+        travellerRenderer.SetPortalLayer(closestPortal);
     }
 }
