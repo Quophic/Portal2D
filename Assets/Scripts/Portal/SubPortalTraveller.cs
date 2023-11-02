@@ -29,11 +29,17 @@ public class SubPortalTraveller : MonoBehaviour
         {
             Vector3 expectedPos = attached.localToWorldMatrix.MultiplyPoint(localPosition);
             Quaternion expectedRot = attached.rotation * localRotation;
-            if (parentTraveller.closestPortal.CheckThrough(parentTraveller.TeleportedPosition, expectedPos))
+            if (parentTraveller.teleported)
             {
+                closestPortal = parentTraveller.closestPortal;
+                expectedPos = parentTraveller.closestPortal.linkedPortal.TeleportMatrix.MultiplyPoint(expectedPos);
+                expectedRot = parentTraveller.closestPortal.linkedPortal.TeleportMatrix.rotation * expectedRot;
+            }
+            else if (parentTraveller.closestPortal.CheckThrough(parentTraveller.TeleportedPosition, expectedPos))
+            {
+                closestPortal = parentTraveller.closestPortal.linkedPortal;
                 expectedPos = parentTraveller.closestPortal.TeleportMatrix.MultiplyPoint(expectedPos);
                 expectedRot = parentTraveller.closestPortal.TeleportMatrix.rotation * expectedRot;
-                closestPortal = parentTraveller.closestPortal.linkedPortal;
             }
             else
             {
