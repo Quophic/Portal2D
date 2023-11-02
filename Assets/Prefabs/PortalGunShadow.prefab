@@ -41,11 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6652722456330408543}
   - component: {fileID: 6652722456330408540}
-  - component: {fileID: 6652722456330408541}
-  - component: {fileID: 352620185}
   - component: {fileID: 352620186}
+  - component: {fileID: 6313675209228139915}
   m_Layer: 7
-  m_Name: PortalGun
+  m_Name: PortalGunShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +106,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
   m_FlipX: 0
@@ -119,37 +118,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6652722456330408541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6652722456330408542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d5c349b4374354483427ed8a492e26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portalController: {fileID: 0}
-  grabPosition: {fileID: 5749305994140498277}
-  portalShift: 0.001
---- !u!114 &352620185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6652722456330408542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c3b460ae0d25043bcc5ed659f4cf6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subShadowPrefab: {fileID: 0}
-  parentTraveller: {fileID: 0}
-  attached: {fileID: 0}
-  travellerRenderer: {fileID: 352620186}
 --- !u!114 &352620186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,3 +132,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderers:
   - {fileID: 6652722456330408540}
+--- !u!114 &6313675209228139915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652722456330408542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e7a68039afffb4aaad76566c264c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travellerRenderer: {fileID: 352620186}

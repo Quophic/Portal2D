@@ -476,6 +476,14 @@ PrefabInstance:
       propertyPath: parentTraveller
       value: 
       objectReference: {fileID: 343617302}
+    - target: {fileID: 352620185, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+      propertyPath: subShadowPrefab
+      value: 
+      objectReference: {fileID: 6313675209228139915, guid: e523671ebcc128f4fa6d690c6210656b, type: 3}
+    - target: {fileID: 6652722456330408540, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6652722456330408542, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
       propertyPath: m_Name
       value: PortalGun
