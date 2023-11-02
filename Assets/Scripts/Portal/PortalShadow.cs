@@ -4,7 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PortalShadow : MonoBehaviour
 {
-    private PortalTraveller target;
+    public TravellerSpriteRenderer travellerRenderer;
+    protected PortalTraveller target;
     private Rigidbody2D rb2D;
     private void Awake()
     {
@@ -19,13 +20,14 @@ public class PortalShadow : MonoBehaviour
     {
         target = traveller;
     }
-    public virtual void UpdateStatus(Portal portal) 
+    public virtual void UpdateStatus() 
     {
-        gameObject.layer = portal.linkedPortal.localLayer;
-        rb2D.position = portal.TeleportMatrix.MultiplyPoint(target.Rb2D.position);
-        rb2D.velocity = portal.TeleportMatrix.MultiplyVector(target.Rb2D.velocity);
+        gameObject.layer = target.closestPortal.linkedPortal.localLayer;
+        travellerRenderer.SetPortalLayer(target.closestPortal.linkedPortal);
+        rb2D.position = target.closestPortal.TeleportMatrix.MultiplyPoint(target.Rb2D.position);
+        rb2D.velocity = target.closestPortal.TeleportMatrix.MultiplyVector(target.Rb2D.velocity);
         Quaternion targetRotation = Quaternion.Euler(0, 0, target.Rb2D.rotation);
-        Quaternion newRotation = portal.TeleportMatrix.rotation * targetRotation;
+        Quaternion newRotation = target.closestPortal.TeleportMatrix.rotation * targetRotation;
         if (newRotation.eulerAngles.y < 90 && newRotation.eulerAngles.y > -90)
         {
             rb2D.rotation = newRotation.eulerAngles.z;

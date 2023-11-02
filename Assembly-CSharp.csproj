@@ -64,7 +64,6 @@
     <Compile Include="Assets\Scripts\ElevatorDoor.cs" />
     <Compile Include="Assets\Test\TeleportTest\AutoReturn.cs" />
     <Compile Include="Assets\Scripts\Portal\Portal.cs" />
-    <Compile Include="Assets\Scripts\PlayerShadow.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalViewRenderer.cs" />
     <Compile Include="Assets\Scripts\Portal\TravellerSpriteRenderer.cs" />
     <Compile Include="Assets\Scripts\Portal\CloseToPortalChecker.cs" />
@@ -93,7 +92,6 @@
     <Compile Include="Assets\Test\Traveller\Portal2DManager.cs" />
     <Compile Include="Assets\Scripts\Portal\TravellerManager.cs" />
     <Compile Include="Assets\Scripts\Effector.cs" />
-    <Compile Include="Assets\Scripts\CubeShadow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

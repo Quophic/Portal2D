@@ -18,7 +18,8 @@ public class TravellerManager : MonoBehaviour
         {
             traveller.teleported = false;
             traveller.lastPosition = traveller.CurrentPosition;
-            
+            traveller.SetClosestPortalLayer();
+            traveller.UpdateShadow();
         }
 
     }
@@ -36,8 +37,7 @@ public class TravellerManager : MonoBehaviour
             controller.CheckAndTeleportTravellers();
             foreach (var traveller in travellers)
             {
-                traveller.SetClosestPortalLayer();
-                traveller.UpdateShadow();
+                
             }
         }
     }

@@ -102,7 +102,7 @@ public class PortalTraveller : MonoBehaviour
         else
         {
             EnableShadow();
-            shadow.UpdateStatus(closestPortal);
+            shadow.UpdateStatus();
         }
     }
 }

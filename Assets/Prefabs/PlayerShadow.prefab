@@ -1,37 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2760486473280115413
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2133776847710525079}
-  m_Layer: 7
-  m_Name: PortalGunSocket
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2133776847710525079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2760486473280115413}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6012966144842030276}
-  m_Father: {fileID: 4896043167863823007}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6012966145313515552
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +11,8 @@ GameObject:
   - component: {fileID: 6012966145313515565}
   - component: {fileID: 6012966145313515567}
   - component: {fileID: 6012966145313515564}
-  - component: {fileID: 6818199736219202751}
+  - component: {fileID: 2347702942724284873}
+  - component: {fileID: 8465956499546721832}
   m_Layer: 7
   m_Name: PlayerShadow
   m_TagString: Untagged
@@ -104,7 +73,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &6818199736219202751
+--- !u!114 &2347702942724284873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,7 +82,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6012966145313515552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74dd6a222c00c1f4ab9e79a0f6d7aa43, type: 3}
+  m_Script: {fileID: 11500000, guid: 08aad886a4bb10a4cade1efefc867e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travellerRenderer: {fileID: 8465956499546721832}
+--- !u!114 &8465956499546721832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012966145313515552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5d38513cebd9944acf88c91ae35df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderers:
@@ -146,8 +128,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2133776847710525079}
+  m_Children: []
   m_Father: {fileID: 6012966145313515565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -203,69 +184,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1090274674800381595
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2133776847710525079}
-    m_Modifications:
-    - target: {fileID: 6652722456330408542, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_Name
-      value: PortalGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408542, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
---- !u!4 &6012966144842030276 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6652722456330408543, guid: 5b66163fe855ba44fb3d2bba1f2ab9e9, type: 3}
-  m_PrefabInstance: {fileID: 1090274674800381595}
-  m_PrefabAsset: {fileID: 0}
