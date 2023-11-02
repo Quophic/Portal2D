@@ -13,7 +13,7 @@ public class SubPortalTraveller : MonoBehaviour
         localPosition = transform.localPosition;
         localRotation = transform.localRotation;
     }
-    public void CheckAndTelepot()
+    public void CheckAndTeleport()
     {
         if(parentTraveller.closestPortal == null)
         {
