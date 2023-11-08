@@ -2,39 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animation))]
 public class Gate : Effector
 {
     public float speed;
-    private Transform page;
-    private Vector2 openPos;
-    private Vector2 closePos;
-    private float t;
-    private bool opening;
+    private Animation ani;
     private void Awake()
     {
-        page = transform.Find("Page");
+        ani = GetComponent<Animation>();
         onActivated += OpenGate;
         onStopped += CloseGate;
-        opening = false;
-        t = 0;
-        closePos = page.localPosition;
-        openPos.x = closePos.x;
-        openPos.y = -closePos.y;
     }
-    private void Update()
+    private void OpenGate()
     {
-        float n;
-        if (opening)
-        {
-            n = t + speed * Time.deltaTime;
-        }
-        else
-        {
-            n = t - speed * Time.deltaTime;
-        }
-        t = Mathf.Clamp(n, 0, 1);
-        page.localPosition = Vector2.Lerp(closePos, openPos, t);
+        AnimationState state = ani[ani.clip.name];
+        state.speed = speed;
+        ani.Play();
     }
-    private void OpenGate() => opening = true;
-    private void CloseGate() => opening = false;
+    private void CloseGate()
+    {
+        AnimationState state = ani[ani.clip.name];
+        state.speed = -speed;
+        if (!ani.isPlaying)
+        {
+            state.time = state.length;
+        }
+        ani.Play();
+    }
+
 }
