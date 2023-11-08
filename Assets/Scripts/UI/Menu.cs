@@ -38,7 +38,7 @@ public class Menu : MonoBehaviour
     }
     public void Restart()
     {
-        LevelManager.Instance.LoadLevel(LevelManager.Instance.CurrentIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Resume();
     }
     public void ReturnToMainMenu()
