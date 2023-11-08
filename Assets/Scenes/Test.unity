@@ -853,6 +853,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1830d1c4dada6d846867d332052f3a9c, type: 3}
+--- !u!114 &842745278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5948573813596812690, guid: 1d8e019bba5da7a40ab7fda127d11644, type: 3}
+  m_PrefabInstance: {fileID: 5948573812332620646}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467ddb3e8b3b38645b5dc5e238954611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &933067261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1625,6 +1636,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1826718515086584995, guid: 9a177676a8eeb7f408d248b3479ed72c, type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 842745278}
     - target: {fileID: 1826718515758218440, guid: 9a177676a8eeb7f408d248b3479ed72c, type: 3}
       propertyPath: m_Name
       value: Elevator

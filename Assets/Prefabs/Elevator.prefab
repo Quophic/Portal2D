@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1826718515086585020}
   - component: {fileID: 1826718515086584995}
+  - component: {fileID: 1180161496}
   m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
@@ -133,6 +134,23 @@ MonoBehaviour:
   activators:
   - {fileID: 1826718515758218445}
   speed: 1
+  menu: {fileID: 0}
+--- !u!111 &1180161496
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826718515086585021}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 68ec55b67f0106e439b44b008855c03a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 68ec55b67f0106e439b44b008855c03a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 1
+  m_CullingType: 0
 --- !u!1 &1826718515382689952
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826718515852614873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.0000002, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 0.5, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -713,7 +731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826718516568644974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 0.5, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
