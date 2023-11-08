@@ -46,4 +46,8 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         Resume();
     }
+    public void LoadNextLevel()
+    {
+        LevelManager.Instance.LoadNextLevel();
+    }
 }

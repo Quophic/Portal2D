@@ -22,6 +22,7 @@ public class LevelManager
     }
     private int currentLevelIndex;
     public int CurrentIndex => currentLevelIndex;
+    public bool IsLastLevel => currentLevelIndex == levelInfos.Count - 1;
     public LevelInfo CurrentInfo
     {
         get => FindAt(currentLevelIndex);
@@ -82,6 +83,16 @@ public class LevelManager
         }
         currentLevelIndex = index;
         SceneManager.LoadScene(CurrentInfo.scene);
+    }
+    public bool LoadNextLevel()
+    {
+        if (IsLastLevel)
+        {
+            return false;
+        }
+        currentLevelIndex++;
+        SceneManager.LoadScene(CurrentInfo.scene);
+        return true;
     }
     public void Save()
     {
