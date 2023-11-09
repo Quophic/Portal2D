@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb2d;
-    public Camera mainCam;
     public GameObject body;
     public Transform eye;
     public float power;
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        traveller.OnTeleported = new PortalTraveller.OnTeleport(SetPlayerCamera);
+        traveller.OnTeleported += SetPlayerCamera;
     }
 
     void SetPlayerCamera(Matrix4x4 teleportMatrix)
@@ -95,7 +94,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         float h = Input.GetAxis("Horizontal");
-        Vector2 force = mainCam.transform.right * h * power;
+        Vector2 force = Camera.main.transform.right * h * power;
         rb2d.AddForce(force);
         Vector2 velocity = rb2d.velocity;
         if(Mathf.Abs(velocity.x) > horizontalMaxSpped)
