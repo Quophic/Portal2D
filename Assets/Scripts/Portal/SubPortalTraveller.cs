@@ -46,20 +46,23 @@ public class SubPortalTraveller : MonoBehaviour
                 closestPortal = parentTraveller.closestPortal;
             }
             transform.SetPositionAndRotation(expectedPos, expectedRot);
-            travellerRenderer.SetPortalLayer(closestPortal);
+            travellerRenderer?.SetPortalLayer(closestPortal);
             EnableShadow();
-            subShadow.UpdateStatus();
+            subShadow?.UpdateStatus();
         }
     }
 
     private void EnableShadow()
     {
-        if (subShadow == null)
+        if (subShadow == null && subShadowPrefab != null)
         {
             subShadow = Instantiate(subShadowPrefab);
             subShadow.InitStatus(this);
         }
-        subShadow.Enabled = true;
+        if (subShadow)
+        {
+            subShadow.Enabled = true;
+        }
     }
     private void DisableShadow()
     {

@@ -766,6 +766,8 @@ GameObject:
   m_Component:
   - component: {fileID: 726721360}
   - component: {fileID: 726721359}
+  - component: {fileID: 726721361}
+  - component: {fileID: 726721362}
   m_Layer: 0
   m_Name: VCM
   m_TagString: Untagged
@@ -792,7 +794,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1957329251}
+  m_Follow: {fileID: 1681039681}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -827,6 +829,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &726721361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726721358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_ApplyAfter: 0
+  m_PreserveComposition: 0
+--- !u!114 &726721362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726721358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe112837cd06a342b0691f051c535ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 726721359}
+  brain: {fileID: 1237257305}
+  playerTraveller: {fileID: 1957329250}
 --- !u!4 &732980114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1235522140819161305, guid: 22e41800a5b636b488470d443cd5f785, type: 3}
@@ -1178,7 +1210,6 @@ GameObject:
   - component: {fileID: 1237257303}
   - component: {fileID: 1237257302}
   - component: {fileID: 1237257301}
-  - component: {fileID: 1237257300}
   - component: {fileID: 1237257305}
   m_Layer: 7
   m_Name: Main Camera
@@ -1187,21 +1218,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1237257300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237257299}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe112837cd06a342b0691f051c535ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerEye: {fileID: 1681039681}
-  offsetFactor: 0
-  playerTraveller: {fileID: 1957329250}
 --- !u!114 &1237257301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,7 +1316,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 3
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -1915,6 +1931,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1235522140819161305, guid: 22e41800a5b636b488470d443cd5f785, type: 3}
   m_PrefabInstance: {fileID: 2129181673}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1906650920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6283758531221247199, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+  m_PrefabInstance: {fileID: 1643980104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1906650921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906650920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c3b460ae0d25043bcc5ed659f4cf6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subShadowPrefab: {fileID: 0}
+  parentTraveller: {fileID: 1957329250}
+  attached: {fileID: 1957329251}
+  travellerRenderer: {fileID: 0}
 --- !u!114 &1957329250 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 343617302, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}

@@ -25,10 +25,10 @@ public class PlayerController : MonoBehaviour
 
     void SetPlayerCamera(Matrix4x4 teleportMatrix)
     {
-        Vector3 rotation = teleportMatrix.rotation.eulerAngles;
-        rotation.x = 0;
-        rotation.z = 0;
-        eye.localRotation = Quaternion.Euler(rotation) * eye.localRotation;
+        //Vector3 rotation = teleportMatrix.rotation.eulerAngles;
+        //rotation.x = 0;
+        //rotation.z = 0;
+        //eye.localRotation = Quaternion.Euler(rotation) * eye.localRotation;
     }
 
     void Update()

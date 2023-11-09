@@ -5,7 +5,6 @@ using UnityEngine;
 public class PortalController : MonoBehaviour
 {
     public Portal portalPrefab;
-    public Transform playerEye;
     public Camera playerCamera => Camera.main;
     public Portal portalRed;
     public Portal portalBlue;
