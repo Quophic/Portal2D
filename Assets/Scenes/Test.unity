@@ -859,6 +859,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 726721359}
   brain: {fileID: 1237257305}
   playerTraveller: {fileID: 1957329250}
+  rotSpeed: 300
 --- !u!4 &732980114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1235522140819161305, guid: 22e41800a5b636b488470d443cd5f785, type: 3}
@@ -1796,10 +1797,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 343617302, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: subTravellers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 343617302, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: subTravellers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1906650921}
     - target: {fileID: 519420033, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 568827849}
+    - target: {fileID: 3573657565189965840, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6012966144842030278, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: portalController
       value: 
@@ -1852,6 +1865,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515566, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: eyeTraveller
+      value: 
+      objectReference: {fileID: 1906650921}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
 --- !u!4 &1681039681 stripped

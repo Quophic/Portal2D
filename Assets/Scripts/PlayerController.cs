@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb2d;
     public GameObject body;
     public Transform eye;
+    public SubPortalTraveller eyeTraveller;
     public float power;
     public float jumpSpeed;
     public float horizontalMaxSpped;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        eyeTraveller.CheckAndTeleport();
         Aim();
         Stand();
         if (Input.GetMouseButtonDown(0))

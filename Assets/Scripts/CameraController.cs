@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public CinemachineVirtualCamera virtualCamera;
     public CinemachineBrain brain;
     public PortalTraveller playerTraveller;
-    private Vector3 teleportedPos;
+    public float rotSpeed;
     private void Awake()
     {
         playerTraveller.OnTeleported += TeleportCamera;
@@ -22,16 +22,19 @@ public class CameraController : MonoBehaviour
 
     public void TeleportCamera(Matrix4x4 m)
     {
-        teleportedPos = transform.position;
-        teleportedPos.z = m.MultiplyPoint(transform.position).z;
-        transform.position = teleportedPos;
-        transform.rotation = m.rotation * transform.rotation;
+        virtualCamera.ForceCameraPosition(m.MultiplyPoint(transform.position), m.rotation * transform.rotation);
     }
     public void SetCameraTransform()
     {
-        if (playerTraveller.teleported)
+        Quaternion targetRot;
+        if(Vector3.Dot(transform.forward, Vector3.forward) > 0)
         {
-
+            targetRot = Quaternion.identity;
         }
+        else
+        {
+            targetRot = Quaternion.Euler(0, 180, 0);
+        }
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotSpeed * Time.deltaTime);
     }
 }
