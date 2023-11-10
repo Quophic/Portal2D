@@ -847,7 +847,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 726721359}
   brain: {fileID: 1237257305}
   playerTraveller: {fileID: 1957329250}
-  rotSpeed: 300
+  rotSpeed: 150
 --- !u!4 &732980114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1235522140819161305, guid: 22e41800a5b636b488470d443cd5f785, type: 3}
