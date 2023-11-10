@@ -162,12 +162,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c254abdb1dc6442b7bf3eb2a38e384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowPrefab: {fileID: 7863334571610949617, guid: 9d9cfd039dda1a44ebc1b2bc702fb430, type: 3}
+  shadowPrefab: {fileID: 7543314143247577935, guid: 9d9cfd039dda1a44ebc1b2bc702fb430, type: 3}
   lastPosition: {x: 0, y: 0}
   teleported: 0
   travellerRenderer: {fileID: 8287002772881464954}
   closestPortalSqrDis: 0
   closestPortal: {fileID: 0}
+  subTravellers: []
 --- !u!1 &2444312505787315686
 GameObject:
   m_ObjectHideFlags: 0

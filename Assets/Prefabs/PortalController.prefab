@@ -45,7 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalPrefab: {fileID: 397342184054795104, guid: 48da02de2d9d8284785fcda5d4c03172, type: 3}
-  playerEye: {fileID: 0}
-  playerCamera: {fileID: 0}
   portalRed: {fileID: 0}
   portalBlue: {fileID: 0}

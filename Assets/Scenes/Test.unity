@@ -235,10 +235,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
-    - target: {fileID: 7244501971468691829, guid: 7971812de8feb8543b3a26e9de5c471f, type: 3}
-      propertyPath: shadowPrefab
-      value: 
-      objectReference: {fileID: 7543314143247577935, guid: 9d9cfd039dda1a44ebc1b2bc702fb430, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7971812de8feb8543b3a26e9de5c471f, type: 3}
 --- !u!4 &276007338 stripped
@@ -544,14 +540,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortalController
       objectReference: {fileID: 0}
-    - target: {fileID: 7294316151833940456, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
-      propertyPath: playerEye
-      value: 
-      objectReference: {fileID: 1681039681}
-    - target: {fileID: 7294316151833940456, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
 --- !u!114 &568827849 stripped
@@ -827,7 +815,7 @@ Transform:
   m_Children:
   - {fileID: 1450932148}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &726721361
 MonoBehaviour:
@@ -1299,7 +1287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1237257305
 MonoBehaviour:
@@ -1797,22 +1785,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 343617302, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: subTravellers.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 343617302, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: subTravellers.Array.data[1]
-      value: 
-      objectReference: {fileID: 1906650921}
-    - target: {fileID: 519420033, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 568827849}
-    - target: {fileID: 3573657565189965840, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6012966144842030278, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
       propertyPath: portalController
       value: 
@@ -1865,10 +1837,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6012966145313515566, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-      propertyPath: eyeTraveller
-      value: 
-      objectReference: {fileID: 1906650921}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
 --- !u!4 &1681039681 stripped
@@ -1948,27 +1916,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1235522140819161305, guid: 22e41800a5b636b488470d443cd5f785, type: 3}
   m_PrefabInstance: {fileID: 2129181673}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1906650920 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6283758531221247199, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-  m_PrefabInstance: {fileID: 1643980104}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1906650921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906650920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c3b460ae0d25043bcc5ed659f4cf6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subShadowPrefab: {fileID: 0}
-  parentTraveller: {fileID: 1957329250}
-  attached: {fileID: 1957329251}
-  travellerRenderer: {fileID: 0}
 --- !u!114 &1957329250 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 343617302, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
@@ -1980,11 +1927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c254abdb1dc6442b7bf3eb2a38e384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1957329251 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6012966145313515565, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
-  m_PrefabInstance: {fileID: 1643980104}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1996263853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2092,7 +2034,7 @@ Transform:
   - {fileID: 1898570846}
   - {fileID: 771081374}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2129181673
 PrefabInstance:
@@ -2291,10 +2233,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5948573813237742018, guid: 1d8e019bba5da7a40ab7fda127d11644, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5948573813596812691, guid: 1d8e019bba5da7a40ab7fda127d11644, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -84,9 +84,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 6012966145313515564}
-  mainCam: {fileID: 0}
   body: {fileID: 8900860579536023452}
   eye: {fileID: 3573657565189965840}
+  eyeTraveller: {fileID: 1906650921}
   power: 60
   jumpSpeed: 6
   horizontalMaxSpped: 10
@@ -168,6 +168,7 @@ MonoBehaviour:
   closestPortal: {fileID: 0}
   subTravellers:
   - {fileID: 1090274675118850050}
+  - {fileID: 1906650921}
 --- !u!1 &6283758531221247199
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3573657565189965840}
+  - component: {fileID: 1906650921}
   m_Layer: 7
   m_Name: Eye
   m_TagString: Untagged
@@ -199,6 +201,22 @@ Transform:
   m_Father: {fileID: 6012966145313515565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1906650921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6283758531221247199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c3b460ae0d25043bcc5ed659f4cf6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subShadowPrefab: {fileID: 0}
+  parentTraveller: {fileID: 343617302}
+  attached: {fileID: 6012966145313515565}
+  travellerRenderer: {fileID: 0}
 --- !u!1 &6753637057796177235
 GameObject:
   m_ObjectHideFlags: 0
