@@ -19,23 +19,10 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D groundChecker;
     public PortalTraveller traveller;
 
-    private void Awake()
-    {
-        traveller.OnTeleported += SetPlayerCamera;
-    }
-
-    void SetPlayerCamera(Matrix4x4 teleportMatrix)
-    {
-        //Vector3 rotation = teleportMatrix.rotation.eulerAngles;
-        //rotation.x = 0;
-        //rotation.z = 0;
-        //eye.localRotation = Quaternion.Euler(rotation) * eye.localRotation;
-    }
-
     void Update()
     {
         eyeTraveller.CheckAndTeleport();
-        Aim();
+        
         Stand();
         if (Input.GetMouseButtonDown(0))
         {
@@ -58,12 +45,14 @@ public class PlayerController : MonoBehaviour
         }
         Jump();
     }
+    private void LateUpdate()
+    {
+        Face();
+        Aim();
+    }
     private void FixedUpdate()
     {
         Move();
-        
-        Face();
-
     }
 
     private void Stand()
@@ -76,11 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private void Face()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (traveller.teleported)
-        {
-            mousePos = traveller.closestPortal.TeleportMatrix.MultiplyPoint(mousePos);
-        }
+        Vector2 mousePos = GetMouseWorldPos();
         Vector2 toMouse = mousePos - (Vector2)transform.position;
         bool faceRight = Vector2.Dot(toMouse, transform.right) >= 0;
         if (faceRight)
@@ -120,11 +105,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Aim()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (traveller.teleported)
-        {
-            mousePos = traveller.closestPortal.TeleportMatrix.MultiplyPoint(mousePos);
-        }
+        Vector2 mousePos = GetMouseWorldPos();
         Vector3 aimDir = (Vector3)mousePos - gunSocket.position;
         gunSocket.right = aimDir;
         gunTraveller.CheckAndTeleport();
@@ -137,5 +118,15 @@ public class PlayerController : MonoBehaviour
         float zRotation = t.rotation.eulerAngles.z;
         zRotation = isClockWise ? zRotation : -zRotation;
         return Physics2D.BoxCast(t.position, groundChecker.size, zRotation, -t.up, 0, LayerMask.GetMask("Ground", "PortalRed", "NearProtalRed", "PortalBlue", "NearPortalBlue", "Dynamic"));
+    }
+
+    private Vector2 GetMouseWorldPos()
+    {
+        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (traveller.teleported)
+        {
+            return traveller.closestPortal.TeleportMatrix.MultiplyPoint(pos);
+        }
+        return pos;
     }
 }

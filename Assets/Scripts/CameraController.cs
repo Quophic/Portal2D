@@ -18,14 +18,14 @@ public class CameraController : MonoBehaviour
     {
         playerTraveller.OnTeleported += TeleportCamera;
     }
-    void LateUpdate()
+    void Update()
     {
         RotateCamera();
         brain.ManualUpdate();
     }
 
     public void TeleportCamera(Matrix4x4 m)
-    { 
+    {
         virtualCamera.ForceCameraPosition(m.MultiplyPoint(transform.position), m.rotation * transform.rotation);
         oldRot = transform.rotation;
         if (Vector3.Dot(transform.forward, Vector3.forward) > 0)
@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
             targetRot = Quaternion.Euler(0, 180, 0);
         }
         rotTime = Quaternion.Angle(transform.rotation, targetRot);
-        t = 0;    
+        t = 0;
     }
     public void RotateCamera()
     {
