@@ -44,13 +44,7 @@ public class PortalTraveller : MonoBehaviour
             gameObject.layer = closestPortal.nearLayer;
             travellerRenderer.SetPortalLayer(closestPortal);
         }
-        if(subTravellers != null)
-        {
-            foreach(var sub in subTravellers)
-            {
-                sub.CheckAndTeleport();
-            }
-        }
+        
     }
     
 
@@ -70,7 +64,15 @@ public class PortalTraveller : MonoBehaviour
             rb2D.rotation = -newRotation.eulerAngles.z;
             rb2D.angularVelocity = -rb2D.angularVelocity;
         }
-        
+
+        if (subTravellers != null)
+        {
+            foreach (var sub in subTravellers)
+            {
+                sub.CheckAndTeleport();
+            }
+        }
+
         if (OnTeleported != null)
         {
             OnTeleported(teleportMatrix);

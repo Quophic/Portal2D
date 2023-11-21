@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         eyeTraveller.CheckAndTeleport();
-        
+
+        Face();
+        Aim();
+
         Stand();
         if (Input.GetMouseButtonDown(0))
         {
@@ -65,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     private void Face()
     {
-        Vector2 mousePos = GetMouseWorldPos();
+        Vector2 mousePos = GetMousePos();
         Vector2 toMouse = mousePos - (Vector2)transform.position;
         bool faceRight = Vector2.Dot(toMouse, transform.right) >= 0;
         if (faceRight)
@@ -105,7 +108,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Aim()
     {
-        Vector2 mousePos = GetMouseWorldPos();
+        Vector2 mousePos = GetMousePos();
         Vector3 aimDir = (Vector3)mousePos - gunSocket.position;
         gunSocket.right = aimDir;
         gunTraveller.CheckAndTeleport();
@@ -120,7 +123,7 @@ public class PlayerController : MonoBehaviour
         return Physics2D.BoxCast(t.position, groundChecker.size, zRotation, -t.up, 0, LayerMask.GetMask("Ground", "PortalRed", "NearProtalRed", "PortalBlue", "NearPortalBlue", "Dynamic"));
     }
 
-    private Vector2 GetMouseWorldPos()
+    private Vector2 GetMousePos()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (traveller.teleported)

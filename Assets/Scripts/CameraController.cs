@@ -38,6 +38,7 @@ public class CameraController : MonoBehaviour
         }
         rotTime = Quaternion.Angle(transform.rotation, targetRot);
         t = 0;
+        brain.ManualUpdate();
     }
     public void RotateCamera()
     {
