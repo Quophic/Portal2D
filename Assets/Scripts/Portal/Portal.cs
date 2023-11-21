@@ -94,6 +94,10 @@ public class Portal : MonoBehaviour
         {
             if(CheckThrough(traveller))
             {
+                float sqrDis = Vector3.SqrMagnitude(linkedPortal.transform.position - TeleportMatrix.MultiplyPoint(traveller.transform.position));
+                traveller.closestPortalSqrDis = sqrDis;
+                traveller.closestPortal = linkedPortal;
+
                 traveller.Teleport(TeleportMatrix);
                 linkedPortal.OnTravellerEnter(traveller);
             }
@@ -107,13 +111,6 @@ public class Portal : MonoBehaviour
             return;
         }
         travellers.Add(traveller);
-        if (traveller.teleported)
-        {
-            float sqrDis = Vector3.SqrMagnitude(transform.position - linkedPortal.TeleportMatrix.MultiplyPoint(traveller.transform.position));
-            
-            traveller.closestPortalSqrDis = sqrDis;
-            traveller.closestPortal = this;
-        }
         traveller.EnterPortalThreshold(this);
     } 
     private void OnTravellerExit(PortalTraveller traveller)
