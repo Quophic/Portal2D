@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PortalController : MonoBehaviour
@@ -8,10 +9,12 @@ public class PortalController : MonoBehaviour
     public Camera playerCamera => Camera.main;
     public Portal portalRed;
     public Portal portalBlue;
+    public Transform fixedPositionRed;
+    public Transform fixedPositionBlue;
 
-    public bool connected => portalRed != null && portalRed.gameObject.activeInHierarchy && portalBlue != null && portalBlue.gameObject.activeInHierarchy; 
+    public bool connected => portalRed != null && portalRed.gameObject.activeInHierarchy && portalBlue != null && portalBlue.gameObject.activeInHierarchy;
 
-    void Start()
+    private void Awake()
     {
         portalRed = Instantiate(portalPrefab);
         portalBlue = Instantiate(portalPrefab);
@@ -32,6 +35,29 @@ public class PortalController : MonoBehaviour
         portalBlue.localLayer = LayerMask.NameToLayer("PortalBlue");
         portalRed.MaskLayerID = SortingLayer.NameToID("NearPortalRed");
         portalBlue.MaskLayerID = SortingLayer.NameToID("NearPortalBlue");
+
+        if (fixedPositionRed)
+        {
+            SetPortalRed(fixedPositionRed.position, fixedPositionRed.rotation);
+        }
+        if (fixedPositionBlue)
+        {
+            SetPortalBlue(fixedPositionBlue.position, fixedPositionBlue.rotation);
+        }
+        InactivatePortal();
+    }
+
+    public void ActivatePortal()
+    {
+        portalRed.gameObject.SetActive(true);
+        portalBlue.gameObject.SetActive(true);
+        OnPortalConnected();
+    }
+    public void InactivatePortal()
+    {
+        portalRed.gameObject.SetActive(false);
+        portalBlue.gameObject.SetActive(false);
+        OnPortalDisconnect();
     }
 
     public void UpdateTravellersClosestPortal()

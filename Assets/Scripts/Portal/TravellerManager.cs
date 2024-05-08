@@ -5,9 +5,10 @@ using UnityEngine;
 public class TravellerManager : MonoBehaviour
 {
     private PortalTraveller[] travellers;
-    public PortalController controller;
+    private PortalController[] controllerList;
     private void Awake()
     {
+        controllerList = FindObjectsOfType<PortalController>();
         travellers = FindObjectsOfType<PortalTraveller>();
         StartCoroutine(LateFixedUpdate());
     }
@@ -18,7 +19,7 @@ public class TravellerManager : MonoBehaviour
         {
             traveller.teleported = false;
             traveller.lastPosition = traveller.CurrentPosition;
-            
+
             traveller.UpdateShadow();
         }
 
@@ -33,8 +34,12 @@ public class TravellerManager : MonoBehaviour
             {
                 traveller.ResetClosestPortal();
             }
-            controller.UpdateTravellersClosestPortal();
-            controller.CheckAndTeleportTravellers();
+
+            foreach (var controller in controllerList)
+            {
+                controller.UpdateTravellersClosestPortal();
+                controller.CheckAndTeleportTravellers();
+            }
             foreach (var traveller in travellers)
             {
                 traveller.SetClosestPortalLayer();

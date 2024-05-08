@@ -74,6 +74,7 @@
     <Compile Include="Assets\Test\TeleportTest\AutoReturn.cs" />
     <Compile Include="Assets\Scripts\PortalGun.cs" />
     <Compile Include="Assets\Scripts\UI\Menu.cs" />
+    <Compile Include="Assets\Scripts\FixedPortalController.cs" />
     <Compile Include="Assets\Test\Traveller\Portal2DManager.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalShadow.cs" />
     <Compile Include="Assets\Scripts\Portal\SubPortalTraveller.cs" />

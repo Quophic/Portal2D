@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PortalViewRenderer : MonoBehaviour
 {
-    public PortalController controller;
+    private PortalController[] controllerList;
+    private PortalController currentProcessingContoller;
     public PortalTraveller targetTraveller;
     private Vector3 targetPos => targetTraveller.TeleportedPosition;
     public Shader portalViewShader;
     public int maxPortalIterateCount;
     private int iterateCount;
     private Material material;
+    private void Awake()
+    {
+        controllerList = FindObjectsOfType<PortalController>();
+    }
     public Material Material
     {
         get
@@ -69,21 +74,34 @@ public class PortalViewRenderer : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (controller.connected && Material)
+        RenderTexture tempTex = RenderTexture.GetTemporary(Screen.width, Screen.height);
+        foreach (var item in controllerList)
         {
-            float redDist = Vector3.Distance(targetPos, controller.portalRed.transform.position);
-            float blueDist = Vector3.Distance(targetPos, controller.portalBlue.transform.position);
-            
+            currentProcessingContoller = item;
+            CheckAndRender(source, tempTex);
+            Graphics.Blit(tempTex, source);
+        }
+        Graphics.Blit(tempTex, destination);
+        RenderTexture.ReleaseTemporary(tempTex);
+    }
+
+    private void CheckAndRender(RenderTexture source, RenderTexture destination)
+    {
+        if (currentProcessingContoller.connected && Material)
+        {
+            float redDist = Vector3.Distance(targetPos, currentProcessingContoller.portalRed.transform.position);
+            float blueDist = Vector3.Distance(targetPos, currentProcessingContoller.portalBlue.transform.position);
+
             RenderTexture tempTex = RenderTexture.GetTemporary(Screen.width, Screen.height);
-            if(redDist > blueDist)
+            if (redDist > blueDist)
             {
-                RenderView(controller.portalRed, source, tempTex);
-                RenderView(controller.portalBlue, tempTex, destination);
+                RenderView(currentProcessingContoller.portalRed, source, tempTex);
+                RenderView(currentProcessingContoller.portalBlue, tempTex, destination);
             }
             else
             {
-                RenderView(controller.portalBlue, source, tempTex);
-                RenderView(controller.portalRed, tempTex, destination);
+                RenderView(currentProcessingContoller.portalBlue, source, tempTex);
+                RenderView(currentProcessingContoller.portalRed, tempTex, destination);
             }
 
             RenderTexture.ReleaseTemporary(tempTex);
@@ -100,7 +118,7 @@ public class PortalViewRenderer : MonoBehaviour
         portal.Render();
     }
 
-    private void RenderView(Portal portal ,RenderTexture source, RenderTexture destination)
+    private void RenderView(Portal portal, RenderTexture source, RenderTexture destination)
     {
         Vector3 portalToEye = targetPos - portal.transform.position;
         bool canSeeThroughPortal = Vector3.Dot(portalToEye, portal.transform.right) > 0;
@@ -109,7 +127,7 @@ public class PortalViewRenderer : MonoBehaviour
             RenderTexture portalView = RenderTexture.GetTemporary(Screen.width, Screen.height);
             StartRenderPortalView(portal, portalView);
 
-            SetParamAndRender(controller.playerCamera, portal, targetPos, portalView, source, destination);
+            SetParamAndRender(currentProcessingContoller.playerCamera, portal, targetPos, portalView, source, destination);
             RenderTexture.ReleaseTemporary(portalView);
         }
         else
@@ -142,7 +160,7 @@ public class PortalViewRenderer : MonoBehaviour
         }
     }
 
-    private void SetParamAndRender(Camera camera, Portal portal, Vector3 eyePos ,RenderTexture addition, RenderTexture source, RenderTexture destination)
+    private void SetParamAndRender(Camera camera, Portal portal, Vector3 eyePos, RenderTexture addition, RenderTexture source, RenderTexture destination)
     {
         Material.SetTexture("_PortalTex", addition);
         SetPortalViewField(camera, portal.Top, portal.Bottom, eyePos);
