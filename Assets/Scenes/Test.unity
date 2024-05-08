@@ -906,6 +906,8 @@ MonoBehaviour:
   virtualCamera: {fileID: 726721359}
   brain: {fileID: 1237257305}
   playerTraveller: {fileID: 1957329250}
+  playerController: {fileID: 1957329255}
+  freeMoveSpeed: 100
   rotSpeed: 150
 --- !u!4 &732980114 stripped
 Transform:
@@ -2243,6 +2245,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2c254abdb1dc6442b7bf3eb2a38e384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1957329255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6012966145313515566, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+  m_PrefabInstance: {fileID: 1643980104}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c56dd40eb80d9f489fdb5c393587812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1996263853
