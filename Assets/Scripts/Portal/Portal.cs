@@ -92,6 +92,10 @@ public class Portal : MonoBehaviour
     {
         foreach(PortalTraveller traveller in travellers)
         {
+            if (traveller.isTeleporting)
+            {
+                return;
+            }
             if(CheckThrough(traveller))
             {
                 float sqrDis = Vector3.SqrMagnitude(linkedPortal.transform.position - TeleportMatrix.MultiplyPoint(traveller.transform.position));

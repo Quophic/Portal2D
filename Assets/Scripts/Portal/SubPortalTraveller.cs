@@ -29,7 +29,7 @@ public class SubPortalTraveller : MonoBehaviour
         {
             Vector3 expectedPos = attached.localToWorldMatrix.MultiplyPoint(localPosition);
             Quaternion expectedRot = attached.rotation * localRotation;
-            if (parentTraveller.teleported)
+            if (parentTraveller.isTeleporting)
             {
                 closestPortal = parentTraveller.closestPortal;
                 expectedPos = parentTraveller.closestPortal.linkedPortal.TeleportMatrix.MultiplyPoint(expectedPos);

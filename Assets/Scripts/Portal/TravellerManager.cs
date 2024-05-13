@@ -17,7 +17,7 @@ public class TravellerManager : MonoBehaviour
     {
         foreach (var traveller in travellers)
         {
-            traveller.teleported = false;
+            traveller.isTeleporting = false;
             traveller.lastPosition = traveller.CurrentPosition;
 
             traveller.UpdateShadow();

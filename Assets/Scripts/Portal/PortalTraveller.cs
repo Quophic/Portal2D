@@ -8,7 +8,7 @@ public class PortalTraveller : MonoBehaviour
     public PortalShadow shadowPrefab;
     public Vector2 lastPosition;
     public Vector2 CurrentPosition { get => transform.position; }
-    public bool teleported;
+    public bool isTeleporting;
     public Vector2 TeleportedPosition { get => rb2D.position; }
     public TravellerSpriteRenderer travellerRenderer;
     private LayerMask originLayer;
@@ -50,7 +50,7 @@ public class PortalTraveller : MonoBehaviour
 
     public void Teleport(Matrix4x4 teleportMatrix)
     {
-        teleported = true;
+        isTeleporting = true;
         rb2D.velocity = teleportMatrix.MultiplyVector(rb2D.velocity);
         rb2D.position = teleportMatrix.MultiplyPoint(rb2D.position);
         Quaternion rotation = Quaternion.Euler(0, 0, rb2D.rotation);

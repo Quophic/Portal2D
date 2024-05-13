@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 GetMousePos()
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (traveller.teleported)
+        if (traveller.isTeleporting)
         {
             return traveller.closestPortal.TeleportMatrix.MultiplyPoint(pos);
         }
