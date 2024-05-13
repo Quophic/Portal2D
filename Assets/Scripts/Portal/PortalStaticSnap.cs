@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PortalStaticSnap : MonoBehaviour
 {
@@ -24,7 +26,7 @@ public class PortalStaticSnap : MonoBehaviour
         var r = Physics2D.OverlapBoxAll(transform.position, SnapZone.size, zRotation, LayerMask.GetMask("Ground"));
         if (r != null)
         {
-            ColliderSnaps.pathCount = r.Length;
+            ColliderSnaps.pathCount = 0;
             for (int i = 0; i < r.Length; i++)
             {
                 Collider2D c = r[i];
@@ -33,19 +35,29 @@ public class PortalStaticSnap : MonoBehaviour
                     List<Vector2> world = GetBoxCollider2DCorners(c as BoxCollider2D);
                     List<Vector2> result = PolygonUtils.Intersection(world, self);
                     TransformLocal(result);
-                    if (result.Count == 0)
+                    if (result.Count != 0)
                     {
-                        result.Add(Vector2.zero);
-                        result.Add(Vector2.zero);
-                        result.Add(Vector2.zero);
-                    } 
-                    ColliderSnaps.SetPath(i, result);
+                        ColliderSnaps.SetPath(ColliderSnaps.pathCount++, result);
+                    }
+                }
+                else if (c is CompositeCollider2D)
+                {
+                    var world = GetCompositeCollider2DCorners(c as CompositeCollider2D);
+                    foreach (var points in world)
+                    {
+                        List<Vector2> result = PolygonUtils.Intersection(points, self);
+                        TransformLocal(result);
+                        if (result.Count != 0)
+                        {
+                            ColliderSnaps.SetPath(ColliderSnaps.pathCount++, result);
+                        }
+                    }
                 }
             }
         }
     }
 
-    public List<Vector2> GetBoxCollider2DCorners(BoxCollider2D b)
+    private List<Vector2> GetBoxCollider2DCorners(BoxCollider2D b)
     {
         List<Vector2> result = new List<Vector2>();
         Matrix4x4 m = b.gameObject.transform.localToWorldMatrix;
@@ -61,6 +73,24 @@ public class PortalStaticSnap : MonoBehaviour
                 result[i] = result[result.Count - 1 - i];
                 result[result.Count - 1 - i] = temp;
             }
+        }
+        return result;
+    }
+
+    private List<List<Vector2>> GetCompositeCollider2DCorners(CompositeCollider2D c)
+    {
+        List<List<Vector2>> result = new List<List<Vector2>>();
+        Matrix4x4 m = c.gameObject.transform.localToWorldMatrix;
+        for (int i = 0; i < c.pathCount; i++)
+        {
+            // 这里拿到的点是逆时针的
+            List<Vector2> points = new List<Vector2>();
+            c.GetPath(i, points);
+            for (int k = 0; k < points.Count; k++)
+            {
+                points[k] = m.MultiplyPoint(points[k]);
+            }
+            result.Add(points);
         }
         return result;
     }
