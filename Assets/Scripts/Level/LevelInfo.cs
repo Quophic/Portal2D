@@ -2,13 +2,18 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager
 {
+    // 控制生成的关卡之间的距离大小
+    private readonly int LevelDistance = 1000;
     public static readonly string PATH = Application.streamingAssetsPath + "/Level/LevelInfos.json";
     private static LevelManager manager;
+    private GameObject currentLevel = null;
+    private GameObject previousLevel = null;
     public static LevelManager Instance
     {
         get
@@ -38,7 +43,7 @@ public class LevelManager
     private List<LevelInfo> levelInfos = null;
     public LevelInfo[] Infos => levelInfos.ToArray();
     public int Count => levelInfos.Count;
-    
+
     private LevelManager()
     {
         Load();
@@ -58,14 +63,14 @@ public class LevelManager
             sr.Close();
             sr.Dispose();
         }
-        if(levelInfos == null)
+        if (levelInfos == null)
         {
             levelInfos = new List<LevelInfo>();
         }
     }
     public bool AddLevel(LevelInfo levelInfo)
     {
-        foreach(var item in levelInfos)
+        foreach (var item in levelInfos)
         {
             if (item.path.Equals(levelInfo.path))
             {
@@ -77,12 +82,18 @@ public class LevelManager
     }
     public void LoadLevel(int index)
     {
-        if(index < 0 || index >= levelInfos.Count)
+        if (index < 0 || index >= levelInfos.Count)
         {
             return;
         }
+        if (previousLevel)
+        {
+            UnityEngine.Object.Destroy(previousLevel);
+        }
         currentLevelIndex = index;
-        SceneManager.LoadScene(CurrentInfo.path);
+        previousLevel = currentLevel;
+        var prefab = Resources.Load<GameObject>(CurrentInfo.path);
+        currentLevel = UnityEngine.Object.Instantiate(prefab);
     }
     public bool LoadNextLevel()
     {
@@ -91,7 +102,13 @@ public class LevelManager
             return false;
         }
         currentLevelIndex++;
-        SceneManager.LoadScene(CurrentInfo.path);
+        if (previousLevel)
+        {
+            UnityEngine.Object.Destroy(previousLevel);
+        }
+        previousLevel = currentLevel;
+        var prefab = Resources.Load<GameObject>(CurrentInfo.path);
+        currentLevel = UnityEngine.Object.Instantiate(prefab);
         return true;
     }
     public void Save()
