@@ -67,7 +67,7 @@ public class LevelManager
     {
         foreach(var item in levelInfos)
         {
-            if (item.scene.Equals(levelInfo.scene))
+            if (item.path.Equals(levelInfo.path))
             {
                 return false;
             }
@@ -82,7 +82,7 @@ public class LevelManager
             return;
         }
         currentLevelIndex = index;
-        SceneManager.LoadScene(CurrentInfo.scene);
+        SceneManager.LoadScene(CurrentInfo.path);
     }
     public bool LoadNextLevel()
     {
@@ -91,7 +91,7 @@ public class LevelManager
             return false;
         }
         currentLevelIndex++;
-        SceneManager.LoadScene(CurrentInfo.scene);
+        SceneManager.LoadScene(CurrentInfo.path);
         return true;
     }
     public void Save()
@@ -111,11 +111,11 @@ public class LevelManager
 public struct LevelInfo
 {
     public string levelName;
-    public string scene;
+    public string path;
 
-    public LevelInfo(string levelName, string scene)
+    public LevelInfo(string levelName, string path)
     {
         this.levelName = levelName;
-        this.scene = scene;
+        this.path = path;
     }
 }

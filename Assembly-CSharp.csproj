@@ -9,8 +9,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{1A7E1B69-6220-C9DF-B313-D17AC3AD872E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -79,6 +78,7 @@
     <Compile Include="Assets\Test\Traveller\Portal2DManager.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalShadow.cs" />
     <Compile Include="Assets\Scripts\Portal\SubPortalTraveller.cs" />
+    <Compile Include="Assets\Scripts\Level\LevelMagager.cs" />
     <Compile Include="Assets\Scripts\Portal\CloseToPortalChecker.cs" />
     <Compile Include="Assets\Scripts\UI\LevelSelectionView.cs" />
     <Compile Include="Assets\Test\D.cs" />
