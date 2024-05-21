@@ -33,7 +33,7 @@ public class LevelItem : MonoBehaviour
     }
     IEnumerator OpenPortal()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.01f);
         LevelManager.Instance.OpenTransitionPortal();
     }
 }
