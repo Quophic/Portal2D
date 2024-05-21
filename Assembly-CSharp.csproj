@@ -74,10 +74,12 @@
     <Compile Include="Assets\Test\TeleportTest\AutoReturn.cs" />
     <Compile Include="Assets\Scripts\PortalGun.cs" />
     <Compile Include="Assets\Scripts\UI\Menu.cs" />
+    <Compile Include="Assets\Scripts\EnterLevelPortalCheckZone.cs" />
     <Compile Include="Assets\Scripts\FixedPortalController.cs" />
     <Compile Include="Assets\Test\Traveller\Portal2DManager.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalShadow.cs" />
     <Compile Include="Assets\Scripts\Portal\SubPortalTraveller.cs" />
+    <Compile Include="Assets\Scripts\ExitLevelPortalController.cs" />
     <Compile Include="Assets\Scripts\Portal\CloseToPortalChecker.cs" />
     <Compile Include="Assets\Scripts\UI\LevelSelectionView.cs" />
     <Compile Include="Assets\Test\D.cs" />

@@ -6,5 +6,9 @@
     {
         "levelName": "Game0",
         "path": "LevelPrefabs/Game0"
+    },
+    {
+        "levelName": "Game0",
+        "path": "LevelPrefabs/Game0"
     }
 ]
