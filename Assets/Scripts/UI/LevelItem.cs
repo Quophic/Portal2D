@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +29,11 @@ public class LevelItem : MonoBehaviour
     private void LoadLevel()
     {
         LevelManager.Instance.LoadLevel(LevelIndex);
+        StartCoroutine(OpenPortal());
+    }
+    IEnumerator OpenPortal()
+    {
+        yield return new WaitForEndOfFrame();
         LevelManager.Instance.OpenTransitionPortal();
     }
 }

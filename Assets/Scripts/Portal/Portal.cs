@@ -14,8 +14,8 @@ public class Portal : MonoBehaviour
     public PortalInteractor interactor;
     public Transform edgeTop;
     public Transform edgeBottom;
-    public LayerMask nearLayer;
-    public LayerMask localLayer
+    public int nearLayer;
+    public int localLayer
     {
         get => interactor.snapLayerMask;
         set => interactor.snapLayerMask = value;

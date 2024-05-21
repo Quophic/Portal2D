@@ -46,13 +46,14 @@ public class PortalController : MonoBehaviour
         }
         InactivatePortal();
     }
-
+    [ContextMenu("Activate")]
     public void ActivatePortal()
     {
         portalRed.gameObject.SetActive(true);
         portalBlue.gameObject.SetActive(true);
         OnPortalConnected();
     }
+    [ContextMenu("Inactivate")]
     public void InactivatePortal()
     {
         portalRed.gameObject.SetActive(false);
