@@ -28,5 +28,6 @@ public class LevelItem : MonoBehaviour
     private void LoadLevel()
     {
         LevelManager.Instance.LoadLevel(LevelIndex);
+        LevelManager.Instance.OpenTransitionPortal();
     }
 }

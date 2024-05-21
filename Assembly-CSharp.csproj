@@ -78,7 +78,6 @@
     <Compile Include="Assets\Test\Traveller\Portal2DManager.cs" />
     <Compile Include="Assets\Scripts\Portal\PortalShadow.cs" />
     <Compile Include="Assets\Scripts\Portal\SubPortalTraveller.cs" />
-    <Compile Include="Assets\Scripts\Level\LevelMagager.cs" />
     <Compile Include="Assets\Scripts\Portal\CloseToPortalChecker.cs" />
     <Compile Include="Assets\Scripts\UI\LevelSelectionView.cs" />
     <Compile Include="Assets\Test\D.cs" />

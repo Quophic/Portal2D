@@ -2,17 +2,18 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Transactions;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelManager
 {
     // 控制生成的关卡之间的距离大小
     private readonly int LevelDistance = 1000;
+    private int newLevelYValue => (currentLevelIndex % 2) * LevelDistance;
+
     public static readonly string PATH = Application.streamingAssetsPath + "/Level/LevelInfos.json";
     private static LevelManager manager;
     private GameObject currentLevel = null;
+    public GameObject CurrentLevel => currentLevel;
     private GameObject previousLevel = null;
     public static LevelManager Instance
     {
@@ -94,6 +95,14 @@ public class LevelManager
         previousLevel = currentLevel;
         var prefab = Resources.Load<GameObject>(CurrentInfo.path);
         currentLevel = UnityEngine.Object.Instantiate(prefab);
+        currentLevel.transform.position = new Vector3(0, newLevelYValue, 0);
+        if(index == 0)
+        {
+            var player = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+            player.velocity = Vector2.zero;
+            player.angularVelocity = 0;
+            player.position = currentLevel.transform.Find("PlayerPosition").transform.position;
+        }
     }
     public bool LoadNextLevel()
     {
@@ -109,6 +118,7 @@ public class LevelManager
         previousLevel = currentLevel;
         var prefab = Resources.Load<GameObject>(CurrentInfo.path);
         currentLevel = UnityEngine.Object.Instantiate(prefab);
+        currentLevel.transform.position = new Vector3(0, newLevelYValue, 0);
         return true;
     }
     public void Save()
@@ -120,6 +130,19 @@ public class LevelManager
             sw.Close();
             sw.Dispose();
         }
+    }
+    public bool OpenTransitionPortal()
+    {
+        if(!currentLevel || !previousLevel)
+        {
+            return false;
+        }
+        PortalController controller = GameObject.FindWithTag("LevelTransitionPortalController").GetComponent<PortalController>();
+        var exit = previousLevel.transform.Find("ExitLevelPortal").Find("Socket");
+        var enter = currentLevel.transform.Find("EnterLevelPortal").Find("Socket");
+        controller.SetPortalRed(exit.position, exit.rotation);
+        controller.SetPortalBlue(enter.position, enter.rotation);
+        return true;
     }
 }
 

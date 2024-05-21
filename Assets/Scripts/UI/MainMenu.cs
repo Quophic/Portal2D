@@ -5,6 +5,11 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     public GameObject levelSelection;
+    private void Awake()
+    {
+        LevelManager.Instance.LoadLevel(0);
+        
+    }
     public void ShowLevelSelection()
     {
         levelSelection.SetActive(true);
