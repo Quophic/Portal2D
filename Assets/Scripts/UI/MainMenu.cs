@@ -44,6 +44,10 @@ public class MainMenu : MonoBehaviour
     {
         levelSelection.SetActive(true);
     }
+    public void CloseLevelSelection()
+    {
+        levelSelection.SetActive(false);
+    }
     public void QuitGame()
     {
 #if UNITY_EDITOR

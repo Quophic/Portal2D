@@ -35,5 +35,7 @@ public class LevelItem : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
         LevelManager.Instance.OpenTransitionPortal();
+        MainMenu mainMenu = GameObject.FindWithTag("UI").GetComponent<MainMenu>();
+        mainMenu.CloseLevelSelection();
     }
 }
