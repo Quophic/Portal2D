@@ -10,6 +10,8 @@ public class EnterLevelPortalCheckZone : MonoBehaviour
         {
             PortalController controller = GameObject.FindWithTag("LevelTransitionPortalController").GetComponent<PortalController>();
             controller.InactivatePortal();
+            MainMenu mainMenu = GameObject.FindWithTag("UI").GetComponent<MainMenu>();
+            mainMenu.CloseMainMenu();
         }
 
     }

@@ -7,6 +7,7 @@ TagManager:
   - PortalPlane
   - StartLevel
   - LevelTransitionPortalController
+  - UI
   layers:
   - Default
   - TransparentFX
