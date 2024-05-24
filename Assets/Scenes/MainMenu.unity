@@ -1505,6 +1505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortalController
       objectReference: {fileID: 0}
+    - target: {fileID: 4465338451971694265, guid: 4b2b495475448ae43823f62d1ac7da5d, type: 3}
+      propertyPath: m_TagString
+      value: PlayerPortalController
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

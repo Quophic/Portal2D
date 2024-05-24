@@ -8,6 +8,7 @@ TagManager:
   - StartLevel
   - LevelTransitionPortalController
   - UI
+  - PlayerPortalController
   layers:
   - Default
   - TransparentFX
