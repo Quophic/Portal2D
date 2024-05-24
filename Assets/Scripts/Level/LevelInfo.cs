@@ -8,7 +8,8 @@ public class LevelManager
 {
     // 控制生成的关卡之间的距离大小
     private readonly int LevelDistance = 1000;
-    private int newLevelYValue => (currentLevelIndex % 2) * LevelDistance;
+    private int newLevelPositionIndex = 0;
+    private int newLevelYValue => (newLevelPositionIndex++ % 2) * LevelDistance;
 
     public static readonly string PATH = Application.streamingAssetsPath + "/Level/LevelInfos.json";
     private static LevelManager manager;
@@ -48,6 +49,7 @@ public class LevelManager
     private LevelManager()
     {
         Load();
+        newLevelPositionIndex = 1;
         currentLevelIndex = -1;
     }
     public void Load()

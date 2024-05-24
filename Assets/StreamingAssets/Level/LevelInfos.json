@@ -9,34 +9,30 @@
     },
     {
         "levelName": "Game1",
-        "path": "LevelPrefabs/Game0"
+        "path": "LevelPrefabs/Game1"
     },
     {
         "levelName": "Game2",
-        "path": "LevelPrefabs/Game0"
-    },
-    {
-        "levelName": "Game3",
-        "path": "LevelPrefabs/Game0"
+        "path": "LevelPrefabs/Game2"
     },
     {
         "levelName": "Game4",
-        "path": "LevelPrefabs/Game0"
+        "path": "LevelPrefabs/Game4"
     },
     {
         "levelName": "Game5",
-        "path": "LevelPrefabs/Game0"
+        "path": "LevelPrefabs/Game5"
+    },
+    {
+        "levelName": "Game3",
+        "path": "LevelPrefabs/Game3"
     },
     {
         "levelName": "Game6",
-        "path": "LevelPrefabs/Game0"
+        "path": "LevelPrefabs/Game6"
     },
     {
-        "levelName": "Game7",
-        "path": "LevelPrefabs/Game0"
-    },
-    {
-        "levelName": "Game8",
+        "levelName": "Game0",
         "path": "LevelPrefabs/Game0"
     }
 ]

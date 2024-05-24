@@ -497,6 +497,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515566, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: verticalMaxSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012966145313515566, guid: 51113936ff36ddd48987b95bef43a4fe, type: 3}
+      propertyPath: horizontalMaxSpped
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1232,17 +1240,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2002173542567827285, guid: afe8fa992158c67488d68dd198822ee8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.49
-      objectReference: {fileID: 0}
     - target: {fileID: 4359817563786719239, guid: afe8fa992158c67488d68dd198822ee8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.26
+      value: 30.34
       objectReference: {fileID: 0}
     - target: {fileID: 4359817563786719239, guid: afe8fa992158c67488d68dd198822ee8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.71
+      value: -11.75
       objectReference: {fileID: 0}
     - target: {fileID: 4359817563786719239, guid: afe8fa992158c67488d68dd198822ee8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1287,14 +1291,6 @@ PrefabInstance:
     - target: {fileID: 5652110073057139041, guid: afe8fa992158c67488d68dd198822ee8, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047987189221308823, guid: afe8fa992158c67488d68dd198822ee8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 6047987189221308823, guid: afe8fa992158c67488d68dd198822ee8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.99
       objectReference: {fileID: 0}
     - target: {fileID: 7498640926688821247, guid: afe8fa992158c67488d68dd198822ee8, type: 3}
       propertyPath: m_ColliderPaths.Array.size
